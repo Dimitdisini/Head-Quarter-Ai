@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Booth 3D Chitato x JetZ 2026 — Indofood Tower Lobby</title>
 <link rel="icon" href="data:,">
+<script>
+  window.addEventListener('error', function(e) {
+    var el = document.getElementById('load-text');
+    if (el) el.innerHTML = '<span style="color:#d9534f;font-weight:600">Terjadi kesalahan: ' + (e.message || 'Gagal memuat modul') + '</span>';
+  });
+</script>
 <script type="importmap">
 {
   "imports": {

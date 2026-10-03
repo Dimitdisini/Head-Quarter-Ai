@@ -1,7 +1,19 @@
 {
   "version": 2,
-  "cleanUrls": true,
-  "redirects": [
-    { "source": "/", "destination": "/booth-3d/index.html", "permanent": false }
+  "cleanUrls": false,
+  "trailingSlash": true,
+  "rewrites": [
+    { "source": "/", "destination": "/booth-3d/index.html" },
+    { "source": "/js/:match*", "destination": "/booth-3d/js/:match*" },
+    { "source": "/vendor/:match*", "destination": "/booth-3d/vendor/:match*" },
+    { "source": "/renders/:match*", "destination": "/booth-3d/renders/:match*" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
   ]
 }

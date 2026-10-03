@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Aset - Chitato Display Plinth</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #1a1a1a; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        #canvas-container { width: 100vw; height: 100vh; display: block; }
+        
+        .overlay { position: absolute; top: 20px; left: 20px; pointer-events: none; }
+        .info-panel { background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); pointer-events: auto; max-width: 320px; }
+        .info-panel h1 { margin: 0 0 5px 0; font-size: 18px; color: #1a1a1a; }
+        .info-panel p { margin: 0 0 15px 0; font-size: 12px; color: #666; }
+        .tag { background: #fff3e0; color: #c2410c; padding: 4px 8px; font-size: 10px; font-weight: bold; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+        
+        .controls { display: flex; flex-direction: column; gap: 8px; }
+        button { background: #1a1a1a; color: white; border: none; padding: 10px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; transition: 0.2s; text-align: center; }
+        button:hover { background: #f97316; }
+        
+        .loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-family: monospace; font-size: 14px; pointer-events: none; }
+    </style>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/exporters/GLTFExporter.js"></script>
+</head>
+<body>
+
+    <div class="loading" id="loader">Membangun Material Akrilik...</div>
+    <div id="canvas-container"></div>
+    
+    <div class="overlay">
+        <div class="info-panel">
+            <div class="tag">ZONA A · CHITATO</div>
+            <h1>Display Plinth Showcase</h1>
+            <p>3 Pilar silinder dengan kubah akrilik transparan. Menampilkan display snack Chitato dan merchandise tas eksklusif.</p>
+            
+            <div class="controls">
+                <button onclick="toggleAutoRotate()" id="btn-rotate">🔄 Putar Otomatis: ON</button>
+                <button onclick="exportGLB()">⬇️ Unduh Model (.glb)</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color('#333333');
+        scene.fog = new THREE.FogExp2('#333333', 0.05);
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 1.5, 4);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        // Penting untuk efek kaca/akrilik
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.maxPolarAngle = Math.PI / 2 + 0.1;
+        controls.target.set(0, 0.5, 0);
+        
+        let autoRotate = true;
+        const mainGroup = new THREE.Group();
+        scene.add(mainGroup);
+
+        // --- MATERIALS ---
+        const matFloor = new THREE.MeshStandardMaterial({ color: '#555555', roughness: 0.8 });
+        const matPlinth = new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: 0.3, metalness: 0.1 });
+        
+        // Material Akrilik / Kaca Premium
+        const matAcrylic = new THREE.MeshPhysicalMaterial({
+            color: 0xffffff,
+            metalness: 0.1,
+            roughness: 0.05,
+            transmission: 0.9, // Efek tembus pandang kaca
+            opacity: 1,
+            transparent: true,
+            ior: 1.5,
+            thickness: 0.05,
+            side: THREE.DoubleSide
+        });
+
+        // Material Produk
+        const matChitato = new THREE.MeshStandardMaterial({ color: '#f97316', roughness: 0.6 }); // Oranye
+        const matLite = new THREE.MeshStandardMaterial({ color: '#4ade80', roughness: 0.6 }); // Hijau
+        const matBag = new THREE.MeshStandardMaterial({ color: '#1e3a8a', roughness: 0.4, metalness: 0.3 }); // Navy blue merch bag
+
+        // Lantai
+        const floor = new THREE.Mesh(new THREE.PlaneGeometry(10, 10), matFloor);
+        floor.rotation.x = -Math.PI / 2;
+        floor.receiveShadow = true;
+        scene.add(floor);
+
+        // --- FUNGSI PEMBUAT PLINTH & DISPLAY ---
+        function createPlinth(x, z, h, productType) {
+            const group = new THREE.Group();
+
+            // 1. Silinder Dasar (Plinth)
+            const radius = 0.25;
+            const geoCyl = new THREE.CylinderGeometry(radius, radius, h, 32);
+            const meshCyl = new THREE.Mesh(geoCyl, matPlinth);
+            meshCyl.position.y = h / 2;
+            meshCyl.castShadow = true;
+            meshCyl.receiveShadow = true;
+            group.add(meshCyl);
+
+            // 2. Kubah Akrilik (Dome)
+            const geoDome = new THREE.SphereGeometry(radius, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+            const meshDome = new THREE.Mesh(geoDome, matAcrylic);
+            meshDome.position.y = h;
+            meshDome.castShadow = true;
+            group.add(meshDome);
+
+            // 3. Ring base untuk kubah
+            const geoRing = new THREE.TorusGeometry(radius, 0.01, 16, 64);
+            const meshRing = new THREE.Mesh(geoRing, matPlinth);
+            meshRing.rotation.x = Math.PI / 2;
+            meshRing.position.y = h;
+            group.add(meshRing);
+
+            // 4. Produk di dalam kubah
+            let productMesh;
+            if(productType === 'chitato') {
+                // Bentuk bungkus keripik kotak
+                productMesh = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.2, 0.05), matChitato);
+                productMesh.position.y = h + 0.1;
+                productMesh.rotation.y = Math.PI / 4;
+            } else if(productType === 'lite') {
+                productMesh = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.2, 0.05), matLite);
+                productMesh.position.y = h + 0.1;
+                productMesh.rotation.y = -Math.PI / 6;
+            } else {
+                // Bentuk Merchandise Tas Pouch
+                productMesh = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.15, 0.1), matBag);
+                productMesh.position.y = h + 0.08;
+                productMesh.rotation.y = Math.PI / 8;
+            }
+            productMesh.castShadow = true;
+            group.add(productMesh);
+
+            // 5. Lampu Sorot Mini dalam Kubah (Biar produk nyala)
+            const innerLight = new THREE.PointLight(0xffffff, 0.5, 1);
+            innerLight.position.set(0, h + 0.2, 0);
+            group.add(innerLight);
+
+            group.position.set(x, 0, z);
+            return group;
+        }
+
+        // Susunan 3 Plinth zig-zag
+        mainGroup.add(createPlinth(-0.6, 0.3, 0.6, 'chitato'));  // Pendek, Kiri depan
+        mainGroup.add(createPlinth(0, -0.2, 0.9, 'bag'));        // Tinggi, Tengah belakang (Merch Tas)
+        mainGroup.add(createPlinth(0.7, 0.2, 0.75, 'lite'));     // Sedang, Kanan depan
+
+        // --- PENCAHAYAAN (Penting untuk Material Kaca) ---
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+        scene.add(ambientLight);
+
+        // Lampu Utama (Matahari/Atap)
+        const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
+        dirLight.position.set(5, 10, 2);
+        dirLight.castShadow = true;
+        dirLight.shadow.mapSize.width = 1024;
+        dirLight.shadow.mapSize.height = 1024;
+        scene.add(dirLight);
+
+        // Lampu Fill (Menerangi bayangan)
+        const fillLight = new THREE.DirectionalLight(0xffeebb, 0.3);
+        fillLight.position.set(-5, 3, 5);
+        scene.add(fillLight);
+
+        document.getElementById('loader').style.display = 'none';
+
+        function toggleAutoRotate() {
+            autoRotate = !autoRotate;
+            document.getElementById('btn-rotate').innerText = autoRotate ? '🔄 Putar Otomatis: ON' : '🔄 Putar Otomatis: OFF';
+        }
+
+        function exportGLB() {
+            const exporter = new THREE.GLTFExporter();
+            exporter.parse(mainGroup, function (glb) {
+                const blob = new Blob([glb], { type: 'application/octet-stream' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.style.display = 'none';
+                link.href = url;
+                link.download = 'chitato_bag_plinth_display.glb';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }, { binary: true });
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if(autoRotate) mainGroup.rotation.y += 0.005;
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        animate();
+    </script>
+</body>
+</html>

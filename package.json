@@ -1,0 +1,14 @@
+{
+  "name": "booth-chitato-jetz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Booth 3D Activation Chitato × TREASURE & JetZ × Hearts2Hearts (Lobby Indofood Tower 2026)",
+  "scripts": {
+    "start": "node booth-3d/server.js",
+    "validate": "python3 tools/validate.py",
+    "check": "python3 tools/validate.py"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

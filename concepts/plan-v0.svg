@@ -1,0 +1,527 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="100%" height="100%" style="background:#fcfbf9; font-family:'Helvetica Neue', Arial, sans-serif;">
+<defs>
+  <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse">
+    <path d="M 38 0 L 0 0 0 38" fill="none" stroke="#ebe8e1" stroke-width="0.8"/>
+  </pattern>
+  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#444"/>
+  </marker>
+  <marker id="tick" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <line x1="2" y1="8" x2="8" y2="2" stroke="#555" stroke-width="1.5"/>
+  </marker>
+</defs>
+
+<!-- Background Grid -->
+<rect width="100%" height="100%" fill="#fcfbf9"/>
+<rect x="50" y="70" width="1300" height="600" fill="url(#grid)"/>
+
+
+<!-- Header Lembar -->
+<g id="header-text">
+  <text x="60" y="45" font-size="20" font-weight="700" fill="#1e293b">DENAH TATA LETAK 2D (GATE 0) — BOOTH CHITATO × JETZ</text>
+  <text x="60" y="68" font-size="12" fill="#64748b">Indofood Tower Lobby | Total Footprint: 30.000 × 4.000 mm | Status Spec: v0.1.0 (DRAFT)</text>
+</g>
+
+
+<!-- Proteksi Lantai Karpet Hitam -->
+<g id="floor-protection">
+  <rect x="100.0" y="130.0" width="1216.0" height="228.0" fill="#18181b" rx="4" opacity="0.95"/>
+  <rect x="100.0" y="130.0" width="1216.0" height="228.0" fill="none" stroke="#3f3f46" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="115.0" y="152.0" fill="#a1a1aa" font-size="11" font-weight="600">AREA PROTEKSI LANTAI: KARPET HITAM WAJIB 32.000 × 6.000 mm (MARGIN 1.000 mm DI SEMUA SISI)</text>
+</g>
+
+
+<g id="A-FLOOR-GFX">
+  <rect x="138.0" y="168.0" width="570.0" height="152.0" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="153.0" y="305.0" fill="#fdba74" font-size="11" font-weight="700">VINYL LANTAI ZONA A (ORANYE-HIJAU WAVE)</text>
+</g>
+
+
+<g id="B-FLOOR-GFX">
+  <rect x="723.1999999999999" y="168.0" width="554.8" height="152.0" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="1.5"/>
+  <text x="738.1999999999999" y="305.0" fill="#7dd3fc" font-size="11" font-weight="700">VINYL LANTAI ZONA B (CHECKER BIRU-PINK)</text>
+</g>
+
+
+<!-- Garis Zona Boundary x=15 -->
+<line x1="708.0" y1="149.0" x2="708.0" y2="339.0" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="8,4"/>
+<text x="700.0" y="160.39999999999998" fill="#ef4444" font-size="10" font-weight="700" text-anchor="end">BATAS ZONA A (CHITATO)</text>
+<text x="716.0" y="160.39999999999998" fill="#ef4444" font-size="10" font-weight="700" text-anchor="start">BATAS ZONA B (JETZ)</text>
+
+
+<!-- Arah & Konteks Venue -->
+<g id="venue-context" fill="#475569" font-size="11" font-weight="600">
+  <!-- Sisi Utara: Pengunjung -->
+  <rect x="556.0" y="135.70000000000002" width="360" height="24" rx="12" fill="#e2e8f0" stroke="#cbd5e1"/>
+  <text x="734.6" y="151.70000000000002" text-anchor="middle" fill="#0f172a">▲ UTARA: KORIDOR LOBBY UTAMA (MUKA PENGUNJUNG) ▲</text>
+
+  <!-- Sisi Selatan: Tenant -->
+  <rect x="499.0" y="344.70000000000005" width="480" height="24" rx="12" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="738.4" y="360.70000000000005" text-anchor="middle" fill="#334155">▼ SELATAN: TENANT (BANK INA, BELLAMAMA, WARUNK UPNORMAL) ▼</text>
+
+  <!-- Barat: Lobby SPIT -->
+  <text x="92.4" y="244.0" transform="rotate(-90 92.4 244.0)" text-anchor="middle">◄ BARAT: LOBBY SPIT</text>
+
+  <!-- Timur: Indomaret Point -->
+  <text x="1338.8" y="244.0" transform="rotate(90 1338.8 244.0)" text-anchor="middle">TIMUR: INDOMARET POINT ►</text>
+</g>
+
+
+<g id="A-WALL-1">
+  <rect x="138.0" y="312.4" width="171.0" height="7.6000000000000005" fill="#ffedd5" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="223.5" y="319.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A01</text>
+</g>
+
+
+<g id="A-WALL-2">
+  <rect x="309.0" y="312.4" width="133.0" height="7.6000000000000005" fill="#dcfce7" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="375.5" y="319.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A01</text>
+</g>
+
+
+<g id="A-WALL-3">
+  <rect x="442.0" y="312.4" width="266.0" height="7.6000000000000005" fill="#ffffff" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="575.0" y="319.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A01</text>
+</g>
+
+
+<g id="A-HEADER">
+  <rect x="223.5" y="308.6" width="152.0" height="3.8000000000000003" fill="#fef9c3" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="299.5" y="314.0" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A03</text>
+</g>
+
+
+<g id="A-CHIP-1">
+  <rect x="147.5" y="192.7" width="34.2" height="34.2" fill="#ffedd5" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="164.6" y="213.29999999999998" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A04</text>
+</g>
+
+
+<g id="A-CHIP-2">
+  <rect x="398.3" y="192.7" width="34.2" height="34.2" fill="#dcfce7" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="415.40000000000003" y="213.29999999999998" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A04</text>
+</g>
+
+
+<g id="A-POUF-1">
+  <rect x="199.75" y="184.15" width="20.900000000000002" height="20.900000000000002" fill="#fef9c3" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="210.2" y="198.1" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A05</text>
+</g>
+
+
+<g id="A-POUF-2">
+  <rect x="351.75" y="184.15" width="20.900000000000002" height="20.900000000000002" fill="#dcfce7" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="362.2" y="198.1" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A05</text>
+</g>
+
+
+<g id="A-TOTEM-C">
+  <rect x="435.72999999999996" y="276.3" width="27.74" height="11.4" fill="#ffedd5" stroke="#0f172a" stroke-width="2.2" rx="2"/>
+  <text x="449.59999999999997" y="285.5" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A06</text>
+</g>
+
+
+<g id="A-ARCH">
+  <rect x="464.80000000000007" y="272.5" width="91.2" height="19.0" fill="#ffedd5" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="510.4000000000001" y="285.5" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A07</text>
+</g>
+
+
+<g id="A-LED">
+  <rect x="495.01000000000005" y="270.6" width="30.78" height="1.9000000000000001" fill="#ffffff" stroke="#f97316" stroke-width="2.0" stroke-dasharray="5,3" rx="2"/>
+  <text x="510.40000000000003" y="275.05" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A07</text>
+</g>
+
+
+<g id="A-TOTEM-L">
+  <rect x="557.3299999999999" y="276.3" width="27.74" height="11.4" fill="#dcfce7" stroke="#0f172a" stroke-width="2.2" rx="2"/>
+  <text x="571.1999999999999" y="285.5" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A06</text>
+</g>
+
+
+<g id="A-POUF-3">
+  <rect x="458.15" y="191.75" width="20.900000000000002" height="20.900000000000002" fill="#ffedd5" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="468.59999999999997" y="205.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A05</text>
+</g>
+
+
+<g id="A-POUF-4">
+  <rect x="541.75" y="191.75" width="20.900000000000002" height="20.900000000000002" fill="#fef9c3" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="552.2" y="205.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A05</text>
+</g>
+
+
+<g id="A-PLINTH">
+  <ellipse cx="578.8" cy="228.8" rx="11.4" ry="11.4" fill="#ffffff" stroke="#2563eb" stroke-width="1.4"/>
+  <text x="578.8" y="231.8" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A08</text>
+</g>
+
+
+<g id="A-DESK">
+  <rect x="601.5999999999999" y="240.2" width="76.0" height="38.0" fill="#ffedd5" stroke="#0f172a" stroke-width="2.2" rx="2"/>
+  <text x="639.5999999999999" y="262.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A09</text>
+</g>
+
+
+<g id="A-STOCK">
+  <rect x="671.9" y="289.6" width="34.2" height="19.0" fill="#ffffff" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="689.0" y="302.6" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A10</text>
+</g>
+
+
+<g id="A-FLEXY-1">
+  <rect x="593.8100000000001" y="187.0" width="23.18" height="19.0" fill="#ffedd5" stroke="#0f172a" stroke-width="2.2" rx="2"/>
+  <text x="605.4000000000001" y="200.0" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A11</text>
+</g>
+
+
+<g id="A-FLEXY-2">
+  <rect x="669.8100000000001" y="187.0" width="23.18" height="19.0" fill="#ffedd5" stroke="#0f172a" stroke-width="2.2" rx="2"/>
+  <text x="681.4000000000001" y="200.0" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A11</text>
+</g>
+
+
+<g id="A-ROLLUP">
+  <rect x="677.6" y="223.10000000000002" width="30.400000000000002" height="3.8000000000000003" fill="#ffedd5" stroke="#0f172a" stroke-width="2.2" rx="2"/>
+  <text x="692.8000000000001" y="228.50000000000003" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">A12</text>
+</g>
+
+
+<g id="B-DIV">
+  <rect x="708.0" y="168.0" width="15.200000000000001" height="152.0" fill="#f1f5f9" stroke="#f97316" stroke-width="2.0" stroke-dasharray="5,3" rx="2"/>
+  <text x="715.6" y="247.5" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B01</text>
+</g>
+
+
+<g id="B-WALL">
+  <rect x="723.1999999999999" y="312.4" width="554.8" height="7.6000000000000005" fill="#e0f2fe" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="1000.5999999999999" y="319.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B02</text>
+</g>
+
+
+<g id="B-LOCKER">
+  <rect x="738.3999999999999" y="297.20000000000005" width="182.4" height="15.200000000000001" fill="#f1f5f9" stroke="#0f172a" stroke-width="2.2" rx="2"/>
+  <text x="829.5999999999999" y="308.30000000000007" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B03</text>
+</g>
+
+
+<g id="B-SIGN-SWEET">
+  <rect x="747.9" y="295.29999999999995" width="53.199999999999996" height="1.9000000000000001" fill="#e0f2fe" stroke="#f97316" stroke-width="2.0" stroke-dasharray="5,3" rx="2"/>
+  <text x="774.5" y="299.74999999999994" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B05</text>
+</g>
+
+
+<g id="B-SIGN-TORT">
+  <rect x="816.3000000000001" y="295.29999999999995" width="53.199999999999996" height="1.9000000000000001" fill="#fce7f3" stroke="#f97316" stroke-width="2.0" stroke-dasharray="5,3" rx="2"/>
+  <text x="842.9000000000001" y="299.74999999999994" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B05</text>
+</g>
+
+
+<g id="B-SIGN-CROIS">
+  <rect x="879.0" y="295.29999999999995" width="41.800000000000004" height="1.9000000000000001" fill="#ffffff" stroke="#f97316" stroke-width="2.0" stroke-dasharray="5,3" rx="2"/>
+  <text x="899.9" y="299.74999999999994" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B05</text>
+</g>
+
+
+<g id="B-SCHOOL-1">
+  <rect x="732.7" y="185.1" width="34.2" height="34.2" fill="#fef3c7" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="749.8000000000001" y="205.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B06</text>
+</g>
+
+
+<g id="B-SCHOOL-2">
+  <rect x="896.1" y="185.1" width="34.2" height="34.2" fill="#fef3c7" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="913.2" y="205.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B06</text>
+</g>
+
+
+<g id="B-STAGE">
+  <rect x="936.0" y="249.7" width="76.0" height="57.0" fill="#fce7f3" stroke="#f97316" stroke-width="2.0" stroke-dasharray="5,3" rx="2"/>
+  <text x="974.0" y="281.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B07</text>
+</g>
+
+
+<g id="B-CHARM">
+  <rect x="1034.8000000000002" y="204.1" width="91.2" height="34.2" fill="#ffffff" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="1080.4" y="224.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B08</text>
+</g>
+
+
+<g id="B-STOOL-1">
+  <ellipse cx="1046.1999999999998" cy="188.89999999999998" rx="6.6499999999999995" ry="6.6499999999999995" fill="#e0f2fe" stroke="#2563eb" stroke-width="1.4"/>
+  <text x="1046.1999999999998" y="191.89999999999998" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B09</text>
+</g>
+
+
+<g id="B-STOOL-2">
+  <ellipse cx="1069.0" cy="188.89999999999998" rx="6.6499999999999995" ry="6.6499999999999995" fill="#fce7f3" stroke="#2563eb" stroke-width="1.4"/>
+  <text x="1069.0" y="191.89999999999998" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B09</text>
+</g>
+
+
+<g id="B-STOOL-3">
+  <ellipse cx="1091.8000000000002" cy="188.89999999999998" rx="6.6499999999999995" ry="6.6499999999999995" fill="#e0f2fe" stroke="#2563eb" stroke-width="1.4"/>
+  <text x="1091.8000000000002" y="191.89999999999998" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B09</text>
+</g>
+
+
+<g id="B-STOOL-4">
+  <ellipse cx="1114.6" cy="188.89999999999998" rx="6.6499999999999995" ry="6.6499999999999995" fill="#fce7f3" stroke="#2563eb" stroke-width="1.4"/>
+  <text x="1114.6" y="191.89999999999998" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B09</text>
+</g>
+
+
+<g id="B-DESK">
+  <rect x="1137.4" y="240.2" width="76.0" height="38.0" fill="#e0f2fe" stroke="#0f172a" stroke-width="2.2" rx="2"/>
+  <text x="1175.4" y="262.7" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B10</text>
+</g>
+
+
+<g id="B-STOCK">
+  <rect x="1234.3" y="289.6" width="34.2" height="19.0" fill="#ffffff" stroke="#2563eb" stroke-width="1.4" rx="2"/>
+  <text x="1251.3999999999999" y="302.6" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B11</text>
+</g>
+
+
+<g id="B-FLEXY-1">
+  <rect x="1129.61" y="187.0" width="23.18" height="19.0" fill="#e0f2fe" stroke="#0f172a" stroke-width="2.2" rx="2"/>
+  <text x="1141.1999999999998" y="200.0" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B12</text>
+</g>
+
+
+<g id="B-FLEXY-2">
+  <rect x="1209.41" y="187.0" width="23.18" height="19.0" fill="#e0f2fe" stroke="#0f172a" stroke-width="2.2" rx="2"/>
+  <text x="1221.0" y="200.0" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B12</text>
+</g>
+
+
+<g id="B-ROLLUP">
+  <rect x="1240.0" y="223.10000000000002" width="30.400000000000002" height="3.8000000000000003" fill="#e0f2fe" stroke="#0f172a" stroke-width="2.2" rx="2"/>
+  <text x="1255.2" y="228.50000000000003" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">B13</text>
+</g>
+
+
+<g id="A-STD-1">
+  <rect x="158.9" y="285.79999999999995" width="26.599999999999998" height="15.200000000000001" fill="#ffedd5" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="172.20000000000002" cy="293.4" r="3" fill="#0f172a"/>
+  <text x="172.20000000000002" y="281.79999999999995" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Choi</text>
+</g>
+
+
+<g id="A-STD-2">
+  <rect x="189.3" y="285.79999999999995" width="26.599999999999998" height="15.200000000000001" fill="#ffedd5" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="202.60000000000002" cy="293.4" r="3" fill="#0f172a"/>
+  <text x="202.60000000000002" y="281.79999999999995" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Junkyu</text>
+</g>
+
+
+<g id="A-STD-3">
+  <rect x="219.7" y="285.79999999999995" width="26.599999999999998" height="15.200000000000001" fill="#ffedd5" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="233.0" cy="293.4" r="3" fill="#0f172a"/>
+  <text x="233.0" y="281.79999999999995" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">So</text>
+</g>
+
+
+<g id="A-STD-4">
+  <rect x="250.1" y="285.79999999999995" width="26.599999999999998" height="15.200000000000001" fill="#ffedd5" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="263.4" cy="293.4" r="3" fill="#0f172a"/>
+  <text x="263.4" y="281.79999999999995" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Yoshi</text>
+</g>
+
+
+<g id="A-STD-5">
+  <rect x="280.5" y="285.79999999999995" width="26.599999999999998" height="15.200000000000001" fill="#ffedd5" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="293.8" cy="293.4" r="3" fill="#0f172a"/>
+  <text x="293.8" y="281.79999999999995" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Yoo</text>
+</g>
+
+
+<g id="A-STD-6">
+  <rect x="310.90000000000003" y="285.79999999999995" width="26.599999999999998" height="15.200000000000001" fill="#dcfce7" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="324.20000000000005" cy="293.4" r="3" fill="#0f172a"/>
+  <text x="324.20000000000005" y="281.79999999999995" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Haruto</text>
+</g>
+
+
+<g id="A-STD-7">
+  <rect x="341.30000000000007" y="285.79999999999995" width="26.599999999999998" height="15.200000000000001" fill="#dcfce7" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="354.6000000000001" cy="293.4" r="3" fill="#0f172a"/>
+  <text x="354.6000000000001" y="281.79999999999995" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Doyoung</text>
+</g>
+
+
+<g id="A-STD-8">
+  <rect x="371.70000000000005" y="285.79999999999995" width="26.599999999999998" height="15.200000000000001" fill="#dcfce7" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="385.00000000000006" cy="293.4" r="3" fill="#0f172a"/>
+  <text x="385.00000000000006" y="281.79999999999995" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Park</text>
+</g>
+
+
+<g id="A-STD-9">
+  <rect x="402.1" y="285.79999999999995" width="26.599999999999998" height="15.200000000000001" fill="#dcfce7" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="415.40000000000003" cy="293.4" r="3" fill="#0f172a"/>
+  <text x="415.40000000000003" y="281.79999999999995" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Jihoon</text>
+</g>
+
+
+<g id="B-STD-1">
+  <rect x="742.1999999999999" y="276.3" width="19.0" height="15.200000000000001" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="751.6999999999999" cy="283.90000000000003" r="3" fill="#0f172a"/>
+  <text x="751.6999999999999" y="272.3" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Ian</text>
+</g>
+
+
+<g id="B-STD-2">
+  <rect x="765.0" y="276.3" width="19.0" height="15.200000000000001" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="774.5" cy="283.90000000000003" r="3" fill="#0f172a"/>
+  <text x="774.5" y="272.3" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Jiwoo</text>
+</g>
+
+
+<g id="B-STD-3">
+  <rect x="787.8" y="276.3" width="19.0" height="15.200000000000001" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="797.3" cy="283.90000000000003" r="3" fill="#0f172a"/>
+  <text x="797.3" y="272.3" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Carmen</text>
+</g>
+
+
+<g id="B-STD-4">
+  <rect x="810.6" y="276.3" width="19.0" height="15.200000000000001" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="820.1" cy="283.90000000000003" r="3" fill="#0f172a"/>
+  <text x="820.1" y="272.3" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Ye-on</text>
+</g>
+
+
+<g id="B-STD-5">
+  <rect x="833.3999999999999" y="276.3" width="19.0" height="15.200000000000001" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="842.8999999999999" cy="283.90000000000003" r="3" fill="#0f172a"/>
+  <text x="842.8999999999999" y="272.3" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Juun</text>
+</g>
+
+
+<g id="B-STD-6">
+  <rect x="856.1999999999999" y="276.3" width="19.0" height="15.200000000000001" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="865.6999999999999" cy="283.90000000000003" r="3" fill="#0f172a"/>
+  <text x="865.6999999999999" y="272.3" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Yuha</text>
+</g>
+
+
+<g id="B-STD-7">
+  <rect x="879.0" y="276.3" width="19.0" height="15.200000000000001" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="888.5" cy="283.90000000000003" r="3" fill="#0f172a"/>
+  <text x="888.5" y="272.3" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">A-na</text>
+</g>
+
+
+<g id="B-STD-8">
+  <rect x="901.8" y="276.3" width="19.0" height="15.200000000000001" fill="#e0f2fe" stroke="#0f172a" stroke-width="1.4" rx="2"/>
+  <circle cx="911.3" cy="283.90000000000003" r="3" fill="#0f172a"/>
+  <text x="911.3" y="272.3" text-anchor="middle" font-size="7.5" font-weight="600" fill="#334155">Stella</text>
+</g>
+
+
+<g id="A-MK-PHOTO">
+  <circle cx="290.0" cy="228.8" r="12" fill="none" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="3,2"/>
+  <circle cx="290.0" cy="228.8" r="3" fill="#0284c7"/>
+  <text x="290.0" y="250.8" text-anchor="middle" font-size="8.5" font-weight="700" fill="#0284c7">TITIK FOTO</text>
+</g>
+
+
+<g id="A-MK-PLAY">
+  <circle cx="510.40000000000003" cy="225.0" r="12" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-dasharray="3,2"/>
+  <circle cx="510.40000000000003" cy="225.0" r="3" fill="#16a34a"/>
+  <text x="510.40000000000003" y="247.0" text-anchor="middle" font-size="8.5" font-weight="700" fill="#16a34a">PLAYER STAND</text>
+</g>
+
+
+<g id="A-MK-QUEUE">
+  <line x1="643.4" y1="168.0" x2="643.4" y2="232.60000000000002" stroke="#ea580c" stroke-width="2.5" stroke-dasharray="4,4" marker-end="url(#arrow)"/>
+  <text x="635.4" y="200.3" text-anchor="end" font-size="8.5" font-weight="700" fill="#ea580c">ANTREAN</text>
+</g>
+
+
+<g id="B-MK-PHOTO">
+  <circle cx="833.4" cy="228.8" r="12" fill="none" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="3,2"/>
+  <circle cx="833.4" cy="228.8" r="3" fill="#0284c7"/>
+  <text x="833.4" y="250.8" text-anchor="middle" font-size="8.5" font-weight="700" fill="#0284c7">TITIK FOTO</text>
+</g>
+
+
+<g id="B-MK-QUEUE">
+  <line x1="1179.2" y1="168.0" x2="1179.2" y2="232.60000000000002" stroke="#ea580c" stroke-width="2.5" stroke-dasharray="4,4" marker-end="url(#arrow)"/>
+  <text x="1171.2" y="200.3" text-anchor="end" font-size="8.5" font-weight="700" fill="#ea580c">ANTREAN</text>
+</g>
+
+
+<g class="dim-line">
+  <line x1="138.0" y1="118.0" x2="1278.0" y2="118.0" stroke="#475569" stroke-width="1.2" marker-start="url(#tick)" marker-end="url(#tick)"/>
+  <line x1="138.0" y1="168.0" x2="138.0" y2="114.0" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <line x1="1278.0" y1="168.0" x2="1278.0" y2="114.0" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="708.0" y="113.0" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">TOTAL BOOTH: 30.000 mm (30,0 m)</text>
+</g>
+
+
+<g class="dim-line">
+  <line x1="138.0" y1="140.0" x2="708.0" y2="140.0" stroke="#475569" stroke-width="1.2" marker-start="url(#tick)" marker-end="url(#tick)"/>
+  <line x1="138.0" y1="168.0" x2="138.0" y2="136.0" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <line x1="708.0" y1="168.0" x2="708.0" y2="136.0" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="423.0" y="135.0" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">ZONA A (CHITATO): 15.000 mm</text>
+</g>
+
+
+<g class="dim-line">
+  <line x1="708.0" y1="140.0" x2="1278.0" y2="140.0" stroke="#475569" stroke-width="1.2" marker-start="url(#tick)" marker-end="url(#tick)"/>
+  <line x1="708.0" y1="168.0" x2="708.0" y2="136.0" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <line x1="1278.0" y1="168.0" x2="1278.0" y2="136.0" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="993.0" y="135.0" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">ZONA B (JETZ): 15.000 mm</text>
+</g>
+
+
+<g class="dim-line">
+  <line x1="93.0" y1="320.0" x2="93.0" y2="168.0" stroke="#475569" stroke-width="1.2" marker-start="url(#tick)" marker-end="url(#tick)"/>
+  <line x1="138.0" y1="320.0" x2="89.0" y2="320.0" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <line x1="138.0" y1="168.0" x2="89.0" y2="168.0" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="87.0" y="247.0" text-anchor="end" font-size="9" font-weight="700" fill="#1e293b">KEDALAMAN: 4.000 mm</text>
+</g>
+
+
+<g class="dim-line">
+  <line x1="616.99" y1="181.5" x2="669.81" y2="181.5" stroke="#475569" stroke-width="1.2" marker-start="url(#tick)" marker-end="url(#tick)"/>
+  <line x1="616.99" y1="196.5" x2="616.99" y2="177.5" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <line x1="669.81" y1="196.5" x2="669.81" y2="177.5" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="643.4" y="176.5" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">LORONG A: 1.390 mm</text>
+</g>
+
+
+<g class="dim-line">
+  <line x1="1152.79" y1="181.5" x2="1209.41" y2="181.5" stroke="#475569" stroke-width="1.2" marker-start="url(#tick)" marker-end="url(#tick)"/>
+  <line x1="1152.79" y1="196.5" x2="1152.79" y2="177.5" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <line x1="1209.41" y1="196.5" x2="1209.41" y2="177.5" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="1181.1" y="176.5" text-anchor="middle" font-size="9" font-weight="700" fill="#1e293b">LORONG B: 1.490 mm</text>
+</g>
+
+
+<!-- Title Block & Legenda Status Dimensi -->
+<g id="title-block">
+  <rect x="980" y="630" width="380" height="135" fill="#ffffff" stroke="#0f172a" stroke-width="1.5" rx="3"/>
+  <rect x="980" y="630" width="380" height="26" fill="#0f172a"/>
+  <text x="992" y="648" font-size="11" font-weight="700" fill="#ffffff">LEGENDA STATUS DIMENSI &amp; TIKET PRODUKSI</text>
+  
+  <!-- Baris Given -->
+  <line x1="996" y1="674" x2="1030" y2="674" stroke="#0f172a" stroke-width="2.5"/>
+  <text x="1040" y="677" font-size="9.5" font-weight="600" fill="#0f172a">GIVEN (Solid tebal) : Ukuran pasti dari brief klien / POSM resmi</text>
+  
+  <!-- Baris Assumed -->
+  <line x1="996" y1="698" x2="1030" y2="698" stroke="#f97316" stroke-width="2.2" stroke-dasharray="5,3"/>
+  <text x="1040" y="701" font-size="9.5" font-weight="600" fill="#ea580c">ASSUMED (Garis putus) : Ditafsirkan dari brief ambigu (Cek Q01-Q09)</text>
+  
+  <!-- Baris Proposed -->
+  <line x1="996" y1="722" x2="1030" y2="722" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="1040" y="725" font-size="9.5" font-weight="600" fill="#2563eb">PROPOSED (Garis tipis) : Ide desain booth activation kita</text>
+  
+  <!-- Garis Pemisah Info Proyek -->
+  <line x1="980" y1="737" x2="1360" y2="737" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="992" y="753" font-size="8.5" fill="#64748b">SKALA: 1:100 (A3) | DOKUMEN: LEMBAR T-01 DENAH DASAR | AUTO-GENERATED</text>
+</g>
+
+</svg>

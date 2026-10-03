@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "spec_version": "0.1.0",
+    "status": "approved",
+    "approved_by": "Dimitri Ahmad",
+    "approved_at": "2026-10-02",
+    "approved_version": "0.1.0",
+    "project": "Chitato x JetZ Booth Activation 2026",
+    "venue": "Indofood Tower Lobby, Jl. Jend. Sudirman Kav. 76-78, Jakarta",
+    "event_dates": "2026-11-09..2026-11-13 (to be confirmed)",
+    "units": "m",
+    "axes": "x = east along length 0..30 (Lobby SPIT -> Indomaret Point); y = north 0..4 (0 = back wall side facing tenants, 4 = visitor front); z = up",
+    "origin": "SW corner of the combined 30 x 4 m area",
+    "pos_rule": "pos = [x, y, z_base]; x,y = CENTER of footprint, z_base = bottom elevation",
+    "size_rule": "size = [along_x, along_y, height] before rotZ; rotZ in degrees, CCW seen from above (all v0 elements use 0)",
+    "dim_status_values": ["given", "assumed", "proposed"]
+  },
+  "limits": {
+    "bounds_xyxy": [0, 0, 30, 4],
+    "max_height": 2.5,
+    "floor_margin": 1.0,
+    "hours": "08:00-18:00",
+    "max_spg": 3
+  },
+  "zones": [
+    { "id": "A", "name": "Chitato x TREASURE", "x_range": [0, 15], "brand_colors": ["chitato_orange", "lite_green"] },
+    { "id": "B", "name": "JetZ x Hearts2Hearts", "x_range": [15, 30], "brand_colors": ["jetz_blue", "jetz_pink"] }
+  ],
+  "palette": {
+    "chitato_orange": "#F7941D", "chitato_yellow": "#FFC20E", "lite_green": "#4CAF50", "lite_dark_green": "#1E7B34",
+    "jetz_blue": "#00B4F0", "jetz_pink": "#F0568C", "jetz_navy": "#0C2D6B",
+    "treasure_sky": "#8DB8D8", "carpet_black": "#111111", "white": "#F5F5F5", "wood_light": "#D9B98B"
+  },
+  "palette_note": "Approximate sampled colors. Replace with brand Pantone/CMYK from the brand guideline before print.",
+  "floor": {
+    "protection": { "id": "FLOOR-PROT", "rect_xyxy": [-1, -1, 31, 5], "material": "carpet_black", "tape": "black", "note": "Black carpet + black tape is mandatory; 1 m margin on all sides of the booth." },
+    "graphics": [
+      { "id": "A-FLOOR-GFX", "rect_xyxy": [0, 0, 15, 4], "pattern": "wave_orange_yellow_green", "layer": "vinyl_over_carpet", "dim": "proposed" },
+      { "id": "B-FLOOR-GFX", "rect_xyxy": [15.4, 0, 30, 4], "pattern": "checker_blue_pink", "layer": "vinyl_over_carpet", "dim": "proposed" }
+    ]
+  },
+  "elements": [
+    { "id": "A-WALL-1", "tag": "A01", "type": "wall", "zone": "A", "pos": [2.25, 0.1, 0], "size": [4.5, 0.2, 2.4], "rotZ": 0, "mat": "chitato_orange", "dim": "proposed", "note": "Back wall, orange HQ-world panel (Team Wavy side). Outer face (y=0) is branded toward tenants." },
+    { "id": "A-WALL-2", "tag": "A01", "type": "wall", "zone": "A", "pos": [6.25, 0.1, 0], "size": [3.5, 0.2, 2.4], "rotZ": 0, "mat": "lite_green", "dim": "proposed", "note": "Back wall, green panel (Team Lite side). Boundary x=4.5 sits between standee 5 and 6." },
+    { "id": "A-WALL-3", "tag": "A01", "type": "wall", "zone": "A", "pos": [11.5, 0.1, 0], "size": [7.0, 0.2, 2.4], "rotZ": 0, "mat": "wave_mix", "dim": "proposed", "note": "Back wall behind activity + selling blocks, orange/yellow/green wave graphic." },
+    { "id": "A-HEADER", "tag": "A03", "type": "sign", "zone": "A", "pos": [4.25, 0.25, 1.95], "size": [4.0, 0.1, 0.5], "rotZ": 0, "mat": "chitato_yellow", "dim": "proposed", "text": "CHITATO x CHITATO LITE x TREASURE", "note": "Wall-mounted header above standees (standee top = 1.80)." },
+    { "id": "A-CHIP-1", "tag": "A04", "type": "chip_chair", "zone": "A", "pos": [0.7, 2.9, 0], "size": [0.9, 0.9, 1.3], "rotZ": 0, "mat": "chitato_orange", "dim": "proposed", "note": "Chip-shaped sculpture chair (photo prop), ribbed slats." },
+    { "id": "A-CHIP-2", "tag": "A04", "type": "chip_chair", "zone": "A", "pos": [7.3, 2.9, 0], "size": [0.9, 0.9, 1.3], "rotZ": 0, "mat": "lite_green", "dim": "proposed", "note": "Chip-shaped sculpture chair (photo prop)." },
+    { "id": "A-POUF-1", "tag": "A05", "type": "pouf", "zone": "A", "pos": [1.9, 3.3, 0], "size": [0.55, 0.55, 0.4], "rotZ": 0, "mat": "chitato_yellow", "dim": "proposed", "note": "Pouffe, keeps photo clear zone x 2.6..5.4 free." },
+    { "id": "A-POUF-2", "tag": "A05", "type": "pouf", "zone": "A", "pos": [5.9, 3.3, 0], "size": [0.55, 0.55, 0.4], "rotZ": 0, "mat": "lite_green", "dim": "proposed", "note": "Pouffe." },
+    { "id": "A-TOTEM-C", "tag": "A06", "type": "totem_pack", "zone": "A", "pos": [8.2, 1.0, 0], "size": [0.73, 0.3, 0.95], "rotZ": 0, "mat": "chitato_orange", "dim": "given", "note": "Totem Pack Chitato, brief: 95 x 73 x 30 cm (assumed H x W x D)." },
+    { "id": "A-ARCH", "tag": "A07", "type": "arch_totem", "zone": "A", "pos": [9.8, 1.0, 0], "size": [2.4, 0.5, 2.45], "rotZ": 0, "mat": "chitato_orange", "dim": "proposed", "note": "'Find Your Wave' arch: orange body, green fins, neon edge. Height 2.45 (limit 2.5)." },
+    { "id": "A-LED", "tag": "A07", "type": "screen", "zone": "A", "pos": [9.8, 1.275, 0.75], "size": [0.81, 0.05, 1.44], "rotZ": 0, "mat": "led_screen", "dim": "assumed", "note": "65-inch portrait LED (16:9 rotated), mounted on arch front face; camera sensor above." },
+    { "id": "A-TOTEM-L", "tag": "A06", "type": "totem_pack", "zone": "A", "pos": [11.4, 1.0, 0], "size": [0.73, 0.3, 0.95], "rotZ": 0, "mat": "lite_green", "dim": "given", "note": "Totem Pack Chitato Lite, 95 x 73 x 30 cm." },
+    { "id": "A-POUF-3", "tag": "A05", "type": "pouf", "zone": "A", "pos": [8.7, 3.1, 0], "size": [0.55, 0.55, 0.4], "rotZ": 0, "mat": "chitato_orange", "dim": "proposed", "note": "Spectator pouffe at the game." },
+    { "id": "A-POUF-4", "tag": "A05", "type": "pouf", "zone": "A", "pos": [10.9, 3.1, 0], "size": [0.55, 0.55, 0.4], "rotZ": 0, "mat": "chitato_yellow", "dim": "proposed", "note": "Spectator pouffe at the game." },
+    { "id": "A-PLINTH", "tag": "A08", "type": "plinth", "shape": "cylinder", "zone": "A", "pos": [11.6, 2.4, 0], "size": [0.6, 0.6, 0.9], "rotZ": 0, "mat": "white", "dim": "proposed", "note": "Showcase of the 3 exclusive bag colors (blue, yellow, black) + glow ring." },
+    { "id": "A-DESK", "tag": "A09", "type": "desk", "zone": "A", "pos": [13.2, 1.6, 0], "size": [2.0, 1.0, 2.0], "rotZ": 0, "mat": "chitato_orange", "dim": "given", "note": "Event Desk POSM 2 x 1 x 2 m (L x D x H incl. header, assumed). 2 cashiers + QRIS." },
+    { "id": "A-STOCK", "tag": "A10", "type": "shelf", "zone": "A", "pos": [14.5, 0.55, 0], "size": [0.9, 0.5, 1.8], "rotZ": 0, "mat": "white", "dim": "proposed", "note": "Back-of-house daily stock shelf; B1 storage is provided by IFM." },
+    { "id": "A-FLEXY-1", "tag": "A11", "type": "flexy_rack", "zone": "A", "pos": [12.3, 3.25, 0], "size": [0.61, 0.5, 1.3], "rotZ": 0, "mat": "chitato_orange", "dim": "given", "note": "Flexy Rack 130 x 61 x 50 cm (H x W x D)." },
+    { "id": "A-FLEXY-2", "tag": "A11", "type": "flexy_rack", "zone": "A", "pos": [14.3, 3.25, 0], "size": [0.61, 0.5, 1.3], "rotZ": 0, "mat": "chitato_orange", "dim": "given", "note": "Flexy Rack. Queue lane between the two racks = 1.39 m." },
+    { "id": "A-ROLLUP", "tag": "A12", "type": "rollup", "zone": "A", "pos": [14.6, 2.5, 0], "size": [0.8, 0.1, 2.0], "rotZ": 0, "mat": "chitato_orange", "dim": "given", "note": "Roll Up Banner 200 x 80 cm (standing, not hanging)." },
+
+    { "id": "B-DIV", "tag": "B01", "type": "locker_wall", "zone": "B", "pos": [15.2, 2.0, 0], "size": [0.4, 4.0, 2.4], "rotZ": 0, "mat": "locker_mix", "dim": "assumed", "note": "Shared divider made of 5 locker modules (5 x 0.8 m) from Locker Set A (4.8 m = 6 modules assumed). JetZ face = locker doors, Chitato face = cladded." },
+    { "id": "B-WALL", "tag": "B02", "type": "wall", "zone": "B", "pos": [22.7, 0.1, 0], "size": [14.6, 0.2, 2.4], "rotZ": 0, "mat": "jetz_blue", "dim": "proposed", "note": "Classroom back wall (blue + pink accents, blackboard graphic). Outer face branded toward tenants." },
+    { "id": "B-LOCKER", "tag": "B03", "type": "locker_wall", "zone": "B", "pos": [18.2, 0.4, 0], "size": [4.8, 0.4, 2.4], "rotZ": 0, "mat": "locker_mix", "dim": "given", "note": "Locker Set B, 4.8 x 2.4 m (brief). Depth 0.4 assumed. Photo backdrop." },
+    { "id": "B-SIGN-SWEET", "tag": "B05", "type": "sign", "zone": "B", "pos": [16.75, 0.625, 1.85], "size": [1.4, 0.05, 0.5], "rotZ": 0, "mat": "jetz_blue", "dim": "assumed", "text": "SWEET STICK", "note": "Flavor signage (brief 'T 1.5' read as ~1.5 m). Above Ian, Jiwoo, Carmen." },
+    { "id": "B-SIGN-TORT", "tag": "B05", "type": "sign", "zone": "B", "pos": [18.55, 0.625, 1.85], "size": [1.4, 0.05, 0.5], "rotZ": 0, "mat": "jetz_pink", "dim": "assumed", "text": "TORTILLA", "note": "Above Ye-on, Juun, Yuha." },
+    { "id": "B-SIGN-CROIS", "tag": "B05", "type": "sign", "zone": "B", "pos": [20.05, 0.625, 1.85], "size": [1.1, 0.05, 0.5], "rotZ": 0, "mat": "jetz_navy", "dim": "assumed", "text": "CROISSANT", "note": "Above A-na, Stella." },
+    { "id": "B-SCHOOL-1", "tag": "B06", "type": "school_set", "zone": "B", "pos": [16.1, 3.1, 0], "size": [0.9, 0.9, 0.9], "rotZ": 0, "mat": "wood_light", "dim": "proposed", "note": "School desk + chair, classroom prop with product on top." },
+    { "id": "B-SCHOOL-2", "tag": "B06", "type": "school_set", "zone": "B", "pos": [20.4, 3.1, 0], "size": [0.9, 0.9, 0.9], "rotZ": 0, "mat": "wood_light", "dim": "proposed", "note": "School desk + chair. Photo clear zone x 17.0..19.6." },
+    { "id": "B-STAGE", "tag": "B07", "type": "stage", "zone": "B", "pos": [22.0, 1.1, 0], "size": [2.0, 1.5, 2.0], "rotZ": 0, "mat": "jetz_pink", "dim": "assumed", "note": "Main Stage POSM 'uk. 2 x 0.5 x 2 m': axes unclear. Assumed W 2.0 x D 1.5 x H 2.0, platform 0.5 high, headphone-arch backdrop. Speakers decorative / low volume." },
+    { "id": "B-CHARM", "tag": "B08", "type": "table", "zone": "B", "pos": [24.8, 2.6, 0], "size": [2.4, 0.9, 0.78], "rotZ": 0, "mat": "white", "dim": "proposed", "note": "Charm making table (mandatory), staff stands behind (south) side." },
+    { "id": "B-STOOL-1", "tag": "B09", "type": "stool", "shape": "cylinder", "zone": "B", "pos": [23.9, 3.45, 0], "size": [0.35, 0.35, 0.45], "rotZ": 0, "mat": "jetz_blue", "dim": "proposed", "note": "Stool." },
+    { "id": "B-STOOL-2", "tag": "B09", "type": "stool", "shape": "cylinder", "zone": "B", "pos": [24.5, 3.45, 0], "size": [0.35, 0.35, 0.45], "rotZ": 0, "mat": "jetz_pink", "dim": "proposed", "note": "Stool." },
+    { "id": "B-STOOL-3", "tag": "B09", "type": "stool", "shape": "cylinder", "zone": "B", "pos": [25.1, 3.45, 0], "size": [0.35, 0.35, 0.45], "rotZ": 0, "mat": "jetz_blue", "dim": "proposed", "note": "Stool." },
+    { "id": "B-STOOL-4", "tag": "B09", "type": "stool", "shape": "cylinder", "zone": "B", "pos": [25.7, 3.45, 0], "size": [0.35, 0.35, 0.45], "rotZ": 0, "mat": "jetz_pink", "dim": "proposed", "note": "Stool." },
+    { "id": "B-DESK", "tag": "B10", "type": "desk", "zone": "B", "pos": [27.3, 1.6, 0], "size": [2.0, 1.0, 2.0], "rotZ": 0, "mat": "jetz_blue", "dim": "given", "note": "Event Desk POSM 2 x 1 x 2 m. 2 cashiers + QRIS + repack table behind." },
+    { "id": "B-STOCK", "tag": "B11", "type": "shelf", "zone": "B", "pos": [29.3, 0.55, 0], "size": [0.9, 0.5, 1.8], "rotZ": 0, "mat": "white", "dim": "proposed", "note": "Back-of-house stock shelf (packs, backpacks, plastic for repack)." },
+    { "id": "B-FLEXY-1", "tag": "B12", "type": "flexy_rack", "zone": "B", "pos": [26.4, 3.25, 0], "size": [0.61, 0.5, 1.3], "rotZ": 0, "mat": "jetz_blue", "dim": "given", "note": "Flexy Rack 130 x 61 x 50 cm." },
+    { "id": "B-FLEXY-2", "tag": "B12", "type": "flexy_rack", "zone": "B", "pos": [28.5, 3.25, 0], "size": [0.61, 0.5, 1.3], "rotZ": 0, "mat": "jetz_blue", "dim": "given", "note": "Flexy Rack. Queue lane between racks = 1.49 m." },
+    { "id": "B-ROLLUP", "tag": "B13", "type": "rollup", "zone": "B", "pos": [29.4, 2.5, 0], "size": [0.8, 0.1, 2.0], "rotZ": 0, "mat": "jetz_blue", "dim": "given", "note": "Roll Up Banner 200 x 80 cm (standing, not hanging)." }
+  ],
+  "standee_rows": [
+    {
+      "id": "A-STD", "tag": "A02", "zone": "A", "x0": 0.9, "y": 0.7, "pitch": 0.8, "base": [0.7, 0.4], "height": 1.8, "dim": "given",
+      "order_rule": "Brief 'Susunan member yang diperbolehkan [ki-ka]'. Do not reorder.",
+      "items": [
+        { "name": "Choi Hyunsuk", "team": "wavy" }, { "name": "Junkyu", "team": "wavy" }, { "name": "So Junghwan", "team": "wavy" },
+        { "name": "Yoshi", "team": "wavy" }, { "name": "Yoo Jaehyun", "team": "wavy" }, { "name": "Haruto", "team": "lite" },
+        { "name": "Doyoung", "team": "lite" }, { "name": "Park Jeongwoo", "team": "lite" }, { "name": "Jihoon", "team": "lite" }
+      ]
+    },
+    {
+      "id": "B-STD", "tag": "B04", "zone": "B", "x0": 16.15, "y": 0.95, "pitch": 0.6, "base": [0.5, 0.4], "height": 1.65, "dim": "given",
+      "order_rule": "Grouped by product personality (brief slide order).",
+      "items": [
+        { "name": "Ian", "group": "sweet_stick" }, { "name": "Jiwoo", "group": "sweet_stick" }, { "name": "Carmen", "group": "sweet_stick" },
+        { "name": "Ye-on", "group": "tortilla" }, { "name": "Juun", "group": "tortilla" }, { "name": "Yuha", "group": "tortilla" },
+        { "name": "A-na", "group": "croissant" }, { "name": "Stella", "group": "croissant" }
+      ]
+    }
+  ],
+  "markers": [
+    { "id": "A-MK-PHOTO", "type": "photo_mark", "pos": [4.0, 2.4], "note": "Group photo spot, clear zone x 2.6..5.4" },
+    { "id": "A-MK-PLAY", "type": "player_mark", "pos": [9.8, 2.5], "note": "Player stands here facing the LED/camera" },
+    { "id": "A-MK-QUEUE", "type": "queue_line", "path": [[13.3, 4.0], [13.3, 2.3]], "note": "Queue lane to the desk" },
+    { "id": "B-MK-PHOTO", "type": "photo_mark", "pos": [18.3, 2.4], "note": "Group photo spot, clear zone x 17.0..19.6" },
+    { "id": "B-MK-QUEUE", "type": "queue_line", "path": [[27.4, 4.0], [27.4, 2.3]], "note": "Queue lane to the desk" }
+  ],
+  "power_points": [
+    { "id": "P-A1", "pos": [4.25, 0.3], "watt": 200, "for": "Header + wall LED strips" },
+    { "id": "P-A2", "pos": [9.8, 0.4], "watt": 600, "for": "LED screen, PC, camera, neon" },
+    { "id": "P-A3", "pos": [13.2, 0.4], "watt": 300, "for": "Desk: POS tablet, printer, charging" },
+    { "id": "P-B1", "pos": [18.2, 0.3], "watt": 200, "for": "Locker backdrop LED strips" },
+    { "id": "P-B2", "pos": [22.0, 0.4], "watt": 300, "for": "Stage arch lights + low-volume speaker" },
+    { "id": "P-B3", "pos": [24.8, 1.8], "watt": 400, "for": "Charm table (tools, lamp, charging)" },
+    { "id": "P-B4", "pos": [27.3, 0.4], "watt": 300, "for": "Desk: POS tablet, printer, charging" }
+  ],
+  "context": {
+    "assumed": true,
+    "note": "Positions are placeholders until a site survey. Brief diagram shows tenants below (south) the zones.",
+    "tenants_south": { "names": ["Bank INA", "Bellamama", "Warunk Upnormal"], "frontage_y": -3.0 },
+    "west": "Lobby SPIT", "east": "Indomaret Point"
+  }
+}

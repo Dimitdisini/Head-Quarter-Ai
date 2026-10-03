@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papan Referensi Visual Booth Chitato × JetZ 2026</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --amber: #f59e0b;
+      --green: #10b981;
+      --blue: #0284c7;
+      --orange: #ea580c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .header-container {
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 15px;
+    }
+
+    .title-group h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+    }
+
+    .title-group p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .badge-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-amber { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-green { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+    /* Widescreen 16:9 Presentation Deck Container */
+    .deck-container {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .slide-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .slide-header {
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.6);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .slide-title {
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slide-tag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--border);
+      color: #e2e8f0;
+    }
+
+    .media-frame-16-9 {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #020617;
+      overflow: hidden;
+    }
+
+    .media-frame-16-9 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .media-frame-16-9:hover img {
+      transform: scale(1.015);
+    }
+
+    .slide-footer {
+      padding: 18px 22px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      background: #1e293b;
+    }
+
+    .spec-text h4 {
+      font-size: 13px;
+      color: var(--amber);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .spec-text p {
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .spec-details {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+    }
+
+    .spec-row span:last-child {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Grid 2 Kolom untuk Pasangan Aset */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .action-bar {
+      margin-top: 20px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .btn-action {
+      background: var(--amber);
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+
+    .btn-action:hover {
+      background: #d97706;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #e2e8f0;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: #64748b;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .slide-footer {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-container">
+    <div class="title-group">
+      <h1>Papan Referensi Visual &amp; Render Fotorealistis</h1>
+      <p>Booth Aktivasi Chitato × JetZ 2026 | Lobby Indofood Tower (30,00 × 4,00 × 2,45 m)</p>
+    </div>
+    <div class="badge-group">
+      <span class="badge badge-amber">Standar Presentasi Eksekutif</span>
+      <span class="badge badge-green">Lolos Uji Lapangan 2.45m</span>
+    </div>
+  </div>
+
+  <div class="deck-container">
+
+    <!-- SLIDE 1: PANORAMA PENUH ELEVASI DEPAN -->
+    <div class="slide-card">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="slide-tag">OVERVIEW</span>
+          <span>Panorama Elevasi Depan Gabungan (Zona A Chitato 15m + Zona B JetZ 15m)</span>
+        </div>
+        <span style="font-size: 12px; color: var(--text-muted);">Tampak Depan Penuh 30 Meter</span>
+      </div>
+      <div class="media-frame-16-9">
+        <img src="renders/c03_combined_panoramic_1790937826651.jpg" alt="Panorama Elevasi Depan 30m">
+      </div>
+      <div class="slide-footer">
+        <div class="spec-text">
+          <h4>Konsep Tata Letak Linear Bersanding</h4>
+          <p>Dua zona brand hidup berdampingan secara harmonis di koridor lobby sepanjang 30 meter. Zona A (kiri) bernuansa hangat, oranye, dan energik khas Chitato × TREASURE, sedangkan Zona B (kanan) mengusung tema nostalgia ruang kelas sekolah bernuansa biru pastel dan merah muda khas JetZ × Hearts2Hearts.</p>
+        </div>
+        <div class="spec-details">
+          <div class="spec-row"><span>Total Dimensi</span><span>30.000 × 4.000 mm</span></div>
+          <div class="spec-row"><span>Batas Plafon Gedung</span><span>2.500 mm</span></div>
+          <div class="spec-row"><span>Tinggi Maks Booth</span><span>2.450 mm (Aman)</span></div>
+          <div class="spec-row"><span>Lebar Lorong Bersih</span><span>&ge; 1.390 mm</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRID DUA ZONA UTAMA -->
+    <div class="grid-2">
+
+      <!-- ZONA A -->
+      <div class="slide-card">
+        <div class="slide-header">
+          <div class="slide-title">
+            <span class="slide-tag" style="background:#c2410c;">ZONA A</span>
+            <span>Zona Chitato × TREASURE "Make The Wave"</span>
+          </div>
+        </div>
+        <div class="media-frame-16-9">
+          <img src="renders/chitato_treasure_zone_hero_approved.jpg" alt="Zona Chitato Hero Terpilih">
+        </div>
+        <div class="slide-footer" style="grid-template-columns: 1fr;">
+          <div class="spec-text">
+            <h4>Arsitektur Hero Terpilih — Kanopi Track Light &amp; Lightbox PBR</h4>
+            <p>Visualisasi final: Kanopi plafon gantung cantilever dengan rel lampu track light hitam, partisi tiga warna (Kuning Kunyit, Hijau Lite Seaweed, Ochre Beef BBQ), deretan poster lightbox menyala, instalasi seni slat tree bertiang stainless steel, dan lantai panggung terrazzo berbayangan lembut.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZONA B -->
+      <div class="slide-card">
+        <div class="slide-header">
+          <div class="slide-title">
+            <span class="slide-tag" style="background:#0284c7;">ZONA B</span>
+            <span>Zona JetZ × Hearts2Hearts "Gesrek Challenge"</span>
+          </div>
+        </div>
+        <div class="media-frame-16-9">
+          <img src="renders/jetz_zone_hero_matching_approved.jpg" alt="Zona JetZ Hero Terpilih">
+        </div>
+        <div class="slide-footer" style="grid-template-columns: 1fr;">
+          <div class="spec-text">
+            <h4>Arsitektur Hero Terpilih — Panggung Headphone Raksasa &amp; Workshop DIY</h4>
+            <p>Visualisasi final: Desain kanopi gantung dan lantai marmer terpadu, instalasi headphone over-ear raksasa dengan konsol DJ retro, meja workshop DIY charm kayu solid, dan photospot standee member Hearts2Hearts.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DETAIL 1: CHIP CHAIR (A04) & ARCH PORTAL + TOTEM (A07 & A06) -->
+    <div class="grid-2">
+
+      <div class="slide-card">
+        <div class="slide-header">
+          <div class="slide-title">
+            <span class="slide-tag">A04</span>
+            <span>Chip Chair Bilah Keripik Kentang Custom</span>
+          </div>
+        </div>
+        <div class="media-frame-16-9">
+          <img src="renders/chitato_chip_chair_closeup_1790941282305.jpg" alt="Chip Chair A04">
+        </div>
+        <div class="slide-footer" style="grid-template-columns: 1fr;">
+          <div class="spec-text">
+            <h4>9 Bilah Kayu Lengkung Sinusoidal</h4>
+            <p>Didesain mengikuti kontur renyah keripik kentang Chitato dengan finishing oranye doff dan hijau muda segar, bantalan busa soft-pad bulat, serta rangka pipa besi kokoh.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-card">
+        <div class="slide-header">
+          <div class="slide-title">
+            <span class="slide-tag">A07 &amp; A06</span>
+            <span>Arch Portal "Find Your Wave" &amp; Totem 3D</span>
+          </div>
+        </div>
+        <div class="media-frame-16-9">
+          <img src="renders/chitato_arch_closeup_1790938584558.jpg" alt="Arch Portal dan Totem A07 A06">
+        </div>
+        <div class="slide-footer" style="grid-template-columns: 1fr;">
+          <div class="spec-text">
+            <h4>Gapura Interaktif &amp; Kemasan Cembung Asli</h4>
+            <p>Gapura tinggi 2.45m dengan strip LED neon, TV 65 inci portrait sensor gerak, diapit 2 replika kemasan bantal cembung Chitato Sapi Panggang dan Chitato Lite Seaweed (730×300×950mm).</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DETAIL 2: PLINTH SHOWCASE TAS (A08) & PANGGUNG UTAMA JETZ (B07) -->
+    <div class="grid-2">
+
+      <div class="slide-card">
+        <div class="slide-header">
+          <div class="slide-title">
+            <span class="slide-tag">A08</span>
+            <span>Plinth Showcase 3 Tas Eksklusif Kolaborasi</span>
+          </div>
+        </div>
+        <div class="media-frame-16-9">
+          <img src="renders/chitato_bag_plinth_closeup_1790941310117.jpg" alt="Plinth Showcase Tas A08">
+        </div>
+        <div class="slide-footer" style="grid-template-columns: 1fr;">
+          <div class="spec-text">
+            <h4>Kubah Akrilik Museum-Grade &amp; Turntable Emas</h4>
+            <p>Silinder putih dengan cincin LED warm gold di bagian dasar, kubah kaca transparan, dan turntable berputar menampilkan Boston Duffle Bag kulit hitam, Sling Bag streetwear, dan Mini Pouch.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-card">
+        <div class="slide-header">
+          <div class="slide-title">
+            <span class="slide-tag">B07</span>
+            <span>Main Stage JetZ "Gesrek Challenge"</span>
+          </div>
+        </div>
+        <div class="media-frame-16-9">
+          <img src="renders/jetz_stage_closeup_1790941404614.jpg" alt="Main Stage JetZ B07">
+        </div>
+        <div class="slide-footer" style="grid-template-columns: 1fr;">
+          <div class="spec-text">
+            <h4>Gapura Headphone Raksasa &amp; Booth DJ</h4>
+            <p>Panggung t=500mm berkarpet arang dengan lengkungan headphone raksasa berbusa pink-biru, neon signage panggung, meja DJ melengkung berlogo JetZ, dan sistem audio monitor panggung.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DETAIL 3: MEJA CHARM WORKSHOP (B08) & SET MEJA SEKOLAH (B06) -->
+    <div class="grid-2">
+
+      <div class="slide-card">
+        <div class="slide-header">
+          <div class="slide-title">
+            <span class="slide-tag">B08 &amp; B09</span>
+            <span>Meja Workshop DIY Bag Charm &amp; 4 Stool</span>
+          </div>
+        </div>
+        <div class="media-frame-16-9">
+          <img src="renders/jetz_charm_table_closeup_1790938605663.jpg" alt="Meja Workshop DIY Charm B08">
+        </div>
+        <div class="slide-footer" style="grid-template-columns: 1fr;">
+          <div class="spec-text">
+            <h4>Meja Kayu Birch &amp; Baki Manik-Manik</h4>
+            <p>Meja panjang 2.4m dengan rak gantung display bag charm, 4 baki akrilik sortir manik-manik, tang kerajinan, dan 4 bangku bulat pastel (2 biru, 2 pink) berkaki hairpin putih.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-card">
+        <div class="slide-header">
+          <div class="slide-title">
+            <span class="slide-tag">B06</span>
+            <span>Set Meja &amp; Kursi Sekolah Props (2 Set)</span>
+          </div>
+        </div>
+        <div class="media-frame-16-9">
+          <img src="renders/jetz_school_desk_closeup_1790941332039.jpg" alt="Set Meja Kursi Sekolah B06">
+        </div>
+        <div class="slide-footer" style="grid-template-columns: 1fr;">
+          <div class="spec-text">
+            <h4>Nostalgia Ruang Kelas &amp; Grafiti Pensil</h4>
+            <p>Meja kayu jadul dengan ukiran coretan pensil siswa, kolong laci berisi buku pelajaran, gantungan tas ransel sekolah siswa, properti kotak pensil kaleng, dan kursi pipa besi retro.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DETAIL 4: FLEXY RACK SNACK (A11/B12) & SIGNAGE AKRILIK 3D (B05) -->
+    <div class="slide-card">
+      <div class="slide-header">
+        <div class="slide-title">
+          <span class="slide-tag">A11, B12 &amp; B05</span>
+          <span>Flexy Rack Snack Display &amp; Signage Akrilik Varian 3D</span>
+        </div>
+        <span style="font-size: 12px; color: var(--text-muted);">Area Antrean Kasir &amp; Display Produk</span>
+      </div>
+      <div class="media-frame-16-9">
+        <img src="renders/jetz_flexy_rack_and_signage_closeup_1790941432865.jpg" alt="Flexy Rack dan Signage 3D">
+      </div>
+      <div class="slide-footer">
+        <div class="spec-text">
+          <h4>Rak Retail 4 Susun Beroda &amp; Signboard Timbul Multi-Layer</h4>
+          <p>Rak kawat display retail 4 tingkat miring dengan roda caster fleksibel, price-strip promo bundling Rp 35.000, serta 3 panel signboard akrilik timbul dengan edge-glow neon dan ikon fisik snack 3D (Sweet Stick, Tortilla, Croissant).</p>
+        </div>
+        <div class="spec-details">
+          <div class="spec-row"><span>Dimensi Flexy Rack</span><span>610 × 500 × 1.300 mm</span></div>
+          <div class="spec-row"><span>Kapasitas Snack</span><span>24 pack / unit (4 unit total)</span></div>
+          <div class="spec-row"><span>Material Signage</span><span>Akrilik 8mm + 5mm timbul</span></div>
+          <div class="spec-row"><span>Finishing Dinding</span><span>Standoff spacer chrome</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="action-bar">
+    <a href="../dist/booth-viewer.html" class="btn-action" target="_blank">Buka 3D Interactive Spatial Viewer</a>
+    <a href="gamtek-booth-detail.html" class="btn-outline" target="_blank">Lihat Gambar Kerja 2D (CAD Gamtek)</a>
+    <a href="../drawings/out/bom.html" class="btn-outline" target="_blank">Lihat Rincian Biaya (BOQ / BOM)</a>
+  </div>
+
+</body>
+</html>

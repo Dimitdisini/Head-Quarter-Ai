@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booth 3D Chitato x JetZ 2026 — Indofood Tower Lobby</title>
+<link rel="icon" href="data:,">
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/build/three.module.js",
+    "three/addons/": "./vendor/three/jsm/",
+    "three/examples/jsm/": "./vendor/three/jsm/",
+    "three-mesh-bvh": "./vendor/bvh/index.module.js",
+    "three-gpu-pathtracer": "./vendor/pt/index.module.js"
+  }
+}
+</script>
+<style>
+  :root {
+    --forest: #1f2a24; --moss: #3d5a40; --cream: #f4efe6; --cream2: #ebe4d6;
+    --slate: #5b6560; --amber: #c98a2b; --line: rgba(31,42,36,0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; background: #1b1f1c; font-family: 'Helvetica Neue', Arial, sans-serif; color: var(--forest); }
+  #app { position: fixed; inset: 0; display: grid; grid-template-columns: 300px 1fr; }
+  #viewport { position: relative; width: 100%; height: 100%; overflow: hidden; background: #e8ecef; }
+  #viewport canvas { display: block; }
+  .labels { position: absolute; inset: 0; pointer-events: none; }
+
+  aside { background: var(--cream); border-right: 1px solid var(--line); display: flex; flex-direction: column; min-height: 0; }
+  .brand { padding: 18px 18px 14px; border-bottom: 1px solid var(--line); }
+  .brand h1 { font-size: 15px; font-weight: 700; letter-spacing: 0.2px; }
+  .brand p { font-size: 11px; color: var(--slate); margin-top: 4px; line-height: 1.45; }
+  .sec { padding: 12px 18px; border-bottom: 1px solid var(--line); }
+  .sec h2 { font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--slate); margin-bottom: 8px; font-weight: 700; }
+  #views { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  #views button, .btn { font: inherit; font-size: 11px; text-align: left; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 7px 8px; cursor: pointer; color: var(--forest); line-height: 1.25; }
+  #views button:hover, .btn:hover { border-color: var(--moss); }
+  .btn.on { background: var(--forest); color: var(--cream); border-color: var(--forest); }
+  .btn.primary { background: var(--moss); color: #fff; border-color: var(--moss); text-align: center; }
+  .btn.amber { background: var(--amber); color: #fff; border-color: var(--amber); text-align: center; }
+  .row { display: flex; gap: 6px; margin-top: 6px; }
+  .row .btn { flex: 1; text-align: center; }
+  .toggles label { display: flex; align-items: center; gap: 8px; font-size: 12px; padding: 3px 0; cursor: pointer; }
+  .toggles input { accent-color: var(--moss); }
+  #assets { overflow-y: auto; flex: 1; min-height: 0; padding: 6px 10px 18px; }
+  .asset-group { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--slate); font-weight: 700; padding: 12px 8px 6px; }
+  .asset-item { display: flex; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; font-size: 12px; align-items: baseline; }
+  .asset-item:hover { background: var(--cream2); }
+  .asset-item.on { background: var(--forest); color: var(--cream); }
+  .asset-item .c { font-family: Menlo, monospace; font-size: 10px; font-weight: 700; min-width: 30px; opacity: 0.75; }
+
+  #asset-detail { position: absolute; right: 16px; top: 16px; width: 330px; background: rgba(244,239,230,0.97); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; font-size: 12px; display: none; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+  #asset-detail.show { display: block; }
+  .ad-code { font-size: 10px; letter-spacing: 1px; color: var(--amber); font-weight: 700; text-transform: uppercase; }
+  .ad-name { font-size: 15px; font-weight: 700; margin: 4px 0 8px; }
+  #asset-detail ul { padding-left: 16px; line-height: 1.5; color: #2c3530; }
+  #asset-detail li { margin-bottom: 3px; }
+
+  .hud { position: absolute; left: 16px; bottom: 16px; display: flex; gap: 8px; align-items: center; }
+  .hud .btn { background: rgba(244,239,230,0.95); }
+  #pt-info { font-size: 12px; color: var(--forest); background: rgba(244,239,230,0.95); padding: 6px 10px; border-radius: 6px; }
+  #pt-info:empty { display: none; }
+  .compliance { position: absolute; left: 16px; top: 16px; background: rgba(31,42,36,0.88); color: var(--cream); font-size: 11px; border-radius: 8px; padding: 9px 12px; line-height: 1.55; max-width: 360px; }
+  .compliance b { color: #f2c66d; }
+
+  .dim { font-size: 11px; font-weight: 700; background: rgba(244,239,230,0.95); color: var(--forest); border: 1px solid var(--line); padding: 3px 7px; border-radius: 5px; white-space: nowrap; }
+  .dim.warn { color: #9b3b1b; }
+  .dim.muted { color: var(--slate); }
+  .tag { pointer-events: auto; cursor: pointer; font-family: Menlo, monospace; font-size: 10px; font-weight: 700; color: #fff; padding: 2px 6px; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+  .tag-A { background: #c25a12; } .tag-B { background: #2f5fb3; } .tag-S { background: var(--moss); }
+
+  #loader { position: fixed; inset: 0; background: var(--cream); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10; transition: opacity 0.6s; }
+  #loader.done { opacity: 0; pointer-events: none; }
+  #loader h2 { font-size: 18px; margin-bottom: 6px; }
+  #loader p { font-size: 12px; color: var(--slate); margin-bottom: 18px; }
+  .bar { width: 320px; height: 4px; background: var(--cream2); border-radius: 2px; overflow: hidden; }
+  #load-bar { height: 100%; width: 0; background: var(--moss); transition: width 0.4s; }
+  #load-text { font-size: 12px; margin-top: 10px; color: var(--forest); }
+
+  body.clean aside, body.clean .hud, body.clean .compliance, body.clean #asset-detail { display: none !important; }
+  body.clean #app { grid-template-columns: 0 1fr; }
+  body.clean #btn-hide-ui-float { display: block; }
+  #btn-hide-ui-float { display: none; position: absolute; right: 12px; bottom: 12px; z-index: 5; }
+</style>
+</head>
+<body>
+<div id="loader">
+  <h2>Booth Chitato x JetZ 2026</h2>
+  <p>Indofood Tower Lobby · 30 x 4 x 2,5 m</p>
+  <div class="bar"><div id="load-bar"></div></div>
+  <div id="load-text">Menyiapkan…</div>
+</div>
+<div id="app">
+  <aside>
+    <div class="brand">
+      <h1>Booth 3D — Chitato x JetZ</h1>
+      <p>Zona A: Chitato x TREASURE "Make The Wave You Lite"<br>Zona B: JetZ x Hearts2Hearts "JetZrek-in Aja!"<br>9–13 Nov 2026 · Indofood Tower Lobby</p>
+    </div>
+    <div class="sec">
+      <h2>Sudut kamera</h2>
+      <div id="views"></div>
+    </div>
+    <div class="sec toggles">
+      <h2>Tampilan</h2>
+      <div class="row" style="margin:0 0 8px">
+        <button class="btn" data-mode="day">Lobby siang</button>
+        <button class="btn" data-mode="night">Presentasi gelap</button>
+      </div>
+      <label><input type="checkbox" id="t-people" checked> Orang (crew & pengunjung)</label>
+      <label><input type="checkbox" id="t-walk" checked> Animasi pengunjung lewat</label>
+      <label><input type="checkbox" id="t-tags"> Kode aset di 3D</label>
+      <label><input type="checkbox" id="t-dims"> Garis dimensi</label>
+      <label><input type="checkbox" id="t-hq"> Kualitas tinggi (AO + glow)</label>
+    </div>
+    <div class="sec">
+      <h2>Render untuk klien</h2>
+      <div class="row"><button class="btn primary" id="btn-shot">Simpan PNG 4K</button><button class="btn" id="btn-shot-hd">PNG Full HD</button></div>
+      <div class="row"><button class="btn amber" id="btn-pt">Render fotorealistik (path tracing)</button></div>
+      <div class="row"><button class="btn" id="btn-iso">Lihat aset terpisah</button><button class="btn" id="btn-hide-ui">Sembunyikan UI</button></div>
+    </div>
+    <div class="sec" style="border-bottom:0;padding-bottom:0"><h2>Breakdown aset (klik)</h2></div>
+    <div id="assets"></div>
+  </aside>
+  <main id="viewport">
+    <div class="compliance">
+      <b>Patuh brief & aturan gedung:</b> tinggi maks 2,5 m · karpet + lakban hitam lebih 1 m tiap sisi · tanpa speaker (silent disco) · tanpa umbul-umbul · loker JetZ jadi pembatas · charm making tersedia
+    </div>
+    <div id="asset-detail"></div>
+    <div class="hud"><span id="pt-info"></span></div>
+    <button class="btn" id="btn-hide-ui-float" onclick="document.body.classList.remove('clean')">Tampilkan UI</button>
+  </main>
+</div>
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

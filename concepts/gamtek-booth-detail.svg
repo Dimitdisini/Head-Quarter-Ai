@@ -1,0 +1,1247 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 1188" width="100%" height="100%" style="background:#ffffff; font-family:'Courier New', 'Consolas', monospace;">
+<defs>
+  <!-- Architectural Tick 45 Derajat untuk Dimensi -->
+  <marker id="cad-tick" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="7" markerHeight="7" orient="auto">
+    <line x1="2" y1="10" x2="10" y2="2" stroke="#000000" stroke-width="1.8"/>
+  </marker>
+
+  <!-- Arrow Kepala Elevasi & Arah Potongan -->
+  <marker id="cad-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 1 2 L 8 5 L 1 8 z" fill="#000000"/>
+  </marker>
+
+  <!-- Arsir Dinding Multiplek / Bata Ringan (Hatching ANSI31) -->
+  <pattern id="hatch-wall" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+    <line x1="0" y1="0" x2="0" y2="10" stroke="#000000" stroke-width="0.8"/>
+  </pattern>
+
+  <!-- Arsir Panggung Kayu (Wood Grain / Decking) -->
+  <pattern id="hatch-wood" width="8" height="8" patternUnits="userSpaceOnUse">
+    <line x1="0" y1="4" x2="8" y2="4" stroke="#666666" stroke-width="0.6"/>
+  </pattern>
+</defs>
+
+<!-- ========================================================================= -->
+<!-- BORDER KERTAS STANDAR ARSITEKTUR A3 (Margin Kiri 20mm untuk Jilid)        -->
+<!-- ========================================================================= -->
+<rect width="1680" height="1188" fill="#ffffff"/>
+<!-- Garis Luar Kertas -->
+<rect x="15" y="15" width="1650" height="1158" fill="none" stroke="#000000" stroke-width="1.5"/>
+<!-- Garis Margin Gambar (Kiri 40px ~20mm jilid, atas/kanan/bawah 20px) -->
+<rect x="40" y="25" width="1615" height="1138" fill="none" stroke="#000000" stroke-width="0.8"/>
+
+<!-- GARIS AS & GRIDLINES -->
+<g id="gridlines">
+
+    <line x1="120.0" y1="111.80000000000001" x2="120.0" y2="665.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="14,3,3,3"/>
+    <!-- Balon As Atas -->
+    <circle cx="120.0" cy="102.4" r="11" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+    <text x="120.0" y="106.4" font-size="10" font-weight="bold" text-anchor="middle">A</text>
+    
+
+    <line x1="331.5" y1="111.80000000000001" x2="331.5" y2="665.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="14,3,3,3"/>
+    <!-- Balon As Atas -->
+    <circle cx="331.5" cy="102.4" r="11" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+    <text x="331.5" y="106.4" font-size="10" font-weight="bold" text-anchor="middle">B</text>
+    
+
+    <line x1="580.6" y1="111.80000000000001" x2="580.6" y2="665.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="14,3,3,3"/>
+    <!-- Balon As Atas -->
+    <circle cx="580.6" cy="102.4" r="11" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+    <text x="580.6" y="106.4" font-size="10" font-weight="bold" text-anchor="middle">C</text>
+    
+
+    <line x1="825.0" y1="111.80000000000001" x2="825.0" y2="665.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="14,3,3,3"/>
+    <!-- Balon As Atas -->
+    <circle cx="825.0" cy="102.4" r="11" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+    <text x="825.0" y="106.4" font-size="10" font-weight="bold" text-anchor="middle">D</text>
+    
+
+    <line x1="975.4" y1="111.80000000000001" x2="975.4" y2="665.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="14,3,3,3"/>
+    <!-- Balon As Atas -->
+    <circle cx="975.4" cy="102.4" r="11" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+    <text x="975.4" y="106.4" font-size="10" font-weight="bold" text-anchor="middle">E</text>
+    
+
+    <line x1="1154.0" y1="111.80000000000001" x2="1154.0" y2="665.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="14,3,3,3"/>
+    <!-- Balon As Atas -->
+    <circle cx="1154.0" cy="102.4" r="11" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+    <text x="1154.0" y="106.4" font-size="10" font-weight="bold" text-anchor="middle">F</text>
+    
+
+    <line x1="1342.0" y1="111.80000000000001" x2="1342.0" y2="665.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="14,3,3,3"/>
+    <!-- Balon As Atas -->
+    <circle cx="1342.0" cy="102.4" r="11" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+    <text x="1342.0" y="106.4" font-size="10" font-weight="bold" text-anchor="middle">G</text>
+    
+
+    <line x1="1530.0" y1="111.80000000000001" x2="1530.0" y2="665.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="14,3,3,3"/>
+    <!-- Balon As Atas -->
+    <circle cx="1530.0" cy="102.4" r="11" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+    <text x="1530.0" y="106.4" font-size="10" font-weight="bold" text-anchor="middle">H</text>
+    
+
+    <line x1="91.8" y1="328.0" x2="1558.2" y2="328.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="14,3,3,3"/>
+    <!-- Balon As Samping -->
+    <circle cx="82.4" cy="328.0" r="11" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+    <text x="82.4" y="332.0" font-size="10" font-weight="bold" text-anchor="middle">1</text>
+    
+
+    <line x1="91.8" y1="234.0" x2="1558.2" y2="234.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="14,3,3,3"/>
+    <!-- Balon As Samping -->
+    <circle cx="82.4" cy="234.0" r="11" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+    <text x="82.4" y="238.0" font-size="10" font-weight="bold" text-anchor="middle">2</text>
+    
+
+    <line x1="91.8" y1="140.0" x2="1558.2" y2="140.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="14,3,3,3"/>
+    <!-- Balon As Samping -->
+    <circle cx="82.4" cy="140.0" r="11" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+    <text x="82.4" y="144.0" font-size="10" font-weight="bold" text-anchor="middle">3</text>
+    
+</g>
+
+<g id="drawing-plan">
+  <!-- Judul Gambar & Skala Bar -->
+  <text x="120" y="75" font-size="13" font-weight="bold" fill="#000000">01. DENAH TATA LETAK BOOTH (FLOOR PLAN)</text>
+  <text x="120" y="92" font-size="9" fill="#000000">SKALA 1 : 50 | SATUAN UKURAN: MILIMETER (mm)</text>
+  <line x1="120" y1="98" x2="400" y2="98" stroke="#000000" stroke-width="1"/>
+
+  <!-- Batas Outline Lantai Booth 30.000 x 4.000 mm -->
+  <rect x="120.0" y="140.0" width="1410.0" height="188.0" fill="#ffffff" stroke="#000000" stroke-width="1.8"/>
+
+  <!-- As Pembagi Zona di x = 15.000 mm -->
+  <line x1="825.0" y1="125.9" x2="825.0" y2="342.1" stroke="#000000" stroke-width="1.2" stroke-dasharray="10,3,3,3"/>
+  <text x="825.0" y="132.95" font-size="8.5" font-weight="bold" text-anchor="middle">AS PEMISAH ZONA (x = 15.000)</text>
+
+  <!-- Notasi Zona -->
+  <text x="472.5" y="234.0" font-size="11" font-weight="bold" fill="#888888" text-anchor="middle" letter-spacing="2">ZONA A: CHITATO × TREASURE</text>
+  <text x="1177.5" y="234.0" font-size="11" font-weight="bold" fill="#888888" text-anchor="middle" letter-spacing="2">ZONA B: JETZ × HEARTS2HEARTS</text>
+
+
+    <rect x="120.0" y="318.6" width="211.5" height="9.4" fill="url(#hatch-wall)" stroke="#000000" stroke-width="1.5"/>
+    <rect x="120.0" y="318.6" width="211.5" height="9.4" fill="none" stroke="#000000" stroke-width="1.5"/>
+        
+
+    <circle cx="225.75" cy="323.3" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="225.75" y="326.3" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A01</text>
+    
+
+    <rect x="331.5" y="318.6" width="164.5" height="9.4" fill="url(#hatch-wall)" stroke="#000000" stroke-width="1.5"/>
+    <rect x="331.5" y="318.6" width="164.5" height="9.4" fill="none" stroke="#000000" stroke-width="1.5"/>
+        
+
+    <circle cx="413.75" cy="323.3" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="413.75" y="326.3" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A01</text>
+    
+
+    <rect x="496.0" y="318.6" width="329.0" height="9.4" fill="url(#hatch-wall)" stroke="#000000" stroke-width="1.5"/>
+    <rect x="496.0" y="318.6" width="329.0" height="9.4" fill="none" stroke="#000000" stroke-width="1.5"/>
+        
+
+    <circle cx="660.5" cy="323.3" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="660.5" y="326.3" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A01</text>
+    
+
+    <rect x="225.75" y="313.9" width="188.0" height="4.7" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="319.75" cy="316.25" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="319.75" y="319.25" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A03</text>
+    
+
+    <rect x="131.75" y="170.55" width="42.300000000000004" height="42.300000000000004" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="152.9" cy="191.70000000000002" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="152.9" y="194.70000000000002" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A04</text>
+    
+
+    <rect x="441.95" y="170.55" width="42.300000000000004" height="42.300000000000004" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="463.09999999999997" cy="191.70000000000002" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="463.09999999999997" y="194.70000000000002" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A04</text>
+    
+
+    <rect x="196.375" y="159.97500000000002" width="25.85" height="25.85" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="209.3" cy="172.90000000000003" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="209.3" y="175.90000000000003" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A05</text>
+    
+
+    <rect x="384.375" y="159.97500000000002" width="25.85" height="25.85" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="397.3" cy="172.90000000000003" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="397.3" y="175.90000000000003" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A05</text>
+    
+
+    <rect x="488.24499999999995" y="273.95000000000005" width="34.31" height="14.1" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="505.4" cy="281.00000000000006" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="505.4" y="284.00000000000006" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A06</text>
+    
+
+    <rect x="524.2" y="269.25" width="112.8" height="23.5" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="580.6" cy="281.0" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="580.6" y="284.0" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A07</text>
+    
+
+    <rect x="561.565" y="266.9" width="38.07" height="2.35" fill="#ffffff" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,2"/>
+        
+
+    <circle cx="580.6" cy="268.075" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="580.6" y="271.075" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A07</text>
+    
+
+    <rect x="638.645" y="273.95000000000005" width="34.31" height="14.1" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="655.8" cy="281.00000000000006" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="655.8" y="284.00000000000006" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A06</text>
+    
+
+    <rect x="515.9749999999999" y="169.375" width="25.85" height="25.85" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="528.8999999999999" cy="182.3" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="528.8999999999999" y="185.3" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A05</text>
+    
+
+    <rect x="619.375" y="169.375" width="25.85" height="25.85" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="632.3" cy="182.3" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="632.3" y="185.3" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A05</text>
+    
+
+    <ellipse cx="665.1999999999999" cy="215.2" rx="14.1" ry="14.1" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <!-- Cross Center Mark silinder -->
+    <line x1="661.1999999999999" y1="215.2" x2="669.1999999999999" y2="215.2" stroke="#000000" stroke-width="0.6"/>
+    <line x1="665.1999999999999" y1="211.2" x2="665.1999999999999" y2="219.2" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <circle cx="665.1999999999999" cy="215.20000000000002" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="665.1999999999999" y="218.20000000000002" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A08</text>
+    
+
+    <rect x="693.4" y="229.3" width="94.0" height="47.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="740.4" cy="252.8" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="740.4" y="255.8" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A09</text>
+    
+
+    <rect x="780.35" y="290.4" width="42.300000000000004" height="23.5" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="801.5" cy="302.15" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="801.5" y="305.15" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A10</text>
+    
+
+    <rect x="683.7650000000001" y="163.5" width="28.669999999999998" height="23.5" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="698.1000000000001" cy="175.25" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="698.1000000000001" y="178.25" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A11</text>
+    
+
+    <rect x="777.7650000000001" y="163.5" width="28.669999999999998" height="23.5" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="792.1000000000001" cy="175.25" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="792.1000000000001" y="178.25" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A11</text>
+    
+
+    <rect x="787.4" y="208.15" width="37.6" height="4.7" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="806.1999999999999" cy="210.5" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="806.1999999999999" y="213.5" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">A12</text>
+    
+
+    <rect x="825.0" y="140.0" width="18.8" height="188.0" fill="url(#hatch-wall)" stroke="#000000" stroke-width="1.5"/>
+    <rect x="825.0" y="140.0" width="18.8" height="188.0" fill="none" stroke="#000000" stroke-width="1.5"/>
+        
+
+    <circle cx="834.4" cy="234.0" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="834.4" y="237.0" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B01</text>
+    
+
+    <rect x="843.8" y="318.6" width="686.1999999999999" height="9.4" fill="url(#hatch-wall)" stroke="#000000" stroke-width="1.5"/>
+    <rect x="843.8" y="318.6" width="686.1999999999999" height="9.4" fill="none" stroke="#000000" stroke-width="1.5"/>
+        
+
+    <circle cx="1186.8999999999999" cy="323.3" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1186.8999999999999" y="326.3" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B02</text>
+    
+
+    <rect x="862.5999999999999" y="299.79999999999995" width="225.6" height="18.8" fill="url(#hatch-wall)" stroke="#000000" stroke-width="1.5"/>
+    <rect x="862.5999999999999" y="299.79999999999995" width="225.6" height="18.8" fill="none" stroke="#000000" stroke-width="1.5"/>
+        
+
+    <circle cx="975.3999999999999" cy="309.19999999999993" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="975.3999999999999" y="312.19999999999993" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B03</text>
+    
+
+    <rect x="874.35" y="297.45000000000005" width="65.8" height="2.35" fill="#ffffff" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,2"/>
+        
+
+    <circle cx="907.25" cy="298.62500000000006" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="907.25" y="301.62500000000006" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B05</text>
+    
+
+    <rect x="958.95" y="297.45000000000005" width="65.8" height="2.35" fill="#ffffff" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,2"/>
+        
+
+    <circle cx="991.85" cy="298.62500000000006" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="991.85" y="301.62500000000006" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B05</text>
+    
+
+    <rect x="1036.5" y="297.45000000000005" width="51.7" height="2.35" fill="#ffffff" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,2"/>
+        
+
+    <circle cx="1062.35" cy="298.62500000000006" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1062.35" y="301.62500000000006" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B05</text>
+    
+
+    <rect x="855.5500000000001" y="161.14999999999998" width="42.300000000000004" height="42.300000000000004" fill="url(#hatch-wood)" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="876.7" cy="182.29999999999998" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="876.7" y="185.29999999999998" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B06</text>
+    
+
+    <rect x="1057.65" y="161.14999999999998" width="42.300000000000004" height="42.300000000000004" fill="url(#hatch-wood)" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="1078.8000000000002" cy="182.29999999999998" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1078.8000000000002" y="185.29999999999998" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B06</text>
+    
+
+    <rect x="1107.0" y="241.05" width="94.0" height="70.5" fill="url(#hatch-wood)" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,2"/>
+        
+
+    <circle cx="1154.0" cy="276.3" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1154.0" y="279.3" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B07</text>
+    
+
+    <rect x="1229.2" y="184.64999999999998" width="112.8" height="42.300000000000004" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="1285.6000000000001" cy="205.79999999999998" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1285.6000000000001" y="208.79999999999998" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B08</text>
+    
+
+    <ellipse cx="1243.3" cy="165.85" rx="8.225" ry="8.225" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <!-- Cross Center Mark silinder -->
+    <line x1="1239.3" y1="165.85" x2="1247.3" y2="165.85" stroke="#000000" stroke-width="0.6"/>
+    <line x1="1243.3" y1="161.85" x2="1243.3" y2="169.85" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <circle cx="1243.2999999999997" cy="165.85" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1243.2999999999997" y="168.85" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B09</text>
+    
+
+    <ellipse cx="1271.5" cy="165.85" rx="8.225" ry="8.225" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <!-- Cross Center Mark silinder -->
+    <line x1="1267.5" y1="165.85" x2="1275.5" y2="165.85" stroke="#000000" stroke-width="0.6"/>
+    <line x1="1271.5" y1="161.85" x2="1271.5" y2="169.85" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <circle cx="1271.4999999999998" cy="165.85" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1271.4999999999998" y="168.85" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B09</text>
+    
+
+    <ellipse cx="1299.7" cy="165.85" rx="8.225" ry="8.225" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <!-- Cross Center Mark silinder -->
+    <line x1="1295.7" y1="165.85" x2="1303.7" y2="165.85" stroke="#000000" stroke-width="0.6"/>
+    <line x1="1299.7" y1="161.85" x2="1299.7" y2="169.85" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <circle cx="1299.7" cy="165.85" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1299.7" y="168.85" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B09</text>
+    
+
+    <ellipse cx="1327.8999999999999" cy="165.85" rx="8.225" ry="8.225" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <!-- Cross Center Mark silinder -->
+    <line x1="1323.8999999999999" y1="165.85" x2="1331.8999999999999" y2="165.85" stroke="#000000" stroke-width="0.6"/>
+    <line x1="1327.8999999999999" y1="161.85" x2="1327.8999999999999" y2="169.85" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <circle cx="1327.8999999999999" cy="165.85" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1327.8999999999999" y="168.85" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B09</text>
+    
+
+    <rect x="1356.1000000000001" y="229.3" width="94.0" height="47.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="1403.1000000000001" cy="252.8" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1403.1000000000001" y="255.8" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B10</text>
+    
+
+    <rect x="1475.95" y="290.4" width="42.300000000000004" height="23.5" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="1497.1000000000001" cy="302.15" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1497.1000000000001" y="305.15" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B11</text>
+    
+
+    <rect x="1346.465" y="163.5" width="28.669999999999998" height="23.5" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="1360.8" cy="175.25" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1360.8" y="178.25" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B12</text>
+    
+
+    <rect x="1445.165" y="163.5" width="28.669999999999998" height="23.5" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="1459.5" cy="175.25" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1459.5" y="178.25" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B12</text>
+    
+
+    <rect x="1483.0" y="208.15" width="37.6" height="4.7" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+        
+
+    <circle cx="1501.8" cy="210.5" r="8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1501.8" y="213.5" font-size="7.5" font-weight="bold" fill="#000000" text-anchor="middle">B13</text>
+    
+
+    <!-- Standee Base & Centreline -->
+    <rect x="145.85" y="285.70000000000005" width="32.9" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="145.85" y1="295.1" x2="178.75" y2="295.1" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="162.29999999999998" cy="295.1" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="183.45" y="285.70000000000005" width="32.9" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="183.45" y1="295.1" x2="216.35" y2="295.1" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="199.89999999999998" cy="295.1" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="221.05" y="285.70000000000005" width="32.9" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="221.05" y1="295.1" x2="253.95000000000002" y2="295.1" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="237.5" cy="295.1" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="258.65" y="285.70000000000005" width="32.9" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="258.65" y1="295.1" x2="291.54999999999995" y2="295.1" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="275.09999999999997" cy="295.1" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="296.25" y="285.70000000000005" width="32.9" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="296.25" y1="295.1" x2="329.15" y2="295.1" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="312.7" cy="295.1" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="333.85" y="285.70000000000005" width="32.9" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="333.85" y1="295.1" x2="366.75" y2="295.1" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="350.3" cy="295.1" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="371.45000000000005" y="285.70000000000005" width="32.9" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="371.45000000000005" y1="295.1" x2="404.35" y2="295.1" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="387.90000000000003" cy="295.1" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="409.05000000000007" y="285.70000000000005" width="32.9" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="409.05000000000007" y1="295.1" x2="441.95000000000005" y2="295.1" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="425.50000000000006" cy="295.1" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="446.65000000000003" y="285.70000000000005" width="32.9" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="446.65000000000003" y1="295.1" x2="479.55" y2="295.1" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="463.1" cy="295.1" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="867.3" y="273.95000000000005" width="23.5" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="867.3" y1="283.35" x2="890.8" y2="283.35" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="879.05" cy="283.35" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="895.5" y="273.95000000000005" width="23.5" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="895.5" y1="283.35" x2="919.0" y2="283.35" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="907.25" cy="283.35" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="923.6999999999999" y="273.95000000000005" width="23.5" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="923.6999999999999" y1="283.35" x2="947.1999999999999" y2="283.35" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="935.4499999999999" cy="283.35" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="951.9" y="273.95000000000005" width="23.5" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="951.9" y1="283.35" x2="975.4" y2="283.35" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="963.65" cy="283.35" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="980.0999999999999" y="273.95000000000005" width="23.5" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="980.0999999999999" y1="283.35" x2="1003.5999999999999" y2="283.35" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="991.8499999999999" cy="283.35" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="1008.3" y="273.95000000000005" width="23.5" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="1008.3" y1="283.35" x2="1031.8" y2="283.35" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="1020.05" cy="283.35" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="1036.5" y="273.95000000000005" width="23.5" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="1036.5" y1="283.35" x2="1060.0" y2="283.35" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="1048.25" cy="283.35" r="1.5" fill="#000000"/>
+        
+
+    <!-- Standee Base & Centreline -->
+    <rect x="1064.6999999999998" y="273.95000000000005" width="23.5" height="18.8" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <line x1="1064.6999999999998" y1="283.35" x2="1088.1999999999998" y2="283.35" stroke="#000000" stroke-width="0.6"/>
+    <circle cx="1076.4499999999998" cy="283.35" r="1.5" fill="#000000"/>
+        
+
+    <g class="dim">
+      <!-- Garis Dimensi Utama -->
+      <line x1="120.0" y1="92.0" x2="1530.0" y2="92.0" stroke="#000000" stroke-width="0.8" marker-start="url(#cad-tick)" marker-end="url(#cad-tick)"/>
+      <!-- Garis Ekstensi / Proyeksi -->
+      <line x1="120.0" y1="140.0" x2="120.0" y2="88.0" stroke="#000000" stroke-width="0.5"/>
+      <line x1="1530.0" y1="140.0" x2="1530.0" y2="88.0" stroke="#000000" stroke-width="0.5"/>
+      <!-- Angka Ukuran di Atas Garis Sejajar -->
+      <text x="825.0" y="89.0" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">30000</text>
+    </g>
+
+    <g class="dim">
+      <!-- Garis Dimensi Utama -->
+      <line x1="120.0" y1="110.0" x2="825.0" y2="110.0" stroke="#000000" stroke-width="0.8" marker-start="url(#cad-tick)" marker-end="url(#cad-tick)"/>
+      <!-- Garis Ekstensi / Proyeksi -->
+      <line x1="120.0" y1="140.0" x2="120.0" y2="106.0" stroke="#000000" stroke-width="0.5"/>
+      <line x1="825.0" y1="140.0" x2="825.0" y2="106.0" stroke="#000000" stroke-width="0.5"/>
+      <!-- Angka Ukuran di Atas Garis Sejajar -->
+      <text x="472.5" y="107.0" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">15000</text>
+    </g>
+
+    <g class="dim">
+      <!-- Garis Dimensi Utama -->
+      <line x1="825.0" y1="110.0" x2="1530.0" y2="110.0" stroke="#000000" stroke-width="0.8" marker-start="url(#cad-tick)" marker-end="url(#cad-tick)"/>
+      <!-- Garis Ekstensi / Proyeksi -->
+      <line x1="825.0" y1="140.0" x2="825.0" y2="106.0" stroke="#000000" stroke-width="0.5"/>
+      <line x1="1530.0" y1="140.0" x2="1530.0" y2="106.0" stroke="#000000" stroke-width="0.5"/>
+      <!-- Angka Ukuran di Atas Garis Sejajar -->
+      <text x="1177.5" y="107.0" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">15000</text>
+    </g>
+
+    <g class="dim">
+      <!-- Garis Dimensi Utama -->
+      <line x1="120.0" y1="126.0" x2="331.5" y2="126.0" stroke="#000000" stroke-width="0.8" marker-start="url(#cad-tick)" marker-end="url(#cad-tick)"/>
+      <!-- Garis Ekstensi / Proyeksi -->
+      <line x1="120.0" y1="140.0" x2="120.0" y2="122.0" stroke="#000000" stroke-width="0.5"/>
+      <line x1="331.5" y1="140.0" x2="331.5" y2="122.0" stroke="#000000" stroke-width="0.5"/>
+      <!-- Angka Ukuran di Atas Garis Sejajar -->
+      <text x="225.75" y="123.0" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">4500</text>
+    </g>
+
+    <g class="dim">
+      <!-- Garis Dimensi Utama -->
+      <line x1="331.5" y1="126.0" x2="496.0" y2="126.0" stroke="#000000" stroke-width="0.8" marker-start="url(#cad-tick)" marker-end="url(#cad-tick)"/>
+      <!-- Garis Ekstensi / Proyeksi -->
+      <line x1="331.5" y1="140.0" x2="331.5" y2="122.0" stroke="#000000" stroke-width="0.5"/>
+      <line x1="496.0" y1="140.0" x2="496.0" y2="122.0" stroke="#000000" stroke-width="0.5"/>
+      <!-- Angka Ukuran di Atas Garis Sejajar -->
+      <text x="413.75" y="123.0" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">3500</text>
+    </g>
+
+    <g class="dim">
+      <!-- Garis Dimensi Utama -->
+      <line x1="496.0" y1="126.0" x2="825.0" y2="126.0" stroke="#000000" stroke-width="0.8" marker-start="url(#cad-tick)" marker-end="url(#cad-tick)"/>
+      <!-- Garis Ekstensi / Proyeksi -->
+      <line x1="496.0" y1="140.0" x2="496.0" y2="122.0" stroke="#000000" stroke-width="0.5"/>
+      <line x1="825.0" y1="140.0" x2="825.0" y2="122.0" stroke="#000000" stroke-width="0.5"/>
+      <!-- Angka Ukuran di Atas Garis Sejajar -->
+      <text x="660.5" y="123.0" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">7000</text>
+    </g>
+
+    <g class="dim">
+      <!-- Garis Dimensi Utama -->
+      <line x1="825.0" y1="126.0" x2="1050.6" y2="126.0" stroke="#000000" stroke-width="0.8" marker-start="url(#cad-tick)" marker-end="url(#cad-tick)"/>
+      <!-- Garis Ekstensi / Proyeksi -->
+      <line x1="825.0" y1="140.0" x2="825.0" y2="122.0" stroke="#000000" stroke-width="0.5"/>
+      <line x1="1050.6" y1="140.0" x2="1050.6" y2="122.0" stroke="#000000" stroke-width="0.5"/>
+      <!-- Angka Ukuran di Atas Garis Sejajar -->
+      <text x="937.8" y="123.0" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">4800</text>
+    </g>
+
+    <g class="dim">
+      <!-- Garis Dimensi Utama -->
+      <line x1="1050.6" y1="126.0" x2="1530.0" y2="126.0" stroke="#000000" stroke-width="0.8" marker-start="url(#cad-tick)" marker-end="url(#cad-tick)"/>
+      <!-- Garis Ekstensi / Proyeksi -->
+      <line x1="1050.6" y1="140.0" x2="1050.6" y2="122.0" stroke="#000000" stroke-width="0.5"/>
+      <line x1="1530.0" y1="140.0" x2="1530.0" y2="122.0" stroke="#000000" stroke-width="0.5"/>
+      <!-- Angka Ukuran di Atas Garis Sejajar -->
+      <text x="1290.3" y="123.0" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">10200</text>
+    </g>
+
+    <g class="dim">
+      <line x1="90.0" y1="328.0" x2="90.0" y2="140.0" stroke="#000000" stroke-width="0.8" marker-start="url(#cad-tick)" marker-end="url(#cad-tick)"/>
+      <line x1="120.0" y1="328.0" x2="86.0" y2="328.0" stroke="#000000" stroke-width="0.5"/>
+      <line x1="120.0" y1="140.0" x2="86.0" y2="140.0" stroke="#000000" stroke-width="0.5"/>
+      <text x="86.0" y="237.0" font-size="8" font-weight="bold" fill="#000000" text-anchor="end">4000</text>
+    </g>
+
+    <g class="dim">
+      <line x1="105.0" y1="328.0" x2="105.0" y2="318.6" stroke="#000000" stroke-width="0.8" marker-start="url(#cad-tick)" marker-end="url(#cad-tick)"/>
+      <line x1="120.0" y1="328.0" x2="101.0" y2="328.0" stroke="#000000" stroke-width="0.5"/>
+      <line x1="120.0" y1="318.6" x2="101.0" y2="318.6" stroke="#000000" stroke-width="0.5"/>
+      <text x="101.0" y="326.3" font-size="8" font-weight="bold" fill="#000000" text-anchor="end">200</text>
+    </g>
+
+    <g class="dim">
+      <line x1="105.0" y1="318.6" x2="105.0" y2="140.0" stroke="#000000" stroke-width="0.8" marker-start="url(#cad-tick)" marker-end="url(#cad-tick)"/>
+      <line x1="120.0" y1="318.6" x2="101.0" y2="318.6" stroke="#000000" stroke-width="0.5"/>
+      <line x1="120.0" y1="140.0" x2="101.0" y2="140.0" stroke="#000000" stroke-width="0.5"/>
+      <text x="101.0" y="232.3" font-size="8" font-weight="bold" fill="#000000" text-anchor="end">3800</text>
+    </g>
+
+    <g class="dim">
+      <!-- Garis Dimensi Utama -->
+      <line x1="712.4350000000001" y1="163.25" x2="777.765" y2="163.25" stroke="#000000" stroke-width="0.8" marker-start="url(#cad-tick)" marker-end="url(#cad-tick)"/>
+      <!-- Garis Ekstensi / Proyeksi -->
+      <line x1="712.4350000000001" y1="175.25" x2="712.4350000000001" y2="159.25" stroke="#000000" stroke-width="0.5"/>
+      <line x1="777.765" y1="175.25" x2="777.765" y2="159.25" stroke="#000000" stroke-width="0.5"/>
+      <!-- Angka Ukuran di Atas Garis Sejajar -->
+      <text x="745.1" y="160.25" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">1390 (LORONG A)</text>
+    </g>
+
+    <g class="dim">
+      <!-- Garis Dimensi Utama -->
+      <line x1="1375.135" y1="163.25" x2="1445.165" y2="163.25" stroke="#000000" stroke-width="0.8" marker-start="url(#cad-tick)" marker-end="url(#cad-tick)"/>
+      <!-- Garis Ekstensi / Proyeksi -->
+      <line x1="1375.135" y1="175.25" x2="1375.135" y2="159.25" stroke="#000000" stroke-width="0.5"/>
+      <line x1="1445.165" y1="175.25" x2="1445.165" y2="159.25" stroke="#000000" stroke-width="0.5"/>
+      <!-- Angka Ukuran di Atas Garis Sejajar -->
+      <text x="1410.15" y="160.25" font-size="8" font-weight="bold" fill="#000000" text-anchor="middle">1490 (LORONG B)</text>
+    </g>
+</g>
+
+<g id="drawing-elevation">
+  <!-- Judul Gambar & Skala Bar -->
+  <text x="120" y="425" font-size="13" font-weight="bold" fill="#000000">02. TAMPAK DEPAN BOOTH (FRONT ELEVATION)</text>
+  <text x="120" y="442" font-size="9" fill="#000000">SKALA 1 : 50 | ARAH PANDANG: UTARA MENGHADAP SELATAN</text>
+  <line x1="120" y1="448" x2="400" y2="448" stroke="#000000" stroke-width="1"/>
+
+  <!-- Garis Dasar Lantai Kerja (FL ±0.000) Tebal 2.0 -->
+  <line x1="95.0" y1="640.0" x2="1555.0" y2="640.0" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Notasi Elevasi Segitiga Terbalik Arsitektur FL ±0.000 -->
+  <path d="M 105.0 640.0 L 95.0 630.0 L 115.0 630.0 Z" fill="#000000"/>
+  <text x="92.0" y="637.0" font-size="8.5" font-weight="bold" fill="#000000" text-anchor="end">FL ±0.000</text>
+
+  <!-- Garis Batas Ketinggian Maksimum Gedung +2.500 -->
+  <line x1="95.0" y1="490.0" x2="1555.0" y2="490.0" stroke="#000000" stroke-width="1" stroke-dasharray="8,3"/>
+  <path d="M 1545.0 490.0 L 1555.0 480.0 L 1535.0 480.0 Z" fill="none" stroke="#000000" stroke-width="1"/>
+  <text x="1558.0" y="487.0" font-size="8.5" font-weight="bold" fill="#000000">BATAS MAKS GEDUNG +2.500</text>
+
+  <!-- Garis As Pemisah x=15m -->
+  <line x1="825.0" y1="655.0" x2="825.0" y2="475.0" stroke="#000000" stroke-width="1" stroke-dasharray="10,3,3,3"/>
+
+
+    <rect x="120.0" y="496.0" width="211.5" height="144.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="225.75" cy="568.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="225.75" y="570.5" font-size="6.5" font-weight="bold" text-anchor="middle">A01</text>
+        
+
+    <rect x="331.5" y="496.0" width="164.5" height="144.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="413.75" cy="568.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="413.75" y="570.5" font-size="6.5" font-weight="bold" text-anchor="middle">A01</text>
+        
+
+    <rect x="496.0" y="496.0" width="329.0" height="144.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="660.5" cy="568.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="660.5" y="570.5" font-size="6.5" font-weight="bold" text-anchor="middle">A01</text>
+        
+
+    <rect x="843.8" y="496.0" width="686.1999999999999" height="144.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="1186.8999999999999" cy="568.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1186.8999999999999" y="570.5" font-size="6.5" font-weight="bold" text-anchor="middle">B02</text>
+        
+
+    <rect x="225.75" y="493.0" width="188.0" height="30.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="319.75" cy="508.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="319.75" y="510.5" font-size="6.5" font-weight="bold" text-anchor="middle">A03</text>
+        
+
+    <rect x="862.5999999999999" y="496.0" width="225.6" height="144.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="975.3999999999999" cy="568.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="975.3999999999999" y="570.5" font-size="6.5" font-weight="bold" text-anchor="middle">B03</text>
+        
+
+    <rect x="780.35" y="532.0" width="42.300000000000004" height="108.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="801.5" cy="586.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="801.5" y="588.5" font-size="6.5" font-weight="bold" text-anchor="middle">A10</text>
+        
+
+    <rect x="1475.95" y="532.0" width="42.300000000000004" height="108.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="1497.1000000000001" cy="586.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1497.1000000000001" y="588.5" font-size="6.5" font-weight="bold" text-anchor="middle">B11</text>
+        
+
+    <rect x="874.35" y="499.0" width="65.8" height="30.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,2"/>
+    <circle cx="907.25" cy="514.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="907.25" y="516.5" font-size="6.5" font-weight="bold" text-anchor="middle">B05</text>
+        
+
+    <rect x="958.95" y="499.0" width="65.8" height="30.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,2"/>
+    <circle cx="991.85" cy="514.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="991.85" y="516.5" font-size="6.5" font-weight="bold" text-anchor="middle">B05</text>
+        
+
+    <rect x="1036.5" y="499.0" width="51.7" height="30.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,2"/>
+    <circle cx="1062.35" cy="514.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1062.35" y="516.5" font-size="6.5" font-weight="bold" text-anchor="middle">B05</text>
+        
+
+    <rect x="488.24499999999995" y="583.0" width="34.31" height="57.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="505.4" cy="611.5" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="505.4" y="614.0" font-size="6.5" font-weight="bold" text-anchor="middle">A06</text>
+        
+
+    <!-- Arch A07 -->
+    <path d="M 524.2 640.0 L 524.2 550.0 A 56.4 56.4 0 0 1 637.0 550.0 L 637.0 640.0 Z" 
+          fill="#ffffff" stroke="#000000" stroke-width="1.8"/>
+    <!-- Layar LED di dalam Arch -->
+    <rect x="561.565" y="508.6" width="38.07" height="86.39999999999999" fill="#f1f5f9" stroke="#000000" stroke-width="1.2"/>
+    <text x="580.6" y="551.8" font-size="7.5" font-weight="bold" text-anchor="middle">LED 65"</text>
+        
+
+    <rect x="638.645" y="583.0" width="34.31" height="57.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="655.8" cy="611.5" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="655.8" y="614.0" font-size="6.5" font-weight="bold" text-anchor="middle">A06</text>
+        
+
+    <rect x="1107.0" y="520.0" width="94.0" height="120.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,2"/>
+    <circle cx="1154.0" cy="580.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1154.0" y="582.5" font-size="6.5" font-weight="bold" text-anchor="middle">B07</text>
+        
+
+    <rect x="561.565" y="508.6" width="38.07" height="86.39999999999999" fill="#ffffff" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,2"/>
+    <circle cx="580.6" cy="551.8000000000001" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="580.6" y="554.3000000000001" font-size="6.5" font-weight="bold" text-anchor="middle">A07</text>
+        
+
+    <rect x="693.4" y="580.0" width="94.0" height="60.0" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+    <line x1="697.4" y1="580.0" x2="697.4" y2="536.0" stroke="#000000" stroke-width="1.5"/>
+    <line x1="783.4" y1="580.0" x2="783.4" y2="536.0" stroke="#000000" stroke-width="1.5"/>
+    <rect x="693.4" y="520.0" width="94.0" height="16" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="740.4" y="613.0" font-size="7.5" font-weight="bold" text-anchor="middle">A09</text>
+        
+
+    <rect x="1356.1000000000001" y="580.0" width="94.0" height="60.0" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+    <line x1="1360.1000000000001" y1="580.0" x2="1360.1000000000001" y2="536.0" stroke="#000000" stroke-width="1.5"/>
+    <line x1="1446.1000000000001" y1="580.0" x2="1446.1000000000001" y2="536.0" stroke="#000000" stroke-width="1.5"/>
+    <rect x="1356.1000000000001" y="520.0" width="94.0" height="16" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+    <text x="1403.1000000000001" y="613.0" font-size="7.5" font-weight="bold" text-anchor="middle">B10</text>
+        
+
+    <rect x="825.0" y="496.0" width="18.8" height="144.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" stroke-dasharray="4,2"/>
+    <circle cx="834.4" cy="568.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="834.4" y="570.5" font-size="6.5" font-weight="bold" text-anchor="middle">B01</text>
+        
+
+    <rect x="651.0999999999999" y="586.0" width="28.2" height="54.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="665.1999999999999" cy="613.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="665.1999999999999" y="615.5" font-size="6.5" font-weight="bold" text-anchor="middle">A08</text>
+        
+
+    <rect x="787.4" y="520.0" width="37.6" height="120.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="806.1999999999999" cy="580.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="806.1999999999999" y="582.5" font-size="6.5" font-weight="bold" text-anchor="middle">A12</text>
+        
+
+    <rect x="1483.0" y="520.0" width="37.6" height="120.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="1501.8" cy="580.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1501.8" y="582.5" font-size="6.5" font-weight="bold" text-anchor="middle">B13</text>
+        
+
+    <rect x="1229.2" y="593.2" width="112.8" height="46.800000000000004" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="1285.6000000000001" cy="616.6" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1285.6000000000001" y="619.1" font-size="6.5" font-weight="bold" text-anchor="middle">B08</text>
+        
+
+    <rect x="131.75" y="562.0" width="42.300000000000004" height="78.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="152.9" cy="601.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="152.9" y="603.5" font-size="6.5" font-weight="bold" text-anchor="middle">A04</text>
+        
+
+    <rect x="441.95" y="562.0" width="42.300000000000004" height="78.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="463.09999999999997" cy="601.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="463.09999999999997" y="603.5" font-size="6.5" font-weight="bold" text-anchor="middle">A04</text>
+        
+
+    <rect x="515.9749999999999" y="616.0" width="25.85" height="24.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="528.8999999999999" cy="628.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="528.8999999999999" y="630.5" font-size="6.5" font-weight="bold" text-anchor="middle">A05</text>
+        
+
+    <rect x="619.375" y="616.0" width="25.85" height="24.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="632.3" cy="628.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="632.3" y="630.5" font-size="6.5" font-weight="bold" text-anchor="middle">A05</text>
+        
+
+    <rect x="855.5500000000001" y="586.0" width="42.300000000000004" height="54.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="876.7" cy="613.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="876.7" y="615.5" font-size="6.5" font-weight="bold" text-anchor="middle">B06</text>
+        
+
+    <rect x="1057.65" y="586.0" width="42.300000000000004" height="54.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="1078.8000000000002" cy="613.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1078.8000000000002" y="615.5" font-size="6.5" font-weight="bold" text-anchor="middle">B06</text>
+        
+
+    <rect x="683.7650000000001" y="562.0" width="28.669999999999998" height="78.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="698.1000000000001" cy="601.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="698.1000000000001" y="603.5" font-size="6.5" font-weight="bold" text-anchor="middle">A11</text>
+        
+
+    <rect x="777.7650000000001" y="562.0" width="28.669999999999998" height="78.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="792.1000000000001" cy="601.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="792.1000000000001" y="603.5" font-size="6.5" font-weight="bold" text-anchor="middle">A11</text>
+        
+
+    <rect x="1346.465" y="562.0" width="28.669999999999998" height="78.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="1360.8" cy="601.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1360.8" y="603.5" font-size="6.5" font-weight="bold" text-anchor="middle">B12</text>
+        
+
+    <rect x="1445.165" y="562.0" width="28.669999999999998" height="78.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="1459.5" cy="601.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1459.5" y="603.5" font-size="6.5" font-weight="bold" text-anchor="middle">B12</text>
+        
+
+    <rect x="196.375" y="616.0" width="25.85" height="24.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="209.3" cy="628.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="209.3" y="630.5" font-size="6.5" font-weight="bold" text-anchor="middle">A05</text>
+        
+
+    <rect x="384.375" y="616.0" width="25.85" height="24.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="397.3" cy="628.0" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="397.3" y="630.5" font-size="6.5" font-weight="bold" text-anchor="middle">A05</text>
+        
+
+    <rect x="1235.0749999999998" y="613.0" width="16.45" height="27.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="1243.2999999999997" cy="626.5" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1243.2999999999997" y="629.0" font-size="6.5" font-weight="bold" text-anchor="middle">B09</text>
+        
+
+    <rect x="1263.2749999999999" y="613.0" width="16.45" height="27.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="1271.4999999999998" cy="626.5" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1271.4999999999998" y="629.0" font-size="6.5" font-weight="bold" text-anchor="middle">B09</text>
+        
+
+    <rect x="1291.4750000000001" y="613.0" width="16.45" height="27.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="1299.7" cy="626.5" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1299.7" y="629.0" font-size="6.5" font-weight="bold" text-anchor="middle">B09</text>
+        
+
+    <rect x="1319.675" y="613.0" width="16.45" height="27.0" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+    <circle cx="1327.8999999999999" cy="626.5" r="7" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <text x="1327.8999999999999" y="629.0" font-size="6.5" font-weight="bold" text-anchor="middle">B09</text>
+        
+
+    <!-- Standee Choi Hyunsuk -->
+    <rect x="145.85" y="532.0" width="32.9" height="108.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="162.29999999999998" cy="542.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="162.29999999999998" y1="548.0" x2="162.29999999999998" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Junkyu -->
+    <rect x="183.45" y="532.0" width="32.9" height="108.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="199.89999999999998" cy="542.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="199.89999999999998" y1="548.0" x2="199.89999999999998" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee So Junghwan -->
+    <rect x="221.05" y="532.0" width="32.9" height="108.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="237.5" cy="542.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="237.5" y1="548.0" x2="237.5" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Yoshi -->
+    <rect x="258.65" y="532.0" width="32.9" height="108.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="275.09999999999997" cy="542.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="275.09999999999997" y1="548.0" x2="275.09999999999997" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Yoo Jaehyun -->
+    <rect x="296.25" y="532.0" width="32.9" height="108.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="312.7" cy="542.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="312.7" y1="548.0" x2="312.7" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Haruto -->
+    <rect x="333.85" y="532.0" width="32.9" height="108.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="350.3" cy="542.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="350.3" y1="548.0" x2="350.3" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Doyoung -->
+    <rect x="371.45000000000005" y="532.0" width="32.9" height="108.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="387.90000000000003" cy="542.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="387.90000000000003" y1="548.0" x2="387.90000000000003" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Park Jeongwoo -->
+    <rect x="409.05000000000007" y="532.0" width="32.9" height="108.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="425.50000000000006" cy="542.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="425.50000000000006" y1="548.0" x2="425.50000000000006" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Jihoon -->
+    <rect x="446.65000000000003" y="532.0" width="32.9" height="108.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="463.1" cy="542.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="463.1" y1="548.0" x2="463.1" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Ian -->
+    <rect x="867.3" y="541.0" width="23.5" height="99.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="879.05" cy="551.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="879.05" y1="557.0" x2="879.05" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Jiwoo -->
+    <rect x="895.5" y="541.0" width="23.5" height="99.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="907.25" cy="551.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="907.25" y1="557.0" x2="907.25" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Carmen -->
+    <rect x="923.6999999999999" y="541.0" width="23.5" height="99.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="935.4499999999999" cy="551.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="935.4499999999999" y1="557.0" x2="935.4499999999999" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Ye-on -->
+    <rect x="951.9" y="541.0" width="23.5" height="99.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="963.65" cy="551.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="963.65" y1="557.0" x2="963.65" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Juun -->
+    <rect x="980.0999999999999" y="541.0" width="23.5" height="99.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="991.8499999999999" cy="551.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="991.8499999999999" y1="557.0" x2="991.8499999999999" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Yuha -->
+    <rect x="1008.3" y="541.0" width="23.5" height="99.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="1020.05" cy="551.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="1020.05" y1="557.0" x2="1020.05" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee A-na -->
+    <rect x="1036.5" y="541.0" width="23.5" height="99.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="1048.25" cy="551.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="1048.25" y1="557.0" x2="1048.25" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <!-- Standee Stella -->
+    <rect x="1064.6999999999998" y="541.0" width="23.5" height="99.0" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+    <circle cx="1076.4499999999998" cy="551.0" r="6" fill="#ffffff" stroke="#000000" stroke-width="0.6"/>
+    <line x1="1076.4499999999998" y1="557.0" x2="1076.4499999999998" y2="625.0" stroke="#000000" stroke-width="0.6"/>
+        
+
+    <line x1="1530.0" y1="493.0" x2="1600.0" y2="493.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="3,2"/>
+    <path d="M 1555.0 493.0 L 1565.0 485.0 L 1545.0 485.0 Z" fill="#000000"/>
+    <text x="1570.0" y="491.0" font-size="8" font-weight="bold" fill="#000000">+2450 (TOP ARCH A07)</text>
+    
+
+    <line x1="1530.0" y1="496.0" x2="1600.0" y2="496.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="3,2"/>
+    <path d="M 1555.0 496.0 L 1565.0 488.0 L 1545.0 488.0 Z" fill="#000000"/>
+    <text x="1570.0" y="494.0" font-size="8" font-weight="bold" fill="#000000">+2400 (BACKDROP WALL)</text>
+    
+
+    <line x1="1530.0" y1="520.0" x2="1600.0" y2="520.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="3,2"/>
+    <path d="M 1555.0 520.0 L 1565.0 512.0 L 1545.0 512.0 Z" fill="#000000"/>
+    <text x="1570.0" y="518.0" font-size="8" font-weight="bold" fill="#000000">+2000 (HEADER DESK)</text>
+    
+
+    <line x1="1530.0" y1="532.0" x2="1600.0" y2="532.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="3,2"/>
+    <path d="M 1555.0 532.0 L 1565.0 524.0 L 1545.0 524.0 Z" fill="#000000"/>
+    <text x="1570.0" y="530.0" font-size="8" font-weight="bold" fill="#000000">+1800 (STANDEE TREASURE)</text>
+    
+
+    <line x1="1530.0" y1="541.0" x2="1600.0" y2="541.0" stroke="#000000" stroke-width="0.6" stroke-dasharray="3,2"/>
+    <path d="M 1555.0 541.0 L 1565.0 533.0 L 1545.0 533.0 Z" fill="#000000"/>
+    <text x="1570.0" y="539.0" font-size="8" font-weight="bold" fill="#000000">+1650 (STANDEE H2H)</text>
+    
+
+    <line x1="1530.0" y1="593.2" x2="1600.0" y2="593.2" stroke="#000000" stroke-width="0.6" stroke-dasharray="3,2"/>
+    <path d="M 1555.0 593.2 L 1565.0 585.2 L 1545.0 585.2 Z" fill="#000000"/>
+    <text x="1570.0" y="591.2" font-size="8" font-weight="bold" fill="#000000">+780 (TOP MEJA CHARM)</text>
+    
+</g>
+
+<g id="spec-table">
+  <text x="50" y="670" font-size="11" font-weight="bold" fill="#000000">03. TABEL SPESIFIKASI TEKNIS ELEMEN PRODUKSI &amp; MATERIAL</text>
+  
+  <!-- Header Tabel -->
+  <rect x="50" y="680" width="1120" height="20" fill="#000000"/>
+  <text x="65" y="694" font-size="8.5" font-weight="bold" fill="#ffffff">TAG</text>
+  <text x="110" y="694" font-size="8.5" font-weight="bold" fill="#ffffff">ID ELEMEN</text>
+  <text x="210" y="694" font-size="8.5" font-weight="bold" fill="#ffffff">NAMA MODUL / ELEMEN BOOTH</text>
+  <text x="460" y="694" font-size="8.5" font-weight="bold" fill="#ffffff">UKURAN PxLxT (mm)</text>
+  <text x="620" y="694" font-size="8.5" font-weight="bold" fill="#ffffff">SPESIFIKASI BAHAN &amp; FINISHING</text>
+  <text x="980" y="694" font-size="8.5" font-weight="bold" fill="#ffffff">SUMBER / STATUS</text>
+
+
+    <rect x="50" y="700" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="714" font-size="8" font-weight="bold">A01</text>
+    <text x="110" y="714" font-size="7.5">A-WALL-1..3</text>
+    <text x="210" y="714" font-size="8" font-weight="bold">Backdrop Dinding Belakang (3 Segmen)</text>
+    <text x="460" y="714" font-size="7.5">15000 × 200 × 2400</text>
+    <text x="620" y="714" font-size="7.5">Rangka Hollow 40x40, Multiplek 12mm, Finish Duco Matte Oranye/Hijau</text>
+    <text x="980" y="714" font-size="7.5" font-weight="bold">PRODUKSI BARU</text>
+    
+
+    <rect x="50" y="721" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="735" font-size="8" font-weight="bold">A02</text>
+    <text x="110" y="735" font-size="7.5">A-STD (9x)</text>
+    <text x="210" y="735" font-size="8" font-weight="bold">Standee Member TREASURE (Resmi)</text>
+    <text x="460" y="735" font-size="7.5">Base 700×400, T=1800</text>
+    <text x="620" y="735" font-size="7.5">Impraboard 5mm cetak UV Flatbed, Plat besi pemberat 4mm</text>
+    <text x="980" y="735" font-size="7.5" font-weight="bold">POSM RESMI (GIVEN)</text>
+    
+
+    <rect x="50" y="742" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="756" font-size="8" font-weight="bold">A03</text>
+    <text x="110" y="756" font-size="7.5">A-HEADER</text>
+    <text x="210" y="756" font-size="8" font-weight="bold">Sign Header 'CHITATO × TREASURE'</text>
+    <text x="460" y="756" font-size="7.5">4000 × 100 × 500</text>
+    <text x="620" y="756" font-size="7.5">Akrilik Susu 3mm + Cutting Sticker Sandblast + LED Module</text>
+    <text x="980" y="756" font-size="7.5" font-weight="bold">PRODUKSI BARU</text>
+    
+
+    <rect x="50" y="763" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="777" font-size="8" font-weight="bold">A04</text>
+    <text x="110" y="777" font-size="7.5">A-CHIP (2x)</text>
+    <text x="210" y="777" font-size="8" font-weight="bold">Chip Chair (Kursi Keripik Kentang)</text>
+    <text x="460" y="777" font-size="7.5">900 × 900 × 1300</text>
+    <text x="620" y="777" font-size="7.5">Fiberglass Moulding / Multiplek Bending + Rangka Pipa Besi</text>
+    <text x="980" y="777" font-size="7.5" font-weight="bold">PRODUKSI BARU</text>
+    
+
+    <rect x="50" y="784" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="798" font-size="8" font-weight="bold">A05</text>
+    <text x="110" y="798" font-size="7.5">A-POUF (4x)</text>
+    <text x="210" y="798" font-size="8" font-weight="bold">Pouffe Bulat Pengunjung</text>
+    <text x="460" y="798" font-size="7.5">Ø 550 × T 400</text>
+    <text x="620" y="798" font-size="7.5">Busa Rebounded Densiti 30, Rangka Kayu Solid, Kulit Sintetis</text>
+    <text x="980" y="798" font-size="7.5" font-weight="bold">SEWA / PRODUKSI</text>
+    
+
+    <rect x="50" y="805" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="819" font-size="8" font-weight="bold">A06</text>
+    <text x="110" y="819" font-size="7.5">A-TOTEM (2x)</text>
+    <text x="210" y="819" font-size="8" font-weight="bold">Totem Pack Chitato & Lite</text>
+    <text x="460" y="819" font-size="7.5">730 × 300 × 950</text>
+    <text x="620" y="819" font-size="7.5">Multiplek 9mm, Sticker Vinyl Matte Laminasi Doff</text>
+    <text x="980" y="819" font-size="7.5" font-weight="bold">POSM RESMI (GIVEN)</text>
+    
+
+    <rect x="50" y="826" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="840" font-size="8" font-weight="bold">A07</text>
+    <text x="110" y="840" font-size="7.5">A-ARCH+LED</text>
+    <text x="210" y="840" font-size="8" font-weight="bold">Arch 'Find Your Wave' Lengkung</text>
+    <text x="460" y="840" font-size="7.5">2400 × 500 × 2450</text>
+    <text x="620" y="840" font-size="7.5">Hollow 40x40, Multiplek Bending, Braket LED Portrait 65", Neon Flex</text>
+    <text x="980" y="840" font-size="7.5" font-weight="bold">PRODUKSI KHUSUS</text>
+    
+
+    <rect x="50" y="847" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="861" font-size="8" font-weight="bold">A08</text>
+    <text x="110" y="861" font-size="7.5">A-PLINTH</text>
+    <text x="210" y="861" font-size="8" font-weight="bold">Plinth Display Tas Eksklusif</text>
+    <text x="460" y="861" font-size="7.5">Ø 600 × T 900</text>
+    <text x="620" y="861" font-size="7.5">Silinder Pipa Sonotube / Plywood finish Cat White Satin + Akrilik Cover</text>
+    <text x="980" y="861" font-size="7.5" font-weight="bold">PRODUKSI BARU</text>
+    
+
+    <rect x="50" y="868" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="882" font-size="8" font-weight="bold">A09</text>
+    <text x="110" y="882" font-size="7.5">A-DESK</text>
+    <text x="210" y="882" font-size="8" font-weight="bold">Event Desk Kasir Chitato</text>
+    <text x="460" y="882" font-size="7.5">2000 × 1000 × 2000</text>
+    <text x="620" y="882" font-size="7.5">Meja Multiplek 18mm finish HPL Woodgrain, Tiang Besi Header 2.0m</text>
+    <text x="980" y="882" font-size="7.5" font-weight="bold">POSM RESMI (GIVEN)</text>
+    
+
+    <rect x="50" y="889" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="903" font-size="8" font-weight="bold">A11</text>
+    <text x="110" y="903" font-size="7.5">A-FLEXY (2x)</text>
+    <text x="210" y="903" font-size="8" font-weight="bold">Flexy Rack Chitato (Antrean)</text>
+    <text x="460" y="903" font-size="7.5">610 × 500 × 1300</text>
+    <text x="620" y="903" font-size="7.5">Wiremesh Besi Coating Hitam, Rak Display Snack 4 Susun</text>
+    <text x="980" y="903" font-size="7.5" font-weight="bold">POSM RESMI (GIVEN)</text>
+    
+
+    <rect x="50" y="910" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="924" font-size="8" font-weight="bold">B01</text>
+    <text x="110" y="924" font-size="7.5">B-DIV</text>
+    <text x="210" y="924" font-size="8" font-weight="bold">Divider Locker Pembatas Zona (x=15)</text>
+    <text x="460" y="924" font-size="7.5">400 × 4000 × 2400</text>
+    <text x="620" y="924" font-size="7.5">5 Modul Locker Multiplek 15mm, Sisi B Pintu Locker, Sisi A Cover Dinding</text>
+    <text x="980" y="924" font-size="7.5" font-weight="bold">PRODUKSI (ASSUMED)</text>
+    
+
+    <rect x="50" y="931" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="945" font-size="8" font-weight="bold">B02</text>
+    <text x="110" y="945" font-size="7.5">B-WALL</text>
+    <text x="210" y="945" font-size="8" font-weight="bold">Dinding Kelas JetZ (Backdrop)</text>
+    <text x="460" y="945" font-size="7.5">14600 × 200 × 2400</text>
+    <text x="620" y="945" font-size="7.5">Rangka Hollow Besi, Multiplek finish Cat Biru Pastel + Grafis Blackboard</text>
+    <text x="980" y="945" font-size="7.5" font-weight="bold">PRODUKSI BARU</text>
+    
+
+    <rect x="50" y="952" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="966" font-size="8" font-weight="bold">B03</text>
+    <text x="110" y="966" font-size="7.5">B-LOCKER</text>
+    <text x="210" y="966" font-size="8" font-weight="bold">Locker Set B Backdrop Foto</text>
+    <text x="460" y="966" font-size="7.5">4800 × 400 × 2400</text>
+    <text x="620" y="966" font-size="7.5">Mockup Pintu Locker Sekolah finish Duco Pink Pastel & Biru Muda</text>
+    <text x="980" y="966" font-size="7.5" font-weight="bold">POSM RESMI (GIVEN)</text>
+    
+
+    <rect x="50" y="973" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="987" font-size="8" font-weight="bold">B04</text>
+    <text x="110" y="987" font-size="7.5">B-STD (8x)</text>
+    <text x="210" y="987" font-size="8" font-weight="bold">Standee Hearts2Hearts (8 Member)</text>
+    <text x="460" y="987" font-size="7.5">Base 500×400, T=1650</text>
+    <text x="620" y="987" font-size="7.5">Impraboard 5mm cetak High-Res, Kaki Penyangga Plat Besi</text>
+    <text x="980" y="987" font-size="7.5" font-weight="bold">POSM RESMI (GIVEN)</text>
+    
+
+    <rect x="50" y="994" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="1008" font-size="8" font-weight="bold">B05</text>
+    <text x="110" y="1008" font-size="7.5">B-SIGN (3x)</text>
+    <text x="210" y="1008" font-size="8" font-weight="bold">Signage Varian (Sweet, Tort, Crois)</text>
+    <text x="460" y="1008" font-size="7.5">1400/1100 × 50 × 500</text>
+    <text x="620" y="1008" font-size="7.5">Neon Box Slim Akrilik 2mm, Huruf Timbul LED Backlit</text>
+    <text x="980" y="1008" font-size="7.5" font-weight="bold">PRODUKSI (ASSUMED)</text>
+    
+
+    <rect x="50" y="1015" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="1029" font-size="8" font-weight="bold">B07</text>
+    <text x="110" y="1029" font-size="7.5">B-STAGE</text>
+    <text x="210" y="1029" font-size="8" font-weight="bold">Main Stage 'Gesrek Challenge'</text>
+    <text x="460" y="1029" font-size="7.5">2000 × 1500 × 2000</text>
+    <text x="620" y="1029" font-size="7.5">Platform Level Panggung T=500 Kayu Multiplek 18mm Karpet + Arch Headphone</text>
+    <text x="980" y="1029" font-size="7.5" font-weight="bold">PRODUKSI (ASSUMED)</text>
+    
+
+    <rect x="50" y="1036" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="1050" font-size="8" font-weight="bold">B08</text>
+    <text x="110" y="1050" font-size="7.5">B-CHARM</text>
+    <text x="210" y="1050" font-size="8" font-weight="bold">Meja Kerja Charm Making (DIY)</text>
+    <text x="460" y="1050" font-size="7.5">2400 × 900 × 780</text>
+    <text x="620" y="1050" font-size="7.5">Top Table Solid Wood / Plywood finish HPL Putih Glossy, Kaki Hollow Besi</text>
+    <text x="980" y="1050" font-size="7.5" font-weight="bold">PRODUKSI BARU</text>
+    
+
+    <rect x="50" y="1057" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="1071" font-size="8" font-weight="bold">B09</text>
+    <text x="110" y="1071" font-size="7.5">B-STOOL (4x)</text>
+    <text x="210" y="1071" font-size="8" font-weight="bold">Stool Bangku Kerja Workshop</text>
+    <text x="460" y="1071" font-size="7.5">Ø 350 × T 450</text>
+    <text x="620" y="1071" font-size="7.5">Dudukan Busa Lapis Vinyl Pink/Biru, Kaki Kayu Solid Tapered</text>
+    <text x="980" y="1071" font-size="7.5" font-weight="bold">SEWA / PRODUKSI</text>
+    
+
+    <rect x="50" y="1078" width="1120" height="21" fill="#ffffff" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="65" y="1092" font-size="8" font-weight="bold">B10</text>
+    <text x="110" y="1092" font-size="7.5">B-DESK</text>
+    <text x="210" y="1092" font-size="8" font-weight="bold">Event Desk Kasir JetZ</text>
+    <text x="460" y="1092" font-size="7.5">2000 × 1000 × 2000</text>
+    <text x="620" y="1092" font-size="7.5">Meja Kasir POSM Brand 2.0m + Header + Area Repack Tas Belakang</text>
+    <text x="980" y="1092" font-size="7.5" font-weight="bold">POSM RESMI (GIVEN)</text>
+    
+</g>
+
+<!-- KOP GAMBAR KERJA (TITLE BLOCK ARSITEKTUR) -->
+<g id="title-block">
+  <!-- Frame Luar Kop -->
+  <rect x="1215" y="733" width="440" height="430" fill="#ffffff" stroke="#000000" stroke-width="1.8"/>
+  
+  <!-- Baris Klien -->
+  <rect x="1215" y="733" width="440" height="45" fill="#f8fafc" stroke="#000000" stroke-width="0.8"/>
+  <text x="1230" y="751" font-size="8" font-weight="bold" fill="#666666">PEMBERI TUGAS / KLIEN:</text>
+  <text x="1230" y="767" font-size="11" font-weight="bold" fill="#000000">PT INDOFOOD FORTUNA MAKMUR</text>
+
+  <!-- Baris Proyek -->
+  <rect x="1215" y="778" width="440" height="55" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+  <text x="1230" y="795" font-size="8" font-weight="bold" fill="#666666">NAMA PROYEK:</text>
+  <text x="1230" y="811" font-size="11" font-weight="bold" fill="#000000">BOOTH ACTIVATION CHITATO × JETZ 2026</text>
+  <text x="1230" y="825" font-size="8.5" fill="#333333">Lobby Indofood Tower, Jl. Jend. Sudirman Kav. 76-78, Jakarta</text>
+
+  <!-- Baris Judul Lembar Gambar -->
+  <rect x="1215" y="833" width="440" height="55" fill="#f8fafc" stroke="#000000" stroke-width="0.8"/>
+  <text x="1230" y="851" font-size="8" font-weight="bold" fill="#666666">JUDUL GAMBAR KERJA:</text>
+  <text x="1230" y="869" font-size="13" font-weight="bold" fill="#000000">DENAH TATA LETAK &amp; TAMPAK DEPAN BOOTH</text>
+  <text x="1230" y="881" font-size="8.5" fill="#000000">(LAYOUT PLAN, ELEVATION &amp; SPECIFICATION)</text>
+
+  <!-- Grid Kolom Pengesahan & Paraf -->
+  <rect x="1215" y="888" width="440" height="145" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+  
+  <!-- Header Kolom Paraf -->
+  <line x1="1361" y1="888" x2="1361" y2="1033" stroke="#000000" stroke-width="0.8"/>
+  <line x1="1507" y1="888" x2="1507" y2="1033" stroke="#000000" stroke-width="0.8"/>
+  <line x1="1215" y1="913" x2="1655" y2="913" stroke="#000000" stroke-width="0.8"/>
+
+  <text x="1288" y="905" font-size="8.5" font-weight="bold" text-anchor="middle">DIGAMBAR (DRAFTER)</text>
+  <text x="1434" y="905" font-size="8.5" font-weight="bold" text-anchor="middle">DIPERIKSA (CHECKED)</text>
+  <text x="1580" y="905" font-size="8.5" font-weight="bold" text-anchor="middle">DISETUJUI (APPROVED)</text>
+
+  <!-- Kolom Paraf Isi -->
+  <text x="1288" y="978" font-size="9" font-weight="bold" text-anchor="middle">ANTIGRAVITY CAD</text>
+  <text x="1288" y="993" font-size="7.5" text-anchor="middle">Tgl: 02/10/2026</text>
+
+  <text x="1434" y="978" font-size="9" font-weight="bold" text-anchor="middle">LEAD PRODUCTION</text>
+  <text x="1434" y="993" font-size="7.5" text-anchor="middle">Tgl: --/10/2026</text>
+
+  <text x="1580" y="978" font-size="10" font-weight="bold" text-anchor="middle">DIMITRI AHMAD</text>
+  <text x="1580" y="993" font-size="7.5" text-anchor="middle">Brand Coordinator</text>
+
+  <!-- Metadata Bawah Kop -->
+  <rect x="1215" y="1033" width="440" height="130" fill="#ffffff" stroke="#000000" stroke-width="0.8"/>
+  
+  <line x1="1215" y1="1065" x2="1655" y2="1065" stroke="#000000" stroke-width="0.6"/>
+  <line x1="1215" y1="1098" x2="1655" y2="1098" stroke="#000000" stroke-width="0.6"/>
+  <line x1="1215" y1="1130" x2="1655" y2="1130" stroke="#000000" stroke-width="0.6"/>
+  <line x1="1435" y1="1033" x2="1435" y2="1163" stroke="#000000" stroke-width="0.6"/>
+
+  <text x="1230" y="1053" font-size="8" font-weight="bold">SKALA: 1 : 50 (A3)</text>
+  <text x="1450" y="1053" font-size="8" font-weight="bold">SATUAN: MILIMETER (mm)</text>
+
+  <text x="1230" y="1085" font-size="8" font-weight="bold">TANGGAL: 02 OKTOBER 2026</text>
+  <text x="1450" y="1085" font-size="8" font-weight="bold">STATUS: DRAFT PRODUKSI</text>
+
+  <text x="1230" y="1117" font-size="8" font-weight="bold">KODE SUMBER: booth.spec.json</text>
+  <text x="1450" y="1117" font-size="8" font-weight="bold">REVISI: REV-0 (GATE 0)</text>
+
+  <!-- Nomor Lembar Gambar Besar -->
+  <text x="1230" y="1151" font-size="9" font-weight="bold">LEMBAR GAMBAR KE:</text>
+  <text x="1535" y="1155" font-size="20" font-weight="bold" fill="#000000">T - 01 / 02</text>
+</g>
+
+</svg>

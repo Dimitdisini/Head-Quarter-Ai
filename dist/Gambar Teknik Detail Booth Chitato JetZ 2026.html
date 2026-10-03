@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gambar Teknik Detail — Booth Chitato × JetZ 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #f0ede8; color: #1a1a1a; }
+  .page-header { background: #1a1a1a; color: #fff; padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; }
+  .page-header h1 { font-size: 16px; font-weight: 600; letter-spacing: 0.5px; }
+  .page-header .sub { font-size: 11px; color: #888; margin-top: 3px; }
+  .doc-no { font-size: 11px; color: #666; text-align: right; }
+  .doc-no strong { display: block; color: #fff; font-size: 14px; font-weight: 700; }
+  
+  .floor-warning { background: #fee2e2; color: #991b1b; padding: 12px 40px; font-size: 12px; font-weight: 600; text-align: center; border-bottom: 2px solid #ef4444; }
+
+  .asset-nav { background: #fff; border-bottom: 1px solid #ddd; padding: 0 40px; display: flex; gap: 0; overflow-x: auto; }
+  .nav-btn { padding: 14px 20px; font-size: 12px; font-weight: 500; color: #777; cursor: pointer; border-bottom: 3px solid transparent; background: none; border-top: none; border-left: none; border-right: none; white-space: nowrap; transition: 0.2s; }
+  .nav-btn:hover { color: #1a1a1a; }
+  .nav-btn.active { color: #1a1a1a; border-bottom-color: #1a1a1a; font-weight: 700; }
+
+  .gamtek-wrap { padding: 32px 40px; }
+  .gamtek-sheet { display: none; background: #fff; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.10); overflow: hidden; margin-bottom: 24px; }
+  .gamtek-sheet.active { display: block; }
+  
+  .sheet-header { background: #f7f6f3; border-bottom: 1px solid #e5e5e5; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+  .sheet-header .sh-code { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #aaa; }
+  .sheet-header .sh-name { font-size: 16px; font-weight: 700; color: #1a1a1a; margin-top: 2px; }
+  .sheet-header .sh-zone { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 3px; letter-spacing: 0.5px; }
+  .zone-a { background: #fff3e0; color: #c2410c; } .zone-b { background: #fdf2f8; color: #9d174d; }
+
+  .sheet-body { display: grid; grid-template-columns: 1fr 380px; gap: 0; }
+  .visual-panel { padding: 24px; background: #f9f8f6; border-right: 1px solid #e5e5e5; }
+  .visual-panel img { width: 100%; border-radius: 4px; display: block; }
+
+  .spec-panel { padding: 24px; }
+  .spec-block { margin-bottom: 24px; }
+  .spec-block-title { font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #bbb; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid #f0f0f0; }
+
+  .dim-table { width: 100%; border-collapse: collapse; }
+  .dim-table tr { border-bottom: 1px solid #f3f3f3; }
+  .dim-table td { padding: 7px 0; font-size: 12px; vertical-align: top; }
+  .dim-table td:first-child { color: #999; font-weight: 500; width: 50%; }
+  .dim-table td:last-child { color: #1a1a1a; font-weight: 700; font-family: monospace; }
+
+  .material-list { list-style: none; }
+  .material-list li { font-size: 11px; color: #555; padding: 4px 0; display: flex; gap: 8px; border-bottom: 1px solid #f5f5f5; }
+  .material-list li .mat-no { background: #f0f0f0; color: #888; font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 2px; flex-shrink: 0; }
+  
+  .material-list li.alert-mat .mat-no { background: #ef4444; color: white; }
+  .material-list li.alert-mat { color: #b91c1c; font-weight: 600; }
+
+  .note-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 4px; padding: 10px 14px; font-size: 11px; color: #78350f; line-height: 1.6; }
+  .note-box.alert { background: #fef2f2; border-color: #fecaca; color: #991b1b; }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div>
+    <h1>Gambar Teknik Detail — Booth Aktivasi 2026</h1>
+    <div class="sub">Chitato × TREASURE | JetZ × Hearts2Hearts · Indofood Tower Lobby</div>
+  </div>
+  <div class="doc-no">
+    <strong>GTK-2026-001</strong>
+    Revisi: 02 · Updated per Brief
+  </div>
+</header>
+
+<div class="floor-warning">
+  ⚠ PERHATIAN VENUE: Proteksi lantai WAJIB menggunakan karpet & lakban hitam. Harus extend 1 meter dari seluruh batas luar booth (Dimensi total karpet: 32m × 6m).
+</div>
+
+<nav class="asset-nav">
+  <button class="nav-btn active" onclick="showSheet('a01', this)">A01 · Bar Counter</button>
+  <button class="nav-btn" onclick="showSheet('a02', this)">A02 · Neon Arch Portal</button>
+  <button class="nav-btn" onclick="showSheet('a03', this)">A03 · Lightbox & Standee</button>
+  <button class="nav-btn" onclick="showSheet('b01', this)">B01 · Headphone Stage</button>
+  <button class="nav-btn" onclick="showSheet('b02', this)">B02 · Locker Divider</button>
+  <button class="nav-btn" onclick="showSheet('b03', this)">B03 · Shelf + Charm Table</button>
+</nav>
+
+<div class="gamtek-wrap">
+
+  <!-- A01 BAR COUNTER -->
+  <div class="gamtek-sheet active" id="sheet-a01">
+    <div class="sheet-header">
+      <div>
+        <div class="sh-code">GTK-A01 · Zona A</div>
+        <div class="sh-name">Bar Counter + Display Shelf Unit</div>
+      </div>
+      <span class="sh-zone zone-a">ZONA A · CHITATO</span>
+    </div>
+    <div class="sheet-body">
+      <div class="visual-panel"><img src="renders/chitato_a_bar_counter.jpg" alt="Bar Counter"></div>
+      <div class="spec-panel">
+        <div class="spec-block">
+          <div class="spec-block-title">Dimensi Utama</div>
+          <table class="dim-table">
+            <tr><td>Counter L × D × T</td><td>150 × 60 × 110 cm</td></tr>
+            <tr><td>Shelf Unit L × D × T</td><td>180 × 40 × 190 cm</td></tr>
+            <tr><td>Tinggi Maks Booth</td><td>245 cm (Batas venue 2.5m)</td></tr>
+          </table>
+        </div>
+        <div class="spec-block">
+          <div class="spec-block-title">Material Khusus</div>
+          <ul class="material-list">
+            <li><span class="mat-no">M1</span>Panel MDF 18mm + laminasi HPL oranye matte</li>
+            <li><span class="mat-no">M2</span>Countertop solid surface putih</li>
+            <li class="alert-mat"><span class="mat-no">M3</span>Plastik bening custom (untuk repack tas + snack)</li>
+          </ul>
+        </div>
+        <div class="spec-block">
+          <div class="note-box alert">
+            <strong>Target Selling:</strong> Area ini akan melayani 1.800 paket @35k. Wajib pastikan space di belakang counter cukup untuk menyimpan stok kardus dan plastik repack yang rapi agar tidak terlihat berantakan dari depan.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A02 NEON ARCH -->
+  <div class="gamtek-sheet" id="sheet-a02">
+    <div class="sheet-header">
+      <div>
+        <div class="sh-code">GTK-A02 · Zona A</div>
+        <div class="sh-name">Neon Arch Portal + Kiosk Interaktif</div>
+      </div>
+      <span class="sh-zone zone-a">ZONA A · CHITATO</span>
+    </div>
+    <div class="sheet-body">
+      <div class="visual-panel"><img src="renders/chitato_b_neon_arch.jpg" alt="Neon Arch"></div>
+      <div class="spec-panel">
+        <div class="spec-block">
+          <div class="spec-block-title">Dimensi Utama</div>
+          <table class="dim-table">
+            <tr><td>Gapura L × D × T</td><td>220 × 30 × 245 cm</td></tr>
+            <tr><td>Bukaan bersih L × T</td><td>140 × 205 cm</td></tr>
+            <tr><td>Kiosk 65" L × T</td><td>92 × 158 cm (portrait)</td></tr>
+          </table>
+        </div>
+        <div class="spec-block">
+          <div class="note-box">
+            Ketinggian mentok pada 2.45m agar tidak melanggar batas maksimum Indofood Tower (2.5m).
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A03 LIGHTBOX & STANDEE -->
+  <div class="gamtek-sheet" id="sheet-a03">
+    <div class="sheet-header">
+      <div>
+        <div class="sh-code">GTK-A03 · Zona A</div>
+        <div class="sh-name">Lightbox Panel & Standee TREASURE</div>
+      </div>
+      <span class="sh-zone zone-a">ZONA A · CHITATO</span>
+    </div>
+    <div class="sheet-body">
+      <div class="visual-panel"><img src="renders/chitato_c_lightbox_panel.jpg" alt="Lightbox Panel"></div>
+      <div class="spec-panel">
+        <div class="spec-block">
+          <div class="spec-block-title">Dimensi Utama</div>
+          <table class="dim-table">
+            <tr><td>Tinggi Standee</td><td>180 cm (Wajib sesuai brief)</td></tr>
+            <tr><td>Panel L × T</td><td>55 × 185 cm per unit</td></tr>
+          </table>
+        </div>
+        <div class="spec-block">
+          <div class="note-box alert">
+            <strong>ATURAN SUSUNAN STANDEE TREASURE:</strong><br>
+            Jika standee dijejerkan, urutan baku dari kiri ke kanan adalah: Choi Hyunsuk, Junkyu, So Junghwan, Yoshi, Yoo Jaehyun, Haruto, Doyoung, Park Jeongwoo, Jihoon. Dilarang diacak!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B01 HEADPHONE STAGE -->
+  <div class="gamtek-sheet" id="sheet-b01">
+    <div class="sheet-header">
+      <div>
+        <div class="sh-code">GTK-B01 · Zona B</div>
+        <div class="sh-name">Headphone Stage + DJ Area</div>
+      </div>
+      <span class="sh-zone zone-b">ZONA B · JETZ</span>
+    </div>
+    <div class="sheet-body">
+      <div class="visual-panel"><img src="renders/jetz_a_headphone_stage.jpg" alt="Headphone Stage"></div>
+      <div class="spec-panel">
+        <div class="spec-block">
+          <div class="spec-block-title">Dimensi Utama</div>
+          <table class="dim-table">
+            <tr><td>Headphone L × H</td><td>220 × 180 cm</td></tr>
+            <tr><td>Neon ring Ø</td><td>200 cm (diameter)</td></tr>
+          </table>
+        </div>
+        <div class="spec-block">
+          <div class="note-box alert">
+            <strong>RESTRIKSI AUDIO GEDUNG:</strong><br>
+            Venue melarang adanya "suara dominan". DJ Table ini hanya boleh berfungsi sebagai setup <strong>Silent Disco</strong> (peserta memakai headphone) atau sekadar <strong>props photo-op</strong>. Dilarang keras membawa PA Speaker besar yang menembakkan musik ke lobby.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B02 LOCKER DIVIDER -->
+  <div class="gamtek-sheet" id="sheet-b02">
+    <div class="sheet-header">
+      <div>
+        <div class="sh-code">GTK-B02 · Zona B</div>
+        <div class="sh-name">Locker Divider & Standee H2H</div>
+      </div>
+      <span class="sh-zone zone-b">ZONA B · JETZ</span>
+    </div>
+    <div class="sheet-body">
+      <div class="visual-panel"><img src="renders/jetz_b_locker_wall.jpg" alt="Locker Wall"></div>
+      <div class="spec-panel">
+        <div class="spec-block">
+          <div class="spec-block-title">Dimensi Utama</div>
+          <table class="dim-table">
+            <tr><td>Tinggi Standee H2H</td><td>165 cm (Wajib sesuai brief)</td></tr>
+            <tr><td>Dimensi Loker</td><td>±600 cm (Menyesuaikan fisik loker Cirebon)</td></tr>
+          </table>
+        </div>
+        <div class="spec-block">
+          <div class="spec-block-title">Material Khusus</div>
+          <ul class="material-list">
+            <li class="alert-mat"><span class="mat-no">M1</span>Loker Existing (Pick up Cirebon)</li>
+            <li><span class="mat-no">M2</span>Standee Sintra Board H 165cm</li>
+          </ul>
+        </div>
+        <div class="spec-block">
+          <div class="note-box alert">
+            <strong>LOGISTIK LOKER:</strong><br>
+            Loker tidak difabrikasi ulang dari MDF. Loker diambil langsung dari Cirebon ke SPIT. <strong>Fungsi:</strong> Digunakan sebagai dinding pembatas (divider) membelah Zona Chitato (Kiri 15m) dan Zona JetZ (Kanan 15m).
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B03 SHELF + CHARM TABLE -->
+  <div class="gamtek-sheet" id="sheet-b03">
+    <div class="sheet-header">
+      <div>
+        <div class="sh-code">GTK-B03 · Zona B</div>
+        <div class="sh-name">Charm Workshop Table & Selling</div>
+      </div>
+      <span class="sh-zone zone-b">ZONA B · JETZ</span>
+    </div>
+    <div class="sheet-body">
+      <div class="visual-panel"><img src="renders/jetz_c_shelf_charm.jpg" alt="Charm Table"></div>
+      <div class="spec-panel">
+        <div class="spec-block">
+          <div class="spec-block-title">Aktivitas Mandatory</div>
+          <table class="dim-table">
+            <tr><td>Aktivitas</td><td>Charm Making (JetZ)</td></tr>
+            <tr><td>Target Sales</td><td>1.800 Paket @35k</td></tr>
+          </table>
+        </div>
+        <div class="spec-block">
+          <div class="note-box">
+            Aktivitas <em>Charm Making</em> adalah aktivitas mandatory JetZ. Siapkan baki akrilik untuk bead/manik. Selling merchandise juga terintegrasi di rak ini. Pastikan ketersediaan plastik repack bening di area laci/storage.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function showSheet(id, btn) {
+    document.querySelectorAll('.gamtek-sheet').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('sheet-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>

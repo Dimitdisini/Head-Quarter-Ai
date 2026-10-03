@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Aset B01 - JetZ Headphone Stage</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #1a1a1a; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        #canvas-container { width: 100vw; height: 100vh; display: block; }
+        
+        /* UI Overlay */
+        .overlay {
+            position: absolute; top: 20px; left: 20px; right: 20px;
+            pointer-events: none; display: flex; justify-content: space-between;
+        }
+        .info-panel {
+            background: rgba(255, 255, 255, 0.95); padding: 20px;
+            border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            pointer-events: auto; max-width: 320px;
+        }
+        .info-panel h1 { margin: 0 0 5px 0; font-size: 18px; color: #1a1a1a; }
+        .info-panel p { margin: 0 0 15px 0; font-size: 12px; color: #666; }
+        .tag { background: #fdf2f8; color: #9d174d; padding: 4px 8px; font-size: 10px; font-weight: bold; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+        
+        .controls { display: flex; flex-direction: column; gap: 8px; }
+        button {
+            background: #1a1a1a; color: white; border: none; padding: 10px;
+            border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer;
+            transition: 0.2s; text-align: left;
+        }
+        button:hover { background: #ec4899; }
+        .btn-download { background: #ec4899; text-align: center; margin-top: 10px; }
+        .btn-download:hover { background: #be185d; }
+        
+        .loading {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: white; font-family: monospace; font-size: 14px; pointer-events: none;
+        }
+    </style>
+    
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/exporters/GLTFExporter.js"></script>
+</head>
+<body>
+
+    <div class="loading" id="loader">Membangun 3D Headphone Stage...</div>
+    <div id="canvas-container"></div>
+    
+    <div class="overlay">
+        <div class="info-panel">
+            <div class="tag">ZONA B · JETZ</div>
+            <h1>B01 - Headphone Stage</h1>
+            <p>Properti panggung utama JetZ berupa headphone raksasa krem dengan neon portal pink dan meja DJ (Silent Disco).</p>
+            
+            <div class="controls">
+                <button onclick="setCamera('front')">🎥 Tampak Depan</button>
+                <button onclick="setCamera('iso')">🎥 Tampak 3/4 Sudut</button>
+                <button onclick="setCamera('dj')">🎥 POV DJ (Belakang)</button>
+                <button onclick="toggleAutoRotate()" id="btn-rotate">🔄 Putar Otomatis: ON</button>
+                <button class="btn-download" onclick="exportGLB()">⬇️ Unduh Model (.glb)</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Setup Dasar
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color('#2a2a2a');
+        scene.fog = new THREE.FogExp2('#2a2a2a', 0.05);
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.maxPolarAngle = Math.PI / 2 + 0.1; // Jangan terlalu ke bawah tanah
+        
+        let autoRotate = true;
+
+        // Group Utama (agar mudah diekspor)
+        const stageGroup = new THREE.Group();
+        scene.add(stageGroup);
+
+        // Material Palet
+        const matPlatform = new THREE.MeshStandardMaterial({ color: '#f5f5f5', roughness: 0.8 });
+        const matHeadphoneBody = new THREE.MeshStandardMaterial({ color: '#fef3c7', roughness: 0.4, metalness: 0.1 });
+        const matEarpad = new THREE.MeshStandardMaterial({ color: '#fde68a', roughness: 0.9 });
+        const matNeonPink = new THREE.MeshStandardMaterial({ color: '#f472b6', emissive: '#ec4899', emissiveIntensity: 2 });
+        const matDJTable = new THREE.MeshStandardMaterial({ color: '#1a1a1a', roughness: 0.5 });
+        const matDJDeck = new THREE.MeshStandardMaterial({ color: '#333333', roughness: 0.2, metalness: 0.8 });
+
+        // 1. Panggung Bundar (Platform)
+        const geoPlatform = new THREE.CylinderGeometry(2.5, 2.5, 0.2, 64);
+        const meshPlatform = new THREE.Mesh(geoPlatform, matPlatform);
+        meshPlatform.position.y = 0.1;
+        meshPlatform.receiveShadow = true;
+        stageGroup.add(meshPlatform);
+
+        // 2. Headphone Raksasa
+        const headphone = new THREE.Group();
+        
+        // Headband (Bando)
+        const geoHeadband = new THREE.TorusGeometry(1.6, 0.15, 32, 64, Math.PI);
+        const meshHeadband = new THREE.Mesh(geoHeadband, matHeadphoneBody);
+        meshHeadband.rotation.z = Math.PI; // Balik ke atas
+        meshHeadband.position.y = 1.6;
+        meshHeadband.castShadow = true;
+        headphone.add(meshHeadband);
+
+        // Fungsi Bikin Earcup Kiri/Kanan
+        function createEarcup(xPos) {
+            const cupGroup = new THREE.Group();
+            
+            // Batok luar
+            const geoCup = new THREE.CylinderGeometry(0.6, 0.6, 0.25, 32);
+            const meshCup = new THREE.Mesh(geoCup, matHeadphoneBody);
+            meshCup.rotation.z = Math.PI / 2;
+            meshCup.castShadow = true;
+            cupGroup.add(meshCup);
+
+            // Busa dalam (Earpad)
+            const geoPad = new THREE.TorusGeometry(0.45, 0.2, 32, 32);
+            const meshPad = new THREE.Mesh(geoPad, matEarpad);
+            meshPad.rotation.y = Math.PI / 2;
+            // Geser busa ke arah dalam
+            meshPad.position.x = xPos > 0 ? -0.15 : 0.15; 
+            cupGroup.add(meshPad);
+
+            // Posisi total cup
+            cupGroup.position.set(xPos, 1.6, 0);
+            
+            // Miringkan sedikit biar natural
+            cupGroup.rotation.z = xPos > 0 ? 0.1 : -0.1;
+            cupGroup.rotation.y = xPos > 0 ? -0.1 : 0.1;
+
+            return cupGroup;
+        }
+
+        headphone.add(createEarcup(-1.7));
+        headphone.add(createEarcup(1.7));
+        
+        // Geser headphone agak ke belakang panggung
+        headphone.position.z = -0.5;
+        stageGroup.add(headphone);
+
+        // 3. Neon Ring Portal (Di belakang headphone)
+        const geoNeon = new THREE.TorusGeometry(2.0, 0.04, 16, 64, Math.PI);
+        const meshNeon = new THREE.Mesh(geoNeon, matNeonPink);
+        meshNeon.rotation.z = Math.PI;
+        meshNeon.position.set(0, 2.0, -1.0);
+        stageGroup.add(meshNeon);
+
+        // Cahaya dari Neon Pink
+        const neonLight = new THREE.PointLight('#f472b6', 1.5, 5);
+        neonLight.position.set(0, 2.0, -0.8);
+        stageGroup.add(neonLight);
+
+        // 4. Meja DJ (Di depan)
+        const djGroup = new THREE.Group();
+        
+        // Meja utama
+        const geoTable = new THREE.BoxGeometry(1.4, 0.9, 0.6);
+        const meshTable = new THREE.Mesh(geoTable, matDJTable);
+        meshTable.position.y = 0.9 / 2;
+        meshTable.castShadow = true;
+        meshTable.receiveShadow = true;
+        djGroup.add(meshTable);
+
+        // DJ Deck (CDJ & Mixer)
+        const geoDeck = new THREE.BoxGeometry(0.3, 0.05, 0.4);
+        const meshCDJ1 = new THREE.Mesh(geoDeck, matDJDeck);
+        meshCDJ1.position.set(-0.35, 0.9 + 0.025, 0);
+        djGroup.add(meshCDJ1);
+
+        const meshCDJ2 = new THREE.Mesh(geoDeck, matDJDeck);
+        meshCDJ2.position.set(0.35, 0.9 + 0.025, 0);
+        djGroup.add(meshCDJ2);
+
+        const geoMixer = new THREE.BoxGeometry(0.25, 0.06, 0.4);
+        const meshMixer = new THREE.Mesh(geoMixer, matDJDeck);
+        meshMixer.position.set(0, 0.9 + 0.03, 0);
+        djGroup.add(meshMixer);
+
+        djGroup.position.set(0, 0.2, 1.0); // Taruh di depan panggung
+        stageGroup.add(djGroup);
+
+        // Pencahayaan Utama
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight.position.set(5, 8, 5);
+        dirLight.castShadow = true;
+        dirLight.shadow.mapSize.width = 2048;
+        dirLight.shadow.mapSize.height = 2048;
+        scene.add(dirLight);
+
+        // Set Posisi Kamera Awal (3/4 Iso)
+        setCamera('iso');
+
+        // Hilangkan loader
+        document.getElementById('loader').style.display = 'none';
+
+        // Logika Tombol UI
+        function setCamera(view) {
+            if(view === 'front') {
+                camera.position.set(0, 1.5, 7);
+            } else if(view === 'iso') {
+                camera.position.set(5, 3, 5);
+            } else if(view === 'dj') {
+                camera.position.set(0, 2.5, -4);
+            }
+            controls.target.set(0, 1.5, 0);
+        }
+
+        function toggleAutoRotate() {
+            autoRotate = !autoRotate;
+            document.getElementById('btn-rotate').innerText = autoRotate ? '🔄 Putar Otomatis: ON' : '🔄 Putar Otomatis: OFF';
+        }
+
+        // Export ke GLB
+        function exportGLB() {
+            const exporter = new THREE.GLTFExporter();
+            exporter.parse(stageGroup, function (glb) {
+                const blob = new Blob([glb], { type: 'application/octet-stream' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.style.display = 'none';
+                link.href = url;
+                link.download = 'jetz_headphone_stage_b01.glb';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }, { binary: true });
+        }
+
+        // Animasi Loop
+        function animate() {
+            requestAnimationFrame(animate);
+            if(autoRotate) {
+                stageGroup.rotation.y += 0.005;
+            } else {
+                stageGroup.rotation.y = 0; // Kunci saat mati
+            }
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        // Handle Resize layarg
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        animate();
+    </script>
+</body>
+</html>

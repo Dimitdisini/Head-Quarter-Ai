@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Aset - JetZ School Desk Nostalgia</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #1a1a1a; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        #canvas-container { width: 100vw; height: 100vh; display: block; }
+        
+        .overlay { position: absolute; top: 20px; left: 20px; pointer-events: none; }
+        .info-panel { background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); pointer-events: auto; max-width: 320px; }
+        .info-panel h1 { margin: 0 0 5px 0; font-size: 18px; color: #1a1a1a; }
+        .info-panel p { margin: 0 0 15px 0; font-size: 12px; color: #666; }
+        .tag { background: #fdf2f8; color: #9d174d; padding: 4px 8px; font-size: 10px; font-weight: bold; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+        
+        .controls { display: flex; flex-direction: column; gap: 8px; }
+        button { background: #1a1a1a; color: white; border: none; padding: 10px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; transition: 0.2s; text-align: center; }
+        button:hover { background: #ec4899; }
+        
+        .loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-family: monospace; font-size: 14px; pointer-events: none; }
+    </style>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/exporters/GLTFExporter.js"></script>
+</head>
+<body>
+
+    <div class="loading" id="loader">Membangun Meja Sekolah Korea...</div>
+    <div id="canvas-container"></div>
+    
+    <div class="overlay">
+        <div class="info-panel">
+            <div class="tag">ZONA B · JETZ</div>
+            <h1>B09 - School Desk Nostalgia</h1>
+            <p>Set meja kursi ala sekolah Korea (rangka besi pastel + kayu birch). Lengkap dengan Walkman, diary, cermin, dan remahan JetZ.</p>
+            
+            <div class="controls">
+                <button onclick="toggleAutoRotate()" id="btn-rotate">🔄 Putar Otomatis: ON</button>
+                <button onclick="exportGLB()">⬇️ Unduh Model (.glb)</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color('#333333');
+        scene.fog = new THREE.FogExp2('#333333', 0.05);
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 1.2, 2.0); // Close-up view
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.maxPolarAngle = Math.PI / 2 + 0.1;
+        controls.target.set(0, 0.75, 0); // Focus on table top
+        
+        let autoRotate = true;
+        const mainGroup = new THREE.Group();
+        scene.add(mainGroup);
+
+        // --- MATERIALS ---
+        const matFloor = new THREE.MeshStandardMaterial({ color: '#555555', roughness: 0.8 });
+        const matWood = new THREE.MeshStandardMaterial({ color: '#fbe2c0', roughness: 0.9 }); // Birch sangat muda
+        const matFrame = new THREE.MeshStandardMaterial({ color: '#bfdbfe', roughness: 0.4, metalness: 0.1 }); // Pastel Baby Blue
+        
+        // Props Materials
+        const matWalkman = new THREE.MeshStandardMaterial({ color: '#9ca3af', metalness: 0.6, roughness: 0.3 }); // Silver retro
+        const matCable = new THREE.MeshStandardMaterial({ color: '#ffffff' }); // Kabel putih
+        const matPaper = new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: 1.0 });
+        const matCover = new THREE.MeshStandardMaterial({ color: '#f472b6', roughness: 0.7 }); // Pink Diary
+        const matJetz = new THREE.MeshStandardMaterial({ color: '#ec4899', roughness: 0.6 }); // Pink Jetz Sweet Stick
+        const matMirror = new THREE.MeshStandardMaterial({ color: '#c4b5fd' }); // Lavender cermin
+
+        // Lantai
+        const floor = new THREE.Mesh(new THREE.PlaneGeometry(5, 5), matFloor);
+        floor.rotation.x = -Math.PI / 2;
+        floor.receiveShadow = true;
+        scene.add(floor);
+
+        // --- 1. MEJA KOREA ---
+        const deskGroup = new THREE.Group();
+        
+        // Papan Meja Utama (60 x 40 cm)
+        const geoTop = new THREE.BoxGeometry(0.6, 0.02, 0.4);
+        const meshTop = new THREE.Mesh(geoTop, matWood);
+        meshTop.position.y = 0.75;
+        meshTop.castShadow = true;
+        meshTop.receiveShadow = true;
+        deskGroup.add(meshTop);
+
+        // Laci Kolong (Metal shelf under top)
+        const geoShelf = new THREE.BoxGeometry(0.55, 0.01, 0.35);
+        const meshShelf = new THREE.Mesh(geoShelf, matFrame);
+        meshShelf.position.y = 0.65;
+        meshShelf.castShadow = true;
+        deskGroup.add(meshShelf);
+        
+        // Penutup laci kiri kanan & belakang
+        const geoSideShelf = new THREE.BoxGeometry(0.01, 0.1, 0.35);
+        const lShelf = new THREE.Mesh(geoSideShelf, matFrame); lShelf.position.set(-0.27, 0.7, 0); deskGroup.add(lShelf);
+        const rShelf = new THREE.Mesh(geoSideShelf, matFrame); rShelf.position.set(0.27, 0.7, 0); deskGroup.add(rShelf);
+        
+        // Kaki Meja Besi Hollow U-shape
+        const geoLegH = new THREE.BoxGeometry(0.02, 0.75, 0.02);
+        const geoLegBase = new THREE.BoxGeometry(0.02, 0.02, 0.35);
+        
+        const lLegF = new THREE.Mesh(geoLegH, matFrame); lLegF.position.set(-0.27, 0.375, 0.15); lLegF.castShadow=true; deskGroup.add(lLegF);
+        const lLegB = new THREE.Mesh(geoLegH, matFrame); lLegB.position.set(-0.27, 0.375, -0.15); lLegB.castShadow=true; deskGroup.add(lLegB);
+        const lLegD = new THREE.Mesh(geoLegBase, matFrame); lLegD.position.set(-0.27, 0.01, 0); lLegD.castShadow=true; deskGroup.add(lLegD);
+
+        const rLegF = new THREE.Mesh(geoLegH, matFrame); rLegF.position.set(0.27, 0.375, 0.15); rLegF.castShadow=true; deskGroup.add(rLegF);
+        const rLegB = new THREE.Mesh(geoLegH, matFrame); rLegB.position.set(0.27, 0.375, -0.15); rLegB.castShadow=true; deskGroup.add(rLegB);
+        const rLegD = new THREE.Mesh(geoLegBase, matFrame); rLegD.position.set(0.27, 0.01, 0); rLegD.castShadow=true; deskGroup.add(rLegD);
+
+        deskGroup.position.set(0, 0, -0.1);
+        mainGroup.add(deskGroup);
+
+        // --- 2. KURSI KOREA ---
+        const chairGroup = new THREE.Group();
+        
+        // Dudukan kayu
+        const geoSeat = new THREE.BoxGeometry(0.38, 0.02, 0.35);
+        const meshSeat = new THREE.Mesh(geoSeat, matWood);
+        meshSeat.position.set(0, 0.45, 0);
+        meshSeat.castShadow = true;
+        chairGroup.add(meshSeat);
+
+        // Sandaran punggung kayu
+        const geoBack = new THREE.BoxGeometry(0.38, 0.15, 0.02);
+        const meshBack = new THREE.Mesh(geoBack, matWood);
+        meshBack.position.set(0, 0.75, -0.18);
+        meshBack.castShadow = true;
+        chairGroup.add(meshBack);
+
+        // Tiang Sandaran besi
+        const geoBackPole = new THREE.BoxGeometry(0.02, 0.35, 0.02);
+        const lPole = new THREE.Mesh(geoBackPole, matFrame); lPole.position.set(-0.15, 0.6, -0.16); chairGroup.add(lPole);
+        const rPole = new THREE.Mesh(geoBackPole, matFrame); rPole.position.set(0.15, 0.6, -0.16); chairGroup.add(rPole);
+
+        // Kaki kursi besi
+        const clLegF = new THREE.Mesh(geoLegH, matFrame); clLegF.scale.set(1, 0.6, 1); clLegF.position.set(-0.15, 0.225, 0.15); chairGroup.add(clLegF);
+        const clLegB = new THREE.Mesh(geoLegH, matFrame); clLegB.scale.set(1, 0.6, 1); clLegB.position.set(-0.15, 0.225, -0.15); chairGroup.add(clLegB);
+        const clLegD = new THREE.Mesh(geoLegBase, matFrame); clLegD.position.set(-0.15, 0.01, 0); chairGroup.add(clLegD);
+        
+        const crLegF = new THREE.Mesh(geoLegH, matFrame); crLegF.scale.set(1, 0.6, 1); crLegF.position.set(0.15, 0.225, 0.15); chairGroup.add(crLegF);
+        const crLegB = new THREE.Mesh(geoLegH, matFrame); crLegB.scale.set(1, 0.6, 1); crLegB.position.set(0.15, 0.225, -0.15); chairGroup.add(crLegB);
+        const crLegD = new THREE.Mesh(geoLegBase, matFrame); crLegD.position.set(0.15, 0.01, 0); chairGroup.add(crLegD);
+
+        chairGroup.position.set(0, 0, 0.35); // Tarik ke belakang meja
+        mainGroup.add(chairGroup);
+
+
+        // --- 3. PROPS & EASTER EGGS DI ATAS MEJA ---
+        const propsGroup = new THREE.Group();
+        propsGroup.position.set(0, 0.76, -0.1); // Z disesuaikan dengan posisi meja
+        mainGroup.add(propsGroup);
+
+        // A. Buku Diary Terbuka (Tengah)
+        const diaryGroup = new THREE.Group();
+        const geoDiaryCover = new THREE.BoxGeometry(0.25, 0.01, 0.18);
+        const meshCover = new THREE.Mesh(geoDiaryCover, matCover); meshCover.position.y = 0.005; diaryGroup.add(meshCover);
+        const geoDiaryPages = new THREE.BoxGeometry(0.24, 0.005, 0.17);
+        const meshPages = new THREE.Mesh(geoDiaryPages, matPaper); meshPages.position.y = 0.01; diaryGroup.add(meshPages);
+        // Pulpen (Biru & Kuning)
+        const matPen1 = new THREE.MeshStandardMaterial({color: '#60a5fa'});
+        const pen1 = new THREE.Mesh(new THREE.CylinderGeometry(0.004, 0.004, 0.14, 8), matPen1);
+        pen1.rotation.z = Math.PI / 2; pen1.rotation.y = 0.2; pen1.position.set(0, 0.015, -0.05); diaryGroup.add(pen1);
+        
+        diaryGroup.position.set(0.05, 0, 0.02);
+        diaryGroup.rotation.y = -0.1;
+        propsGroup.add(diaryGroup);
+
+        // B. Walkman & Kabel Earphone (Kiri Atas)
+        const walkmanGroup = new THREE.Group();
+        const walkman = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.02, 0.11), matWalkman);
+        walkman.position.y = 0.01; walkman.castShadow = true; walkmanGroup.add(walkman);
+        // Kaset Window
+        const windowWm = new THREE.Mesh(new THREE.PlaneGeometry(0.05, 0.06), new THREE.MeshBasicMaterial({color: '#222222'}));
+        windowWm.rotation.x = -Math.PI / 2; windowWm.position.y = 0.021; walkmanGroup.add(windowWm);
+        // Kabel berantakan pakai Torus/Curve palsu
+        const wire1 = new THREE.Mesh(new THREE.TorusGeometry(0.03, 0.002, 8, 32, Math.PI * 1.5), matCable);
+        wire1.rotation.x = Math.PI / 2; wire1.position.set(0.05, 0.01, 0.05); walkmanGroup.add(wire1);
+        const wire2 = new THREE.Mesh(new THREE.TorusGeometry(0.05, 0.002, 8, 32, Math.PI * 0.8), matCable);
+        wire2.rotation.x = Math.PI / 2; wire2.rotation.z = 1.2; wire2.position.set(0.12, 0.01, 0.05); walkmanGroup.add(wire2);
+        
+        walkmanGroup.position.set(-0.2, 0, -0.1);
+        walkmanGroup.rotation.y = 0.3;
+        propsGroup.add(walkmanGroup);
+
+        // C. Cermin Lipat & Sisir (Kanan Atas)
+        const mirrorGroup = new THREE.Group();
+        const mirrorBase = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.005, 0.1), matMirror);
+        mirrorBase.position.y = 0.0025; mirrorGroup.add(mirrorBase);
+        const mirrorFlap = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.005, 0.1), matMirror);
+        mirrorFlap.position.set(0, 0.04, -0.04); mirrorFlap.rotation.x = 1.0; mirrorGroup.add(mirrorFlap);
+        // Kaca pemantul palsu
+        const glass = new THREE.Mesh(new THREE.PlaneGeometry(0.07, 0.09), new THREE.MeshStandardMaterial({color: '#ffffff', metalness: 0.8, roughness: 0.1}));
+        glass.position.set(0, 0.045, -0.038); glass.rotation.x = 1.0 - (Math.PI/2); mirrorGroup.add(glass);
+        
+        mirrorGroup.position.set(0.2, 0, -0.1);
+        mirrorGroup.rotation.y = -0.4;
+        propsGroup.add(mirrorGroup);
+
+        // D. Bungkus JetZ Kempes & Remahan (Kiri Bawah)
+        const snackGroup = new THREE.Group();
+        // Bungkus kempes (di-squash)
+        const geoBag = new THREE.BoxGeometry(0.12, 0.01, 0.18);
+        const meshBag = new THREE.Mesh(geoBag, matJetz);
+        meshBag.position.y = 0.005; 
+        // Bikin agak bergelombang palsu dengan rotasi
+        meshBag.rotation.z = 0.05;
+        meshBag.castShadow = true;
+        snackGroup.add(meshBag);
+        
+        // 10 Remahan (Bulatan ga beraturan warna kuning kecoklatan)
+        const matCrumb = new THREE.MeshStandardMaterial({color: '#d97706', roughness: 0.9});
+        const geoCrumb = new THREE.DodecahedronGeometry(0.003, 0);
+        for(let i=0; i<12; i++){
+            const crumb = new THREE.Mesh(geoCrumb, matCrumb);
+            crumb.position.set(
+                (Math.random() - 0.5) * 0.2 + 0.1, 
+                0.002, 
+                (Math.random() - 0.5) * 0.15
+            );
+            crumb.rotation.x = Math.random();
+            snackGroup.add(crumb);
+        }
+
+        snackGroup.position.set(-0.15, 0, 0.1);
+        snackGroup.rotation.y = -0.2;
+        propsGroup.add(snackGroup);
+
+
+        // --- PENCAHAYAAN ---
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight.position.set(2, 5, 2);
+        dirLight.castShadow = true;
+        dirLight.shadow.mapSize.width = 1024;
+        dirLight.shadow.mapSize.height = 1024;
+        scene.add(dirLight);
+
+        document.getElementById('loader').style.display = 'none';
+
+        function toggleAutoRotate() {
+            autoRotate = !autoRotate;
+            document.getElementById('btn-rotate').innerText = autoRotate ? '🔄 Putar Otomatis: ON' : '🔄 Putar Otomatis: OFF';
+        }
+
+        function exportGLB() {
+            const exporter = new THREE.GLTFExporter();
+            exporter.parse(mainGroup, function (glb) {
+                const blob = new Blob([glb], { type: 'application/octet-stream' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.style.display = 'none';
+                link.href = url;
+                link.download = 'jetz_school_desk_nostalgia.glb';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }, { binary: true });
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if(autoRotate) mainGroup.rotation.y += 0.005;
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        animate();
+    </script>
+</body>
+</html>

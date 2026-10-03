@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Rincian Kebutuhan Produksi & Bahan (BOM/BOQ) — Booth Chitato × JetZ</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #f8fafc;
+      color: #0f172a;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 30px;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+    }
+    .header-box {
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    h1 { font-size: 22px; font-weight: 800; color: #0f172a; }
+    .subhead { font-size: 13px; color: #64748b; margin-top: 4px; }
+    .meta-tag {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .card-label { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; }
+    .card-val { font-size: 20px; font-weight: 800; color: #0f172a; margin-top: 4px; }
+    .card-note { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+
+    /* Tabel BOM */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    th {
+      background: #0f172a;
+      color: #ffffff;
+      text-align: left;
+      padding: 10px 12px;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
+      line-height: 1.4;
+    }
+    tr:hover { background: #f1f5f9; }
+    .tag-badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 10px;
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+    .tag-chitato { background: #ea580c; color: #fff; }
+    .tag-jetz { background: #0284c7; color: #fff; }
+    .tag-venue { background: #475569; color: #fff; }
+    
+    .status-given {
+      color: #15803d;
+      font-weight: 700;
+      background: #dcfce7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .status-prod {
+      color: #b45309;
+      font-weight: 700;
+      background: #fef3c7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .section-divider {
+      background: #e2e8f0;
+      font-weight: 800;
+      color: #334155;
+      padding: 8px 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header-box">
+    <div>
+      <h1>📋 DAFTAR KEBUTUHAN PRODUKSI &amp; BILL OF MATERIALS (BOM / BOQ)</h1>
+      <div class="subhead">Aktivasi Booth Bersama: Chitato × JetZ 2026 | Indofood Tower Lobby (30.000 × 4.000 × 2.450 mm)</div>
+    </div>
+    <div class="meta-tag">GATE 2 PRODUKSI</div>
+  </div>
+
+  <!-- Ringkasan Cepat Lapangan -->
+  <div class="summary-grid">
+    <div class="card">
+      <div class="card-label">Total Item Rinci</div>
+      <div class="card-val">40 Komponen</div>
+      <div class="card-note">32 Modul Booth + 8 Logistik &amp; Fasilitas</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Proteksi Lantai Gedung</div>
+      <div class="card-val">192 m² Karpet</div>
+      <div class="card-note">32 × 6 m (Margin 1 m) + 76 m Lakban Hitam</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Kapasitas Listrik</div>
+      <div class="card-val">2.300 Watt</div>
+      <div class="card-note">Chitato 1.100W | JetZ 1.200W (7 Titik Daya)</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Target Jual &amp; Repack</div>
+      <div class="card-val">3.600 Paket</div>
+      <div class="card-note">1.800 Chitato Tas + 1.800 JetZ Ransel</div>
+    </div>
+  </div>
+
+  <!-- Tabel Rincian -->
+  <table>
+    <thead>
+      <tr>
+        <th width="40">No</th>
+        <th width="70">Tag</th>
+        <th width="200">Nama Komponen / Modul</th>
+        <th width="70">Qty</th>
+        <th width="140">Dimensi PxLxT (mm)</th>
+        <th>Spesifikasi Bahan &amp; Konstruksi Teknis</th>
+        <th width="150">Sumber Pengadaan</th>
+      </tr>
+    </thead>
+    <tbody id="bom-body">
+      <!-- Data dirender via script -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+  // Script untuk render CSV ke tampilan tabel interaktif rapi
+  const csvUrl = "bom.csv";
+  fetch(csvUrl)
+    .then(r => r.text())
+    .then(csv => {
+      const lines = csv.split("\n");
+      const tbody = document.getElementById("bom-body");
+      let html = "";
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+
+        if (line.startsWith("# ---")) {
+          const sectionTitle = line.replace(/#/g, "").replace(/-/g, "").trim();
+          html += `<tr><td colspan="7" class="section-divider">📌 ${sectionTitle}</td></tr>`;
+          continue;
+        }
+        if (line.startsWith("#") || line.startsWith("No,")) continue;
+
+        // Parse CSV row handling quotes
+        const match = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || [];
+        // Alternatif parse standar
+        const parts = [];
+        let cur = "";
+        let inQuotes = false;
+        for (let c of line) {
+          if (c === '"') { inQuotes = !inQuotes; }
+          else if (c === ',' && !inQuotes) { parts.push(cur.trim()); cur = ""; }
+          else { cur += c; }
+        }
+        parts.push(cur.trim());
+
+        if (parts.length >= 10) {
+          const [no, kat, tag, id, name, qty, dim, spec, fin, src, note] = parts;
+          
+          let tagClass = "tag-badge";
+          if (tag.startsWith("A")) tagClass += " tag-chitato";
+          else if (tag.startsWith("B")) tagClass += " tag-jetz";
+          else tagClass += " tag-venue";
+
+          const isGiven = src.includes("GIVEN") || src.includes("POSM");
+          const srcBadge = isGiven 
+            ? `<span class="status-given">POSM BRAND</span>` 
+            : `<span class="status-prod">${src}</span>`;
+
+          html += `
+            <tr>
+              <td align="center"><b>${no}</b></td>
+              <td><span class="${tagClass}">${tag}</span></td>
+              <td>
+                <b>${name}</b><br>
+                <span style="font-size:10px; color:#64748b;">${id}</span>
+              </td>
+              <td><b>${qty}</b></td>
+              <td><code>${dim}</code></td>
+              <td>
+                <b>Material:</b> ${spec}<br>
+                <b>Finishing:</b> ${fin}<br>
+                <i style="color:#d97706; font-size:11px;">Catatan: ${note}</i>
+              </td>
+              <td>${srcBadge}</td>
+            </tr>
+          `;
+        }
+      }
+      tbody.innerHTML = html;
+    });
+</script>
+
+</body>
+</html>

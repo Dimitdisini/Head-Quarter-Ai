@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Aset - JetZ Charm Workshop Table</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #1a1a1a; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        #canvas-container { width: 100vw; height: 100vh; display: block; }
+        
+        .overlay { position: absolute; top: 20px; left: 20px; pointer-events: none; }
+        .info-panel { background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); pointer-events: auto; max-width: 320px; }
+        .info-panel h1 { margin: 0 0 5px 0; font-size: 18px; color: #1a1a1a; }
+        .info-panel p { margin: 0 0 15px 0; font-size: 12px; color: #666; }
+        .tag { background: #fdf2f8; color: #9d174d; padding: 4px 8px; font-size: 10px; font-weight: bold; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+        
+        .controls { display: flex; flex-direction: column; gap: 8px; }
+        button { background: #1a1a1a; color: white; border: none; padding: 10px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; transition: 0.2s; text-align: center; }
+        button:hover { background: #ec4899; }
+        
+        .loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-family: monospace; font-size: 14px; pointer-events: none; }
+    </style>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/exporters/GLTFExporter.js"></script>
+</head>
+<body>
+
+    <div class="loading" id="loader">Menyusun Manik-manik JetZ...</div>
+    <div id="canvas-container"></div>
+    
+    <div class="overlay">
+        <div class="info-panel">
+            <div class="tag">ZONA B · JETZ</div>
+            <h1>Charm Workshop Table</h1>
+            <p>Detail perintilan meja kayu birch dengan 4 kursi pastel. Dilengkapi baki akrilik transparan berisi manik-manik warna-warni untuk aktivitas pengunjung.</p>
+            
+            <div class="controls">
+                <button onclick="toggleAutoRotate()" id="btn-rotate">🔄 Putar Otomatis: ON</button>
+                <button onclick="exportGLB()">⬇️ Unduh Model (.glb)</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color('#2a2a2a');
+        scene.fog = new THREE.FogExp2('#2a2a2a', 0.05);
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 1.2, 2.5); // Posisi close up ke meja
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.maxPolarAngle = Math.PI / 2 + 0.1;
+        controls.target.set(0, 0.75, 0); // Fokus ke atas meja
+        
+        let autoRotate = true;
+        const mainGroup = new THREE.Group();
+        scene.add(mainGroup);
+
+        // --- MATERIALS ---
+        const matFloor = new THREE.MeshStandardMaterial({ color: '#555555', roughness: 0.8 });
+        const matWood = new THREE.MeshStandardMaterial({ color: '#e6c280', roughness: 0.8 }); // Kayu Birch
+        const matChrome = new THREE.MeshStandardMaterial({ color: '#ffffff', metalness: 0.9, roughness: 0.1 });
+        
+        // Warna Kursi Pastel (Sesuai Loker)
+        const matPink = new THREE.MeshStandardMaterial({ color: '#fbcfe8', roughness: 0.9 });
+        const matLavender = new THREE.MeshStandardMaterial({ color: '#e9d5ff', roughness: 0.9 });
+        const matBlue = new THREE.MeshStandardMaterial({ color: '#bfdbfe', roughness: 0.9 });
+        const matYellow = new THREE.MeshStandardMaterial({ color: '#fef08a', roughness: 0.9 });
+
+        // Material Akrilik Baki
+        const matAcrylic = new THREE.MeshPhysicalMaterial({
+            color: 0xffffff, metalness: 0.1, roughness: 0.1,
+            transmission: 0.9, opacity: 1, transparent: true, ior: 1.5,
+            side: THREE.DoubleSide
+        });
+
+        // Lantai
+        const floor = new THREE.Mesh(new THREE.PlaneGeometry(10, 10), matFloor);
+        floor.rotation.x = -Math.PI / 2;
+        floor.receiveShadow = true;
+        scene.add(floor);
+
+        // --- 1. MEJA KAYU BIRCH ---
+        const tableGroup = new THREE.Group();
+        
+        // Papan Meja (180 x 80 cm, ketebalan 3cm -> disimulasikan 1.8 x 0.8 x 0.03 m)
+        const geoTableTop = new THREE.BoxGeometry(1.8, 0.03, 0.8);
+        const meshTableTop = new THREE.Mesh(geoTableTop, matWood);
+        meshTableTop.position.y = 0.75; // Tinggi meja 75cm
+        meshTableTop.castShadow = true;
+        meshTableTop.receiveShadow = true;
+        tableGroup.add(meshTableTop);
+
+        // Kaki Meja (Chrome Hollow)
+        const geoLeg = new THREE.BoxGeometry(0.04, 0.735, 0.04);
+        const legPositions = [
+            [-0.85, 0.3675, -0.35], [0.85, 0.3675, -0.35],
+            [-0.85, 0.3675, 0.35], [0.85, 0.3675, 0.35]
+        ];
+        legPositions.forEach(pos => {
+            const leg = new THREE.Mesh(geoLeg, matChrome);
+            leg.position.set(...pos);
+            leg.castShadow = true;
+            tableGroup.add(leg);
+        });
+
+        mainGroup.add(tableGroup);
+
+        // --- 2. KURSI STOOL PASTEL ---
+        function createStool(x, z, padMat) {
+            const stool = new THREE.Group();
+            
+            // Kaki Chrome
+            const geoBase = new THREE.CylinderGeometry(0.15, 0.2, 0.02, 32);
+            const meshBase = new THREE.Mesh(geoBase, matChrome);
+            meshBase.position.y = 0.01;
+            stool.add(meshBase);
+
+            const geoTiang = new THREE.CylinderGeometry(0.03, 0.03, 0.43, 16);
+            const meshTiang = new THREE.Mesh(geoTiang, matChrome);
+            meshTiang.position.y = 0.235;
+            stool.add(meshTiang);
+
+            // Bantalan Duduk
+            const geoPad = new THREE.CylinderGeometry(0.18, 0.18, 0.05, 32);
+            const meshPad = new THREE.Mesh(geoPad, padMat);
+            meshPad.position.y = 0.46; // Tinggi dudukan 45cm+
+            meshPad.castShadow = true;
+            meshPad.receiveShadow = true;
+            stool.add(meshPad);
+
+            stool.position.set(x, 0, z);
+            return stool;
+        }
+
+        mainGroup.add(createStool(-0.5, 0.6, matPink));
+        mainGroup.add(createStool(0.5, 0.6, matLavender));
+        mainGroup.add(createStool(-0.5, -0.6, matBlue));
+        mainGroup.add(createStool(0.5, -0.6, matYellow));
+
+        // --- 3. BAKI AKRILIK & MANIK-MANIK ---
+        // Palet warna manik-manik acak
+        const beadColors = ['#f472b6', '#a78bfa', '#60a5fa', '#facc15', '#ffffff'];
+        const beadMats = beadColors.map(c => new THREE.MeshStandardMaterial({ color: c, roughness: 0.2 }));
+
+        const geoBead = new THREE.SphereGeometry(0.008, 8, 8); // Manik bulat kecil
+
+        function createTray(x, z) {
+            const tray = new THREE.Group();
+            
+            // Box Akrilik (Kotak tanpa tutup)
+            const trayW = 0.25;
+            const trayD = 0.15;
+            const trayH = 0.04;
+            const t = 0.005; // Ketebalan akrilik
+
+            // Alas baki
+            const base = new THREE.Mesh(new THREE.BoxGeometry(trayW, t, trayD), matAcrylic);
+            base.position.y = t/2;
+            tray.add(base);
+
+            // Dinding baki
+            const wallLong = new THREE.BoxGeometry(trayW, trayH, t);
+            const wallShort = new THREE.BoxGeometry(t, trayH, trayD);
+            
+            const w1 = new THREE.Mesh(wallLong, matAcrylic); w1.position.set(0, trayH/2, trayD/2); tray.add(w1);
+            const w2 = new THREE.Mesh(wallLong, matAcrylic); w2.position.set(0, trayH/2, -trayD/2); tray.add(w2);
+            const w3 = new THREE.Mesh(wallShort, matAcrylic); w3.position.set(trayW/2, trayH/2, 0); tray.add(w3);
+            const w4 = new THREE.Mesh(wallShort, matAcrylic); w4.position.set(-trayW/2, trayH/2, 0); tray.add(w4);
+
+            // Isi Manik-manik (Generate 60 butir random per baki biar rame)
+            for(let i=0; i<60; i++) {
+                const mat = beadMats[Math.floor(Math.random() * beadMats.length)];
+                const bead = new THREE.Mesh(geoBead, mat);
+                
+                // Posisi random di dalam baki
+                const bx = (Math.random() - 0.5) * (trayW - 0.02);
+                const bz = (Math.random() - 0.5) * (trayD - 0.02);
+                const by = t + 0.008 + (Math.random() * 0.015); // Numpuk sedikit
+                
+                bead.position.set(bx, by, bz);
+                bead.castShadow = true;
+                tray.add(bead);
+            }
+
+            tray.position.set(x, 0.765, z); // Taruh di atas meja
+            // Rotasi berantakan dikit biar natural
+            tray.rotation.y = (Math.random() - 0.5) * 0.2;
+            return tray;
+        }
+
+        // Bikin 6 Baki berjejer
+        mainGroup.add(createTray(-0.4, 0.1));
+        mainGroup.add(createTray(0, 0.1));
+        mainGroup.add(createTray(0.4, 0.1));
+        mainGroup.add(createTray(-0.4, -0.1));
+        mainGroup.add(createTray(0, -0.1));
+        mainGroup.add(createTray(0.4, -0.1));
+
+        // --- 4. SIGNAGE "JETZ CHARM" ---
+        const signGroup = new THREE.Group();
+        const geoSignBase = new THREE.BoxGeometry(0.2, 0.01, 0.05);
+        const meshSignBase = new THREE.Mesh(geoSignBase, matPink);
+        signGroup.add(meshSignBase);
+
+        const geoSignPanel = new THREE.BoxGeometry(0.2, 0.1, 0.01);
+        const meshSignPanel = new THREE.Mesh(geoSignPanel, matAcrylic);
+        meshSignPanel.position.set(0, 0.05, 0);
+        signGroup.add(meshSignPanel);
+
+        signGroup.position.set(-0.7, 0.77, 0);
+        signGroup.rotation.y = Math.PI / 4;
+        mainGroup.add(signGroup);
+
+        // --- PENCAHAYAAN ---
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight.position.set(2, 5, 2);
+        dirLight.castShadow = true;
+        dirLight.shadow.mapSize.width = 1024;
+        dirLight.shadow.mapSize.height = 1024;
+        scene.add(dirLight);
+
+        document.getElementById('loader').style.display = 'none';
+
+        function toggleAutoRotate() {
+            autoRotate = !autoRotate;
+            document.getElementById('btn-rotate').innerText = autoRotate ? '🔄 Putar Otomatis: ON' : '🔄 Putar Otomatis: OFF';
+        }
+
+        function exportGLB() {
+            const exporter = new THREE.GLTFExporter();
+            exporter.parse(mainGroup, function (glb) {
+                const blob = new Blob([glb], { type: 'application/octet-stream' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.style.display = 'none';
+                link.href = url;
+                link.download = 'jetz_charm_workshop_table.glb';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }, { binary: true });
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if(autoRotate) mainGroup.rotation.y += 0.003;
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        animate();
+    </script>
+</body>
+</html>

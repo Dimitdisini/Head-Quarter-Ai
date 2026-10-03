@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Aset - Chitato Chip Chair</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #1a1a1a; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        #canvas-container { width: 100vw; height: 100vh; display: block; }
+        .overlay { position: absolute; top: 20px; left: 20px; pointer-events: none; }
+        .info-panel { background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); pointer-events: auto; max-width: 320px; }
+        .info-panel h1 { margin: 0 0 5px 0; font-size: 18px; color: #1a1a1a; }
+        .info-panel p { margin: 0 0 15px 0; font-size: 12px; color: #666; }
+        .tag { background: #fff3e0; color: #c2410c; padding: 4px 8px; font-size: 10px; font-weight: bold; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+        button { background: #1a1a1a; color: white; border: none; padding: 10px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; transition: 0.2s; width: 100%; margin-bottom: 8px; }
+        button:hover { background: #f97316; }
+        .loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-family: monospace; font-size: 14px; pointer-events: none; }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/exporters/GLTFExporter.js"></script>
+</head>
+<body>
+    <div class="loading" id="loader">Mencetak Kursi Keripik...</div>
+    <div id="canvas-container"></div>
+    <div class="overlay">
+        <div class="info-panel">
+            <div class="tag">ZONA A · CHITATO</div>
+            <h1>A08 - Chip Chair</h1>
+            <p>Kursi lounge ikonik berbentuk bilah keripik Chitato yang melengkung. Dibuat dengan material fiber tebal berwarna oranye khas.</p>
+            <button onclick="toggleAutoRotate()" id="btn-rotate">🔄 Putar Otomatis: ON</button>
+            <button onclick="exportGLB()">⬇️ Unduh Model (.glb)</button>
+        </div>
+    </div>
+
+    <script>
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color('#2a2a2a');
+        scene.fog = new THREE.FogExp2('#2a2a2a', 0.05);
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 1.5, 3);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.maxPolarAngle = Math.PI / 2 + 0.1;
+        controls.target.set(0, 0.4, 0);
+        
+        let autoRotate = true;
+        const mainGroup = new THREE.Group();
+        scene.add(mainGroup);
+
+        // Lantai
+        const floor = new THREE.Mesh(new THREE.PlaneGeometry(10, 10), new THREE.MeshStandardMaterial({ color: '#444444' }));
+        floor.rotation.x = -Math.PI / 2;
+        floor.receiveShadow = true;
+        scene.add(floor);
+
+        // Material Keripik Chitato (Oranye, Agak Kasar)
+        const matChip = new THREE.MeshStandardMaterial({ color: '#f97316', roughness: 0.8, side: THREE.DoubleSide });
+
+        // Membuat bentuk lengkungan keripik (Cylinder di-slice)
+        const geoChip = new THREE.CylinderGeometry(0.8, 0.8, 1.2, 64, 1, false, 0, Math.PI * 0.7);
+        const meshChip = new THREE.Mesh(geoChip, matChip);
+        
+        // Memutar agar bentuknya jadi kursi (melengkung ke atas)
+        meshChip.rotation.z = Math.PI / 2;
+        meshChip.rotation.x = Math.PI / 2 - 0.5;
+        meshChip.position.y = 0.4;
+        meshChip.castShadow = true;
+        meshChip.receiveShadow = true;
+        mainGroup.add(meshChip);
+
+        // Kaki kursi (Besi Hitam)
+        const matLegs = new THREE.MeshStandardMaterial({ color: '#111111', roughness: 0.2 });
+        const geoLeg = new THREE.CylinderGeometry(0.03, 0.02, 0.4, 16);
+        
+        const leg1 = new THREE.Mesh(geoLeg, matLegs); leg1.position.set(-0.4, 0.2, 0.4); leg1.castShadow=true; mainGroup.add(leg1);
+        const leg2 = new THREE.Mesh(geoLeg, matLegs); leg2.position.set(0.4, 0.2, 0.4); leg2.castShadow=true; mainGroup.add(leg2);
+        const leg3 = new THREE.Mesh(geoLeg, matLegs); leg3.position.set(-0.3, 0.2, -0.4); leg3.castShadow=true; mainGroup.add(leg3);
+        const leg4 = new THREE.Mesh(geoLeg, matLegs); leg4.position.set(0.3, 0.2, -0.4); leg4.castShadow=true; mainGroup.add(leg4);
+
+        // Pencahayaan
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight.position.set(2, 5, 2);
+        dirLight.castShadow = true;
+        dirLight.shadow.mapSize.width = 1024;
+        dirLight.shadow.mapSize.height = 1024;
+        scene.add(dirLight);
+
+        document.getElementById('loader').style.display = 'none';
+
+        function toggleAutoRotate() {
+            autoRotate = !autoRotate;
+            document.getElementById('btn-rotate').innerText = autoRotate ? '🔄 Putar Otomatis: ON' : '🔄 Putar Otomatis: OFF';
+        }
+
+        function exportGLB() {
+            const exporter = new THREE.GLTFExporter();
+            exporter.parse(mainGroup, function (glb) {
+                const blob = new Blob([glb], { type: 'application/octet-stream' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a'); link.style.display = 'none'; link.href = url;
+                link.download = 'chitato_chip_chair.glb';
+                document.body.appendChild(link); link.click(); document.body.removeChild(link);
+            }, { binary: true });
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if(autoRotate) mainGroup.rotation.y += 0.005;
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        animate();
+    </script>
+</body>
+</html>

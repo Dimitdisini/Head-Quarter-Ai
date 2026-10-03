@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Breakdown 22 Aset — Booth Chitato × JetZ 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #f5f4f0; color: #1a1a1a; }
+
+  .site-header { background: #1a1a1a; color: #fff; padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; }
+  .site-header h1 { font-size: 18px; font-weight: 600; letter-spacing: 0.5px; }
+  .site-header .meta { font-size: 12px; color: #888; margin-top: 4px; }
+  .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+  .badge-red { background: #ef4444; color: #fff; }
+
+  .hero-section { display: grid; grid-template-columns: 1fr 1fr; gap: 0; height: 260px; overflow: hidden; }
+  .hero-section img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-label { position: relative; }
+  .hero-label .label-tag { position: absolute; bottom: 16px; left: 16px; background: rgba(0,0,0,0.7); color: #fff; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 4px; }
+
+  .tab-nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 40px; display: flex; gap: 0; position: sticky; top: 0; z-index: 10; }
+  .tab-btn { padding: 16px 24px; font-size: 13px; font-weight: 500; color: #666; cursor: pointer; border-bottom: 3px solid transparent; background: none; border: none; }
+  .tab-btn.active { color: #1a1a1a; border-bottom-color: #1a1a1a; font-weight: 600; }
+
+  .content { padding: 40px; }
+
+  /* Venue Rules */
+  .venue-rules { background: #fef2f2; border: 1px solid #fecaca; padding: 20px 24px; border-radius: 8px; margin-bottom: 32px; }
+  .venue-rules h3 { color: #991b1b; font-size: 13px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; }
+  .venue-rules ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .venue-rules li { font-size: 12px; color: #7f1d1d; display: flex; gap: 8px; }
+  .venue-rules li::before { content: '⚠️'; }
+
+  .zone-title { font-size: 14px; font-weight: 800; text-transform: uppercase; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid #ddd; }
+  .zone-title span { font-size: 11px; font-weight: 500; color: #888; margin-left: 8px; }
+
+  /* Grid Layouts */
+  .section-heading { font-size: 12px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; margin-top: 32px; }
+  
+  .hero-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px; }
+  .detail-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
+
+  /* Card Styles */
+  .asset-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
+  .asset-card .img-wrap { width: 100%; aspect-ratio: 16/9; background: #eee; position: relative; }
+  .asset-card .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .card-body { padding: 16px; flex-grow: 1; display: flex; flex-direction: column; }
+  .asset-code { font-size: 10px; font-weight: 700; color: #aaa; margin-bottom: 4px; }
+  .asset-name { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+  .asset-desc { font-size: 12px; color: #666; line-height: 1.5; margin-bottom: 12px; flex-grow: 1; }
+
+  /* Mini Card (For Details/Perintilan) */
+  .mini-card { background: #fff; border-radius: 6px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #eee; border-left: 4px solid #ccc; }
+  .mini-card.chitato { border-left-color: #f97316; }
+  .mini-card.jetz { border-left-color: #ec4899; }
+  .mini-name { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
+  .mini-desc { font-size: 11px; color: #666; line-height: 1.4; }
+  .spec-tag { display: inline-block; background: #f0f0f0; color: #555; padding: 2px 6px; border-radius: 3px; font-size: 9px; font-weight: 700; margin-top: 8px; }
+
+  .site-footer { background: #1a1a1a; color: #666; text-align: center; padding: 20px; font-size: 11px; margin-top: 40px; }
+  .zone-block { display: none; } .zone-block.visible { display: block; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div>
+    <h1>Master Breakdown 22 Aset — Booth Chitato × JetZ 2026</h1>
+    <div class="meta">Dokumen Spesifikasi Lengkap (11 Aset Chitato & 11 Aset JetZ) · Indofood Tower Lobby</div>
+  </div>
+  <span class="badge badge-red">LOCKED & COMPLETED</span>
+</header>
+
+<div class="hero-section">
+  <div class="hero-label"><img src="renders/base_chitato_zone.jpg" alt="Chitato"><span class="label-tag">Zona A — Chitato (11 Aset)</span></div>
+  <div class="hero-label"><img src="renders/base_jetz_zone.jpg" alt="JetZ"><span class="label-tag">Zona B — JetZ (11 Aset)</span></div>
+</div>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('all', this)">Semua Aset (22)</button>
+  <button class="tab-btn" onclick="switchTab('chitato', this)">Zona A — Chitato (11)</button>
+  <button class="tab-btn" onclick="switchTab('jetz', this)">Zona B — JetZ (11)</button>
+</nav>
+
+<div class="content">
+
+  <div class="venue-rules zone-block visible" id="venue-rules">
+    <h3>Aturan Wajib Gedung (Indofood Tower Lobby)</h3>
+    <ul>
+      <li><strong>Proteksi Lantai Ekstra:</strong> Karpet hitam & lakban hitam (32m x 6m).</li>
+      <li><strong>Aturan Suara:</strong> Dilarang speaker besar (DJ JetZ pakai Silent Disco).</li>
+      <li><strong>Aturan Loker JetZ:</strong> Aset existing dari Cirebon, fungsi sebagai pembatas.</li>
+      <li><strong>Batas Ketinggian:</strong> Maksimum tinggi instalasi 2.5m mutlak.</li>
+    </ul>
+  </div>
+
+  <!-- ZONA A: CHITATO (11 ASET) -->
+  <div class="zone-block visible" id="zone-chitato">
+    <div class="zone-title" style="color:#c2410c;">Zona A: Chitato × TREASURE <span>(Total 11 Aset Utama & Perintilan)</span></div>
+    
+    <div class="section-heading">A. Struktur Hero (3 Aset)</div>
+    <div class="hero-grid">
+      <div class="asset-card">
+        <div class="img-wrap"><img src="renders/chitato_a_bar_counter.jpg" alt="A01"></div>
+        <div class="card-body">
+          <div class="asset-code">ASET 01</div>
+          <div class="asset-name">Selling Bar Counter</div>
+          <div class="asset-desc">Meja kasir utama warna oranye terang dengan logo Chitato. Tempat transaksi paket Rp 35.000.</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="img-wrap"><img src="renders/chitato_b_neon_arch.jpg" alt="A02"></div>
+        <div class="card-body">
+          <div class="asset-code">ASET 02</div>
+          <div class="asset-name">Neon Arch Portal</div>
+          <div class="asset-desc">Gapura horseshoe kuning (2.45m) dengan LED neon flex di tengah area Chitato.</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="img-wrap"><img src="renders/chitato_c_lightbox_panel.jpg" alt="A03"></div>
+        <div class="card-body">
+          <div class="asset-code">ASET 03</div>
+          <div class="asset-name">Lightbox Panel TREASURE</div>
+          <div class="asset-desc">4 panel vertikal bercahaya menampilkan foto member TREASURE dengan backdrop amber.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-heading">B. Perintilan & Detail Display (8 Aset)</div>
+    <div class="detail-grid">
+      <div class="mini-card chitato">
+        <div class="mini-name">04. Kiosk Game Interaktif</div>
+        <div class="mini-desc">Layar vertikal 65" touchscreen di dalam gapura arch untuk main mini-game TREASURE.</div>
+        <span class="spec-tag">Sewa Perangkat</span>
+      </div>
+      <div class="mini-card chitato">
+        <div class="mini-name">05. Rak Display Belakang</div>
+        <div class="mini-desc">Shelving kayu di belakang counter bar untuk stok dan display tumpukan produk paket jualan.</div>
+        <span class="spec-tag">Fabrikasi Kayu</span>
+      </div>
+      <div class="mini-card chitato">
+        <div class="mini-name">06. Bar Stools (3 Unit)</div>
+        <div class="mini-desc">Kursi tinggi warna kuning chrome diletakkan di depan meja counter selling.</div>
+        <span class="spec-tag">Beli Jadi / Sewa</span>
+      </div>
+      <div class="mini-card chitato">
+        <div class="mini-name">07. Standee TREASURE</div>
+        <div class="mini-desc">Cutout member tinggi 180cm. Disusun baku Kiri-Kanan sesuai panduan brief.</div>
+        <span class="spec-tag">Sintra 5mm</span>
+      </div>
+      <div class="mini-card chitato">
+        <div class="mini-name">08. Chitato Chip Chair</div>
+        <div class="mini-desc">Kursi lounge ikonik bentuk bilah melengkung seperti keripik (hasil iterasi desain 3D).</div>
+        <span class="spec-tag">Custom Fabrikasi</span>
+      </div>
+      <div class="mini-card chitato">
+        <div class="mini-name">09. Bag Plinth Showcase</div>
+        <div class="mini-desc">3 tabung pedestal putih dengan kubah akrilik bening untuk display tas merchandise eksklusif.</div>
+        <span class="spec-tag">Akrilik Kaca</span>
+      </div>
+      <div class="mini-card chitato">
+        <div class="mini-name">10. Wave Slat Panels</div>
+        <div class="mini-desc">Panel dekorasi sirip bergelombang (warna hijau forest & kayu) di dinding zona tengah.</div>
+        <span class="spec-tag">MDF Laser-cut</span>
+      </div>
+      <div class="mini-card chitato">
+        <div class="mini-name">11. Drum Poufs (2 Unit)</div>
+        <div class="mini-desc">Tempat duduk busa silinder warna kuning dan hijau untuk area santai pengunjung.</div>
+        <span class="spec-tag">Fabric Busa</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZONA B: JETZ (11 ASET) -->
+  <div class="zone-block visible" id="zone-jetz">
+    <div class="zone-title" style="color:#9d174d;">Zona B: JetZ × Hearts2Hearts <span>(Total 11 Aset Utama & Perintilan)</span></div>
+    
+    <div class="section-heading">A. Struktur Hero (3 Aset)</div>
+    <div class="hero-grid">
+      <div class="asset-card">
+        <div class="img-wrap"><img src="renders/jetz_a_headphone_stage.jpg" alt="B01"></div>
+        <div class="card-body">
+          <div class="asset-code">ASET 01</div>
+          <div class="asset-name">Giant Headphone Stage</div>
+          <div class="asset-desc">Panggung prop raksasa bentuk headphone warna cream dengan backdrop pink.</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="img-wrap"><img src="renders/jetz_b_locker_wall.jpg" alt="B02"></div>
+        <div class="card-body">
+          <div class="asset-code">ASET 02</div>
+          <div class="asset-name">Locker Wall Divider</div>
+          <div class="asset-desc">Loker sekolah pastel asli dari gudang Cirebon. Berfungsi sebagai tembok pemisah 15m.</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="img-wrap"><img src="renders/jetz_c_shelf_charm.jpg" alt="B03"></div>
+        <div class="card-body">
+          <div class="asset-code">ASET 03</div>
+          <div class="asset-name">Shelf & Charm Workshop</div>
+          <div class="asset-desc">Lemari display pink dan meja panjang birch untuk aktivitas wajib merangkai manik-manik.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-heading">B. Perintilan & Detail Display (8 Aset)</div>
+    <div class="detail-grid">
+      <div class="mini-card jetz">
+        <div class="mini-name">04. Neon Ring Portal</div>
+        <div class="mini-desc">Lingkaran lampu neon flex pink bercahaya di belakang instalasi headphone raksasa.</div>
+        <span class="spec-tag">Neon Flex LED</span>
+      </div>
+      <div class="mini-card jetz">
+        <div class="mini-name">05. DJ Table (Silent Disco)</div>
+        <div class="mini-desc">Meja hitam dengan deck/mixer. Konsep Silent Disco atau photo-op (tanpa speaker besar).</div>
+        <span class="spec-tag">Props Fabrikasi</span>
+      </div>
+      <div class="mini-card jetz">
+        <div class="mini-name">06. Standee Hearts2Hearts</div>
+        <div class="mini-desc">Cut-out 5 member H2H diletakkan di depan loker. Tinggi maksimum standee 165cm.</div>
+        <span class="spec-tag">Sintra 5mm</span>
+      </div>
+      <div class="mini-card jetz">
+        <div class="mini-name">07. Baki & Manik Workshop</div>
+        <div class="mini-desc">Set nampan/baki akrilik kecil berisi manik-manik dan tali untuk aktivitas Charm Making di meja.</div>
+        <span class="spec-tag">Akrilik Bening</span>
+      </div>
+      <div class="mini-card jetz">
+        <div class="mini-name">08. Pastel Stools (4 Unit)</div>
+        <div class="mini-desc">Kursi tanpa sandaran (chrome base / pastel pad) untuk peserta duduk di meja workshop.</div>
+        <span class="spec-tag">Beli Jadi / Sewa</span>
+      </div>
+      <div class="mini-card jetz">
+        <div class="mini-name">09. Digital TV Banner</div>
+        <div class="mini-desc">Layar 55" dipasang di atas rak jualan JetZ untuk memutar video TVC promosi loop.</div>
+        <span class="spec-tag">TV LED & Bracket</span>
+      </div>
+      <div class="mini-card jetz">
+        <div class="mini-name">10. School Desk Nostalgia</div>
+        <div class="mini-desc">Set meja & kursi kayu sekolah jadul lengkap dengan tempelan stiker dan walkman kaset retro.</div>
+        <span class="spec-tag">Sewa Props Jadul</span>
+      </div>
+      <div class="mini-card jetz">
+        <div class="mini-name">11. Flexy Wire Rack</div>
+        <div class="mini-desc">Rak kawat jaring chrome untuk gantung merch tas, dilengkapi neon sign bubbly "JetZ".</div>
+        <span class="spec-tag">Rak Kawat Supermarket</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  Master Breakdown Detail 22 Aset (11 Chitato + 11 JetZ) — Indofood Tower Lobby 2026
+</footer>
+
+<script>
+  function switchTab(zone, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const blocks = document.querySelectorAll('.zone-block');
+    blocks.forEach(b => b.classList.remove('visible'));
+    
+    document.getElementById('venue-rules').classList.add('visible');
+
+    if (zone === 'all') {
+      document.getElementById('zone-chitato').classList.add('visible');
+      document.getElementById('zone-jetz').classList.add('visible');
+    } else {
+      document.getElementById('zone-' + zone).classList.add('visible');
+    }
+  }
+</script>
+</body>
+</html>

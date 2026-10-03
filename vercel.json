@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/", "destination": "/booth-3d/index.html", "permanent": false }
+  ]
+}
